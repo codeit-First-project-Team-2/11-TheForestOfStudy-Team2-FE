@@ -10,7 +10,7 @@
 ### 1. 프로젝트 불러오기
 ```bash
 # 레포지토리 클론
-git clone [https://github.com/codeit-First-project-Team-2/11-TheForestOfStudy-Team2-FE.git](https://github.com/codeit-First-project-Team-2/11-TheForestOfStudy-Team2-FE.git)
+git clone https://github.com/codeit-First-project-Team-2/11-TheForestOfStudy-Team2-FE.git
 
 # 폴더 이동
 cd 11-TheForestOfStudy-Team2-FE
@@ -33,17 +33,25 @@ npm run dev
 ```
 > ⚠️ **주의:** `vanilla-extract` 사용 시, 스타일 파일 확장자는 반드시 **`.css.ts`**로 작성해야 합니다.
 
-### 3. 코드 작성 및 푸시
+### 3. pull / push (⚠️ Git 충돌 방지 규칙)
 ```bash
-# 원격 저장소 업데이트 확인 (수시로)
-git pull
+# 아래 과정 반복
+pull -> coding -> commit -> push -> (PR)
 
-# 작업 완료 후 첫 푸시 시 (업스트림 설정)
-git push -u origin <브랜치명>
+# 작업 시작할때
+git checkout develop
+git pull origin develop
 
-# 이후에는 간편하게 푸시
-git push
+# pull 할때는 부모 브랜치(develop) 기준으로!
+git checkout feature/...
+git pull origin develop
 ```
+**!!! 반드시 pull 해야 하는 타이밍?**
+
+- **작업 시작하기 직전**
+- **브랜치 전환 직후**
+- **어제 작업하고 오늘 다시 시작할 때**
+- **PR 머지된 뒤**
 
 ---
 
