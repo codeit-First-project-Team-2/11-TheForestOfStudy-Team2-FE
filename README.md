@@ -70,7 +70,7 @@ git pull origin develop
 
 - **Framework**: React (Vite)
 - **Language**: JavaScript
-- **Styling**: Vanilla-Extract (Pretendard Font 적용)
+- **Styling**: css (Pretendard Font 적용)
 - **Linting**: ESLint, Prettier
 
 ---
@@ -93,6 +93,8 @@ src/
 ---
 
 ## 📝 커밋 메시지 컨벤션
+
+  **메세지는 영어가 아닌 한글로 적어주세요!**
 
 - **feat** : 새로운 기능 추가
 - **fix** : 버그 수정
