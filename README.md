@@ -31,7 +31,6 @@ npm install clsx axios
 # 로컬 개발 서버 실행
 npm run dev
 ```
-> ⚠️ **주의:** `vanilla-extract` 사용 시, 스타일 파일 확장자는 반드시 **`.css.ts`**로 작성해야 합니다.
 
 ### 3. pull / push (⚠️ Git 충돌 방지 규칙)
 ```bash
