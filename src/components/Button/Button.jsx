@@ -1,0 +1,23 @@
+
+import styles from "./Button.module.css";
+
+export const Button = ({ 
+  children,
+  variant = "primary", 
+  className = "",
+  ...props 
+}) => {
+  const buttonClassName = [
+    styles.button,
+    styles[variant],
+    className
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <button className={buttonClassName} {...props}>
+      {children}
+    </button>
+  );
+};

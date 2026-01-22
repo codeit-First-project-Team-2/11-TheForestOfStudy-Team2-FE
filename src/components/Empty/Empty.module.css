@@ -1,0 +1,9 @@
+.container {
+  padding: var(--spacing-lg);
+  test-align: center;
+  color: var(--color-text);
+}
+
+.message {
+  font-size: var(--font-md);
+}
