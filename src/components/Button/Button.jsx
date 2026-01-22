@@ -1,4 +1,5 @@
 
+import clsx from "clsx";
 import styles from "./Button.module.css";
 
 export const Button = ({ 
@@ -7,13 +8,11 @@ export const Button = ({
   className = "",
   ...props 
 }) => {
-  const buttonClassName = [
+  const buttonClassName = clsx(
     styles.button,
     styles[variant],
     className
-  ]
-    .filter(Boolean)
-    .join(" ");
+  );
 
   return (
     <button className={buttonClassName} {...props}>

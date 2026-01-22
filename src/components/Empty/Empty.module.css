@@ -1,9 +1,13 @@
 .container {
+  width: 100%;
   padding: var(--spacing-lg);
+  display: flex;
+  justify-content: center;
   test-align: center;
-  color: var(--color-text);
 }
 
 .message {
   font-size: var(--font-md);
+  color: var(--color-gray-300);
+  text-align: center;
 }
