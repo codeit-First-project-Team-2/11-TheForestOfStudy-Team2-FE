@@ -1,0 +1,64 @@
+main {
+  margin: 53.5px auto 152.5px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.timerNavContainer {
+  margin-bottom: 24px;
+  width: 1168px;
+}
+
+.timerNavWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.timerNavTitle {
+  margin-bottom: 16px;
+}
+
+.timerNavPointWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.timerContainer {
+  padding: 40px, 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.timerTitle {
+  margin-bottom: 100px;
+}
+
+.timerWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.timerContent {
+  margin-bottom: 94px;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  main {
+    margin-top: 16px;
+    padding: 24px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  main {
+    margin-top: 20px;
+    padding: 16px;
+  }
+}
