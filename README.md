@@ -25,8 +25,8 @@ git switch -c feature/<기능명>
 npm install
 
 # 필요한 라이브러리 추가 설치 (필요시)
-npm install clsx axios @vanilla-extract/css
-npm install -D @vanilla-extract/vite-plugin
+npm install clsx axios 
+
 
 # 로컬 개발 서버 실행
 npm run dev
@@ -128,7 +128,7 @@ src/
 
 다음은 임의로 만들어본 양식입니다.
 
-# 📝 [판다마켓 웹페이지(스프린트 미션)]
+# 📝 [공부의 숲 웹페이지(2팀 프로젝트)]
 
 ![배너 이미지]
 <br/>
