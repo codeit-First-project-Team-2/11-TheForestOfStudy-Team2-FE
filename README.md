@@ -125,53 +125,82 @@ src/
 </br>
 ----------------------------------------------------------
 
-다음은 임의로 만들어본 양식입니다.
+다음은 임시로 만든 양식입니다.
 
-# 📝 [공부의 숲 웹페이지(2팀 프로젝트)]
+# 🚀 {2팀}
 
-![배너 이미지]
-<br/>
-**한 줄 소개**: 스터디 사이트 "공부의 숲"의 웹페이지입니다. 
+> **배움의 기쁨을 세상 모두에게 전할 수 있는 프로그래밍 교육 사이트 제작**
 
-<br>
+---
 
-## 🔗 배포 링크 (v0.0.0) 
-👉 [웹사이트 보러가기]
+## 🔗 프로젝트 링크
+* **[팀 협업 문서]({팀 협업 문서 링크 게시})**
+* **[배포 사이트](https://www.codeit.kr/)**
 
-<br>
+## 👥 팀원 구성
+* **예진**: [Github]({개인 Github 링크})
+* **동철**: [Github]({개인 Github 링크})
+* **은혜**: [Github]({개인 Github 링크})
+* **에스더**: [Github]({개인 Github 링크})
+* **민성**: [Github]({개인 Github 링크})
 
-## 💡 프로젝트 소개 (Description)
-**어떤 웹사이트인가요?**
-이 프로젝트는 공부의 숲 웹 사이트를 개발하며 학습하기 위해 제작되었습니다. 팀 프로젝트를 수행하며 협업과 코딩실력을 향상시키는데 도움이 될 것입니다. ```VS code, Git, Figma``` 등 다양한 도구와 ```netfliy, Render``` 등의 사이트를 통해 배포할 것입니다. 
+## 📅 프로젝트 기간
+* **2026.01.20 ~ 2026.02.06**
 
-**개발 기간**
-* 2026.01.20 ~ 계속
+## 🛠 기술 스택
+* **Frontend**: JavaScript, React.js, 
+* **Backend**: Express.js, PrismaORM,
+* **Database**: MongoDB,
+* **Common**: Git & Github, Discord
 
-<br>
+---
 
-## 🛠 기술 스택 (Tech Stack)
+## 💻 팀원별 구현 기능 상세
 
-| 분류 | 기술 |
-| :-- | :-- |
-| **Frontend** | ![React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)|
-| **Backend** | ![node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white) ![express](https://img.shields.io/badge/Express.js-000000?style=flat&logo=express&logoColor=white)| 
-| **Styling** |![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)|
-| **Tools** | ![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white) ![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=flat&logo=visual-studio-code&logoColor=white)|
+### 👤 예진
+- **소셜 로그인 기능**: 구글 소셜 로그인 API 사용으로 소셜 로그인 기능 구현
+- **회원 추가 정보 입력 기능**: 소셜 로그인 후 회원 추가 정보 입력 기능
+- **조건부 렌더링**: user 타입(관리자, 학생)에 대한 조건부 추가 입력 모달창 및 페이지 이동 기능 구현
 
-<br>
+### 👤 동철
+- **Nav**: 회원별 버튼 조건부 렌더링(학생/관리자), 반응형 레이아웃 구현
+- **메인 페이지**: fetch(POST, GET)를 사용하여 무료 수강 종료 시간 기능 구현
+- **공용 컴포넌트**: 프로젝트 전반에서 사용하는 Modal 컴포넌트 구현
 
-## ✨ 주요 기능 (Key Features)
-* ✅ **기능 1**: 
-* ✅ **기능 2**: 
-* ✅ **기능 3**: 
+### 👤 은혜
+- **마이 페이지**: fetch(GET)를 사용하여 수강생 개인별 시간 정보 표시
+- **반응형 레이아웃**: 페이지 전반의 반응형 디자인 적용
+- **공용 컴포넌트**: 공용으로 사용할 Button 컴포넌트 구현
 
-<br>
+### 👤 에스더
+- **관리자 페이지**: Path parameter를 사용하여 학생 페이지와 동적 라우팅 기능 구현
+- **Carousel 슬라이더**: 학생별 정보 목록 슬라이더 구현
+- **학생 정보 CRUD**: fetch(POST, PATCH, DELETE)를 사용하여 학생 정보 관리 및 탈퇴 기능 구현
 
-## 📸 스크린샷 (Screenshots)
-| 메인 화면 | 기능 화면 |
-| :--: | :--: |
-| ![Main] | ![Feature] |
-<br>
+### 👤 민성
+- **관리자 페이지**: fetch(GET)를 사용하여 학생별 시간 및 수강생 접속 현황 정보 표시
+- **마이 페이지**: fetch(PATCH, DELETE)를 사용하여 수강생 정보 수정 및 탈퇴 기능 구현
+- **공용 컴포넌트**: 공용으로 사용할 Modal 컴포넌트 구현
 
-## 💻 실행 방법 (Installation)
-이 프로젝트를 로컬 컴퓨터에서 실행하려면 터미널에 아래 명령어를 입력하세요.
+---
+
+## 📂 파일 구조
+
+```text
+src
+ ┣ apis
+ ┣ assets
+ ┣ components
+ ┣ constants
+ ┣ hooks
+ ┣ mocks
+ ┣ pages
+ ┣ providers
+ ┣ styles
+ ┃ ┣ fonts.css
+ ┃ ┣ index.css
+ ┃ ┗ reset.css
+ ┣ .gitkeep
+ ┣ App.jsx
+ ┗ main.jsx
+ ```
