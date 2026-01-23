@@ -3,7 +3,7 @@
   padding: var(--spacing-lg);
   display: flex;
   justify-content: center;
-  test-align: center;
+  text-align: center;
 }
 
 .message {
