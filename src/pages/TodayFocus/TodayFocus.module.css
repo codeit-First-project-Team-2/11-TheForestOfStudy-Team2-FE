@@ -4,6 +4,9 @@ main {
   display: flex;
   flex-direction: column;
   width: fit-content;
+  border-radius: 20px;
+  border: 1px solid var(--gray-gray_DDDDDD, #ddd);
+  /* 확인후 삭제 */
 }
 
 .timerNavContainer {
@@ -14,11 +17,39 @@ main {
 .timerNavWrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 16px;
 }
 
 .timerNavTitle {
-  margin-bottom: 16px;
+  color: var(--black-black_414141, #414141);
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.timerNavButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.habbitButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 144px;
+  height: 48px;
+  border-radius: 15px;
+  border: 1px solid var(--gray-gray_DDDDDD, #ddd);
+  background: #fff;
+  color: var(--gray-gray_818181, #818181);
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.homeButton {
+  width: 82px;
 }
 
 .timerNavPointWrapper {
@@ -28,37 +59,71 @@ main {
   gap: 8px;
 }
 
-.timerContainer {
-  padding: 40px, 24px;
+.earnedPoint {
+  color: var(--gray-gray_818181, #818181);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.earnedPointButton {
   display: flex;
-  flex-direction: column;
-}
-
-.timerTitle {
-  margin-bottom: 100px;
-}
-
-.timerWrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.timerContent {
-  margin-bottom: 94px;
+  width: fit-content;
+  padding: 8px 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+  color: var(--black-black_414141, #414141);
+  font-size: 16px;
+  font-weight: 500;
+  gap: 4px;
 }
 
 /* Tablet */
 @media (max-width: 1023px) {
   main {
-    margin-top: 16px;
+    margin: 16px auto 200px;
     padding: 24px;
+  }
+
+  .timerNavContainer {
+    margin-bottom: 40px;
+    width: 648px;
+    height: 128px;
   }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
   main {
-    margin-top: 20px;
+    margin: 20px auto 342px;
     padding: 16px;
+    width: 344px;
+    height: 580px;
+  }
+
+  .timerNavContainer {
+    margin-bottom: 24px;
+    width: 312px;
+    height: 166px;
+  }
+
+  .timerNavWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 16px;
+    margin-bottom: 16px;
+    width: 312px;
+    height: 85px;
+  }
+
+  .habbitButton {
+    width: 120px;
+    height: 40px;
+  }
+
+  .homeButton {
+    width: 58px;
   }
 }
