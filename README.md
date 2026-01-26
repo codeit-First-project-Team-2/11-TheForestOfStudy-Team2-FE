@@ -25,7 +25,7 @@ git switch -c feature/<기능명>
 npm install
 
 # 필요한 라이브러리 추가 설치 (넘어가도 됩니다. 설치한 라이브러리 목록이라고 생각해주세요!)
-npm install clsx axios zustand immer
+npm install clsx axios zustand immer react-hot-toast
 
 
 # 로컬 개발 서버 실행
