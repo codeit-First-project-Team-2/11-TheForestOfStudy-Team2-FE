@@ -1,13 +1,11 @@
 import styles from "./TodayHabitPage.module.css";
 
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import { getTodayHabits } from "../../shared/api/todayHabitApi";
-import type { TodayHabitItem } from "../../shared/types/todayHabit";
 import { Empty } from "../../components/Empty/Empty";
 
-
 export function TodayHabitPage() {
-  const [habits, setHabits] = useState<TodayHabitItem[]>([]);
+  const [habits, setHabits] = useState([]);
 
   useEffect(() => {
     async function fetchHabits() {
@@ -15,8 +13,6 @@ export function TodayHabitPage() {
         studyId: "test-study-id",
         date: "2026-01-23",
       });
-
-      console.log("getTodayHabits result:", result);
 
       setHabits(result.habits);
     }
