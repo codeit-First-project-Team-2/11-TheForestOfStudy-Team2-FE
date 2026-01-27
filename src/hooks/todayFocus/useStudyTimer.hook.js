@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { INITIAL_SECONDS } from '../../constants/index.js';
+import { INITIAL_SECONDS } from '../../constants/time.js';
 
 export const useStudyTimer = () => {
   const [seconds, setSeconds] = useState(INITIAL_SECONDS);

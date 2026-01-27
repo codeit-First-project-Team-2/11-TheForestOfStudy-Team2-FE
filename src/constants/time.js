@@ -1,0 +1,1 @@
+export const INITIAL_SECONDS = 15; //테스트용.  기본 = 1500; 

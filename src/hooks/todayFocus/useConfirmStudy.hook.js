@@ -3,7 +3,7 @@ import { verifyPasswordApi } from '../../apis/focusTimer.api';
 
 export const useConfirmStudy = (studyId, inputPassword) => {
   const [studyData, setStudyData] = useState({ nickname: '', totalPoint: 0 });
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const updatedPoints = (newPoints) => {
     setStudyData((prev) => ({ ...prev, totalPoint: newPoints }));
@@ -17,12 +17,12 @@ export const useConfirmStudy = (studyId, inputPassword) => {
       } catch (error) {
         console.error(error.message);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
     confirmUser();
   }, [studyId, inputPassword]);
 
-  return { studyData, loading, updatedPoints };
+  return { studyData, isLoading, updatedPoints };
 };

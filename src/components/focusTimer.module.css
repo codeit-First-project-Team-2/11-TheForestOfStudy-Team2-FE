@@ -8,13 +8,35 @@
   border: 1px solid var(--gray-gray_DDDDDD, #ddd);
 }
 
+.timerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 .timerTitle {
   width: 110px;
   height: 29px;
-  margin-bottom: 100px;
   color: var(--black-black_414141, #414141);
   font-size: 24px;
   font-weight: 800;
+}
+
+.timerTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 45px;
+  padding: 6px 8px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hiddenTag {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .timerWrapper {
@@ -32,8 +54,16 @@
   font-weight: 800;
 }
 
-.timerContent .timerBlack {
+.timerBlack {
   color: var(--black-black_414141, #414141);
+}
+
+.timerRed {
+  color: var(--red-red_F50E0E, #f50e0e);
+}
+
+.timerGrey {
+  color: var(--gray-gray_818181, #818181);
 }
 
 .timerButtons {
@@ -47,6 +77,7 @@
   background-color: var(--brand-brand_99C08E, #99c08e);
   border: none;
   border-radius: 100%;
+  cursor: pointer;
 }
 
 .resetButton {
@@ -55,16 +86,16 @@
   background-color: var(--brand-brand_99C08E, #99c08e);
   border: none;
   border-radius: 100%;
+  cursor: pointer;
 }
 
-.startStopButton {
+.stopButton {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   gap: 16px;
   width: 333px;
   height: 60px;
-  padding-left: 78px;
   border: none;
   flex-shrink: 0;
   border-radius: 50px;
@@ -73,10 +104,24 @@
   text-align: center;
   font-size: 28px;
   font-weight: 800;
+  cursor: pointer;
 }
 
-.startStopButton span {
+.stopButton span {
   padding-bottom: 4px;
+}
+
+.startButton {
+  justify-content: start;
+  padding-left: 78px;
+}
+
+.stopButton:disabled,
+.pauseButton:disabled,
+.resetButton:disabled {
+  background-color: var(--gray-gray_818181, #818181);
+  cursor: not-allowed;
+  transition: background-color 0.3s;
 }
 
 /* Tablet */
@@ -85,16 +130,20 @@
     margin-bottom: 100px;
     font-size: 120px;
   }
-
-  .timerTitle {
-    margin-bottom: 94px;
-  }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
   .timerContainer {
     padding: 24px 16px;
+  }
+
+  .timerInfo {
+    gap: 16px;
+  }
+
+  .timerTag {
+    margin-bottom: 17px;
   }
 
   .timerContent {
@@ -106,7 +155,7 @@
     gap: 8px;
   }
 
-  .startStopButton {
+  .stopButton {
     width: 140px;
     height: 45px;
     gap: 8px;
@@ -115,7 +164,7 @@
     margin-bottom: 25px;
   }
 
-  .startStopButton img {
+  .stopButton img {
     width: 24px;
     height: 24px;
   }
@@ -128,9 +177,5 @@
   .resetButton {
     width: 48px;
     height: 48px;
-  }
-
-  .timerTitle {
-    margin-bottom: 64px;
   }
 }

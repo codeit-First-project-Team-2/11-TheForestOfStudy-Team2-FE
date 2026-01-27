@@ -1,7 +1,8 @@
-// import Nav from '../../components/Nav'
+import { Link } from 'react-router-dom';
+// import { Nav } from '../../components/Nav'
+import { FocusTimer } from '../../components/focusTimer';
 import styles from './TodayFocus.module.css';
 import pointIcon from '../../assets/focusTimerImages/point_image.svg';
-import { FocusTimer } from '../../components/focusTimer';
 
 export function TodayFocus() {
   return (
@@ -12,21 +13,21 @@ export function TodayFocus() {
           <div className={styles.timerNavWrapper}>
             <h1 className={styles.timerNavTitle}>{/*nickname*/}의 개발공장</h1>
             <div className={styles.timerNavButtons}>
-              <a href="/" className={styles.habbitButton}>
+              <Link to="/" className={styles.habbitButton}>
                 오늘의 습관 &nbsp;&gt;
-              </a>
-              <a
-                href="/"
+              </Link>
+              <Link
+                to="/"
                 className={`${styles.habbitButton} ${styles.homeButton}`}
               >
                 홈 &nbsp;&gt;
-              </a>
+              </Link>
             </div>
           </div>
           <div className={styles.timerNavPointWrapper}>
             <p className={styles.earnedPoint}>현재까지 획득한 포인트</p>
             <div className={styles.earnedPointButton}>
-              <img src={pointIcon} alt="totalPoint"/>
+              <img src={pointIcon} alt="totalPoint" />
               {/* totalPoint*/}P 획득
             </div>
           </div>

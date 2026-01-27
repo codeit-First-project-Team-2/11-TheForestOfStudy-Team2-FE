@@ -20,7 +20,7 @@ export const verifyPasswordApi = async (studyId, inputPassword) => {
 export const settlePointsApi = async (studyId, actualMinutes) => {
   try {
     const response = await axios.post(`/api/studies/${studyId}/focus`, {
-      actualMinutes: actualMinutes,
+      actualMinutes,
     });
 
     return response.data;

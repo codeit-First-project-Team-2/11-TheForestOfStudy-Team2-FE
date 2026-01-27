@@ -1,4 +1,4 @@
-import { INITIAL_SECONDS } from '../constants/index.js';
+import { INITIAL_SECONDS } from '../constants/time.js';
 import { useStudyTimer } from '../hooks/todayFocus/useStudyTimer.hook.js';
 import styles from './focusTimer.module.css';
 import startImage from '../assets/focusTimerImages/start_image.svg';
@@ -10,12 +10,12 @@ import timerTagImage from '../assets/focusTimerImages/timerTag_image.svg';
 export function FocusTimer() {
   const { seconds, status, isOvertime, start, pause, reset } = useStudyTimer();
 
-  const formatTime = (time) => {
-    const abs = Math.abs(time);
-    const m = String(Math.floor(abs / 60)).padStart(2, '0');
-    const s = String(abs % 60).padStart(2, '0');
+  const formatTime = (leftTime) => {
+    const abs = Math.abs(leftTime);
+    const minutes = String(Math.floor(abs / 60)).padStart(2, '0');
+    const seconds = String(abs % 60).padStart(2, '0');
 
-    return time < 0 ? `-${m}:${s}` : `${m}:${s}`;
+    return leftTime < 0 ? `-${minutes}:${seconds}` : `${minutes}:${seconds}`;
   };
 
   const getTimerColorClass = () => {
@@ -30,14 +30,16 @@ export function FocusTimer() {
 
   return (
     <section className={styles.timerContainer}>
-      <h2 className={styles.timerTitle}>오늘의 집중</h2>
+      <div className={styles.timerInfo}>
+        <h2 className={styles.timerTitle}>오늘의 집중</h2>
+        <div
+          className={`${styles.timerTag} ${status === 'initial' ? styles.hiddenTag : ''}`}
+        >
+          <img src={timerTagImage} alt="timerTag" />
+          {formatTime(INITIAL_SECONDS)}
+        </div>
+      </div>
       <div className={styles.timerWrapper}>
-        {status !== 'initial' && (
-          <div className={styles.timerTag}>
-            <img src={timerTagImage} alt="timerTag" />
-            {formatTime(INITIAL_SECONDS)}
-          </div>
-        )}
         <p className={`${styles.timerContent} ${getTimerColorClass()}`}>
           {formatTime(seconds)}
         </p>
@@ -53,7 +55,7 @@ export function FocusTimer() {
           )}
           {!isOvertime ? (
             <button
-              className={styles.startStopButton}
+              className={`${styles.stopButton} ${styles.startButton}`}
               onClick={start}
               disabled={status === 'running'}
             >
@@ -61,7 +63,7 @@ export function FocusTimer() {
               <span>start!</span>
             </button>
           ) : (
-            <button className={styles.startStopButton} onClick={reset}>
+            <button className={styles.stopButton} onClick={reset}>
               <img src={stopImage} alt="stop" />
               <span>stop!</span>
             </button>
