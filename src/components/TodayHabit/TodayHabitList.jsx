@@ -1,7 +1,7 @@
 import styles from './TodayHabitList.module.css';
 import { TodayHabitItem } from './TodayHabitItem.jsx';
 
-export const TodayHabitList = ({ habits, onEdit, onToggleDone }) => {
+export const TodayHabitList = ({ habits, onEdit, onToggle }) => {
   return (
     <ul className={styles.list}>
       {habits.map((habit) => (
@@ -9,7 +9,7 @@ export const TodayHabitList = ({ habits, onEdit, onToggleDone }) => {
           key={habit.id}
           habit={habit}
           onEdit={onEdit}
-          onToggleDone={onToggleDone}
+          onToggle={onToggle}
         />
       ))}
     </ul>

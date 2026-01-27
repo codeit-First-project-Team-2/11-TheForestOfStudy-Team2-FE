@@ -5,6 +5,7 @@ import App from './App.jsx'
 
 import './styles/reset.css'
 import './styles/fonts.css'
+import './styles/tokens.css'
 import './styles/index.css'
 
 

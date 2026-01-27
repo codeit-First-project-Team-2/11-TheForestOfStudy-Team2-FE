@@ -1,8 +1,8 @@
 import styles from './TodayHabitItem.module.css';
 
-export const TodayHabitItem = ({ habit, onToggleDone }) => {
+export const TodayHabitItem = ({ habit, onToggle }) => {
   const handleItemClick = () => {
-    onToggleDone(habit.id);
+    onToggle(habit.id);
   };
 
   const itemClassName = habit.isDone

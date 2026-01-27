@@ -8,10 +8,13 @@ import { TodayHabitList } from '../../components/TodayHabit/TodayHabitList';
 
 export const TodayHabitPage = () => {
   const [habits, setHabits] = useState([
-    { id: '1', title: '미라 클모닝 6시 기상', isDone: false },
-    { id: '2', title: '아침 챙겨 먹기', isDone: false },
-    { id: '3', title: 'React 스터디 책 1챕터 읽기', isDone: true },
+    // { id: '1', title: '미라 클모닝 6시 기상', isDone: false },
+    // { id: '2', title: '아침 챙겨 먹기', isDone: false },
+    // { id: '3', title: 'React 스터디 책 1챕터 읽기', isDone: true },
   ]);
+
+  const sortedHabits = [...habits].sort((a, b) => 
+    Number(a.isDone) - Number(b.isDone));
 
   const handleToggleHabitDone = (habitId) => {
     setHabits((prev) =>
@@ -89,11 +92,10 @@ export const TodayHabitPage = () => {
           )}
 
           {hasHabits && (
-            <TodayHabitList
-              habits={habits}
+              <TodayHabitList 
+              habits={sortedHabits} 
               onEdit={handleOpenEditModal}
-              onToggleDone={handleToggleHabitDone}
-            />
+              onToggle={handleToggleHabitDone} />
           )}
         </div>
       </div>
