@@ -5,6 +5,7 @@ import { Empty } from '../../components/Empty/Empty';
 import { Modal } from '../../components/Modal/Modal';
 import { HabitEdit } from '../../components/HabitEdit/HabitEdit';
 import { TodayHabitList } from '../../components/TodayHabit/TodayHabitList';
+import { StudyHeader } from '../../components/StudyHeader/StudyHeader';
 
 export const TodayHabitPage = () => {
   const [habits, setHabits] = useState([
@@ -13,8 +14,9 @@ export const TodayHabitPage = () => {
     // { id: '3', title: 'React 스터디 책 1챕터 읽기', isDone: true },
   ]);
 
-  const sortedHabits = [...habits].sort((a, b) => 
-    Number(a.isDone) - Number(b.isDone));
+  const sortedHabits = [...habits].sort(
+    (a, b) => Number(a.isDone) - Number(b.isDone),
+  );
 
   const handleToggleHabitDone = (habitId) => {
     setHabits((prev) =>
@@ -72,6 +74,7 @@ export const TodayHabitPage = () => {
   return (
     <div className={styles.page}>
       <div className={styles.card}>
+        <StudyHeader className={styles.studyHeader} title="연우의 개발공장" />
         <header className={styles.cardHeader}>
           <h2 className={styles.cardTitle}>오늘의 습관</h2>
 
@@ -92,10 +95,11 @@ export const TodayHabitPage = () => {
           )}
 
           {hasHabits && (
-              <TodayHabitList 
-              habits={sortedHabits} 
+            <TodayHabitList
+              habits={sortedHabits}
               onEdit={handleOpenEditModal}
-              onToggle={handleToggleHabitDone} />
+              onToggle={handleToggleHabitDone}
+            />
           )}
         </div>
       </div>

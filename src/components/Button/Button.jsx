@@ -4,13 +4,15 @@ import styles from "./Button.module.css";
 
 export const Button = ({ 
   children,
-  variant = "primary", 
+  variant = "primary",
+  size = "md", 
   className = "",
   ...props 
 }) => {
   const buttonClassName = clsx(
     styles.button,
     styles[variant],
+    styles[size],
     className
   );
 

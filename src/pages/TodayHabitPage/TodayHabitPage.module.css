@@ -1,7 +1,6 @@
 .page {
   width: 100%;
   min-height: 100vh;
-  padding: var(--spacing-lg);
   background: var(--color-background);
   display: flex;
   justify-content: center;
@@ -11,9 +10,12 @@
 .card {
   width: min(920px, 100%);
   background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
   padding: var(--spacing-lg);
+}
+
+.studyHeader {
+  background: #333333;
 }
 
 .cardHeader {

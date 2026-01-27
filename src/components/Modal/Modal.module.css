@@ -6,6 +6,8 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 24px;
+  overflow: auto;
 }
 
 .modal {
@@ -18,20 +20,17 @@
   display: flex;
   flex-direction: column;
 }
-/*  사이즈 프리셋 */
+
 .sm {
   width: min(420px, 92vw);
-  max-height: min(560px, 86vh);
 }
 
 .md {
   width: min(520px, 92vw);
-  max-height: min(640px, 86vh);
 }
 
 .lg {
   width: min(680px, 92vw);
-  max-height: min(760px, 86vh);
 }
 
 .header {
@@ -43,16 +42,14 @@
 
 .title {
   font-size: var(--font-size-lg);
-  font-weight: var(  --font-weight-extra-bold);  
+  font-weight: var(--font-weight-extra-bold);
   color: var(--color-text);
 }
 
 .content {
-  flex: unset;
-  overflow: visible;
-  display: block;
-  flex-direction: column;
-  align-items: center;
+  flex: unset;       
+  overflow: visible; 
+  display: block;    
   text-align: center;
   gap: var(--spacing-md);
   font-size: var(--font-size-md);

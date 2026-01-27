@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import styles from './Modal.module.css';
 
-export const Modal = ({ title, children, isOpen, onClose, size = "md" }) => {
+export const Modal = ({ title, children, isOpen, onClose, size = 'md' }) => {
   useEffect(() => {
     if (!isOpen) {
       return;
@@ -34,10 +34,7 @@ export const Modal = ({ title, children, isOpen, onClose, size = "md" }) => {
 
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
-      <div
-        className={`${styles.modal} ${styles[size]}`}
-        onClick={handleModalClick}
-      >
+      <div className={`${styles.modal} ${styles[size]}`} onClick={handleModalClick}>
         <div>
           <button
             type="button"
