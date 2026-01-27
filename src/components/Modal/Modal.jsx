@@ -1,27 +1,22 @@
 import { useEffect } from 'react';
 import styles from './Modal.module.css';
 
-export const Modal = ({
-  isOpen,
-  title = "",
-  onClose = () => {},
-  children,
-}) => {
+export const Modal = ({ title, children, isOpen, onClose, size = "md" }) => {
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) {
       return;
     }
 
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         onClose();
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose]);
 
@@ -39,18 +34,23 @@ export const Modal = ({
 
   return (
     <div className={styles.overlay} onClick={handleOverlayClick}>
-      <div className={styles.modal} onClick={handleModalClick}>
+      <div
+        className={`${styles.modal} ${styles[size]}`}
+        onClick={handleModalClick}
+      >
         <div>
           <button
             type="button"
             className={styles.closeButton}
             onClick={onClose}
-            aria-label="닫기">
-          </button>
+            aria-label="닫기"
+          />
         </div>
+
         <div className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
         </div>
+
         <div className={styles.content}>{children}</div>
       </div>
     </div>

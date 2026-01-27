@@ -1,0 +1,60 @@
+.container {
+  padding: var(--spacing-lg);
+  max-height: min(680px, 76vh);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: stretch;
+  text-align: left;
+}
+
+/* ===== Section ===== */
+.sectionTitle {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-text);
+}
+
+/* ===== List ===== */
+.listSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--padding-lg);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.item {
+  text-align: center;
+  padding: var(--padding-lg);
+  border-radius: var(--radius-md);
+  background-color: var(--color-gray-200);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+}
+
+.addRow {
+  width: 100%;
+  gap: var(--spacing-md);
+}
+.addRow :global(input) {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid var(--color-gray-300);
+  font-size: var(--font-size-md);
+}
+
+/* ===== Footer ===== */
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+}

@@ -1,0 +1,62 @@
+.page {
+  min-height: 100vh;
+  padding: var(--spacing-lg);
+  background: var(--color-background);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  width: min(920px, 100%);
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-200);
+  padding: var(--spacing-lg);
+}
+
+.cardHeader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-extra-bold);
+  color: var(--color-text);
+}
+
+.editButton {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  padding: 0 var(--padding-lg);
+  height: 32px;
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-200);
+  background: var(--color-white);
+  color: var(--color-text);
+
+  cursor: pointer;
+}
+
+.cardBody {
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  min-height: 320px; /* 스샷처럼 “큰 빈 영역” 확보 */
+}
+
+.emptyWrap {
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

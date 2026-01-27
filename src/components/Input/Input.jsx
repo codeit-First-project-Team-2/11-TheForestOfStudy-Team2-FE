@@ -1,27 +1,33 @@
-import clsx from "clsx"; 
+import clsx from 'clsx';
 import styles from './Input.module.css';
 
 export const Input = ({
-  value = "",
-  onchange = () => {},
-  placeholder = "",
-  className = "",
+  value = '',
+  onChange = () => {},
+  placeholder = '',
+  className = '',
+  ariaLabel,
+  variant = 'default',
+  size = 'md',
   hasError = false,
   ...props
 }) => {
   const inputClassName = clsx(
     styles.input,
+    styles[size],
+    styles[variant],
     hasError && styles.error,
-    className
+    className,
   );
 
   return (
     <input
       className={inputClassName}
       value={value}
-      onchange={onchange}
+      onChange={onChange}
       placeholder={placeholder}
-      {...props} 
+      aria-label={ariaLabel}
+      {...props}
     />
   );
 };
