@@ -2,6 +2,7 @@ import greenBg from "../assets/green.jpg";
 import pinkBg from "../assets/pink.jpg";
 import skyblueBg from "../assets/skyblue.jpg";
 import study1Bg from "../assets/study1.jpg";
+
 export const studiesMock = [
   {
     id: "01HV3001A9Q7R5M8Y6C1Z4E",
@@ -18,13 +19,20 @@ export const studiesMock = [
         id: "HABIT-001",
         name: "물 1컵",
         deletedAt: null,
-        records: [{ id: "R1" }, { id: "R2" }],
+        records: [
+          { id: "R1", createdAt: "2026-01-26T08:00:00.000Z" }, // 월
+          { id: "R2", createdAt: "2026-01-28T08:00:00.000Z" }, // 수
+          { id: "R3", createdAt: "2026-01-29T08:00:00.000Z" }, // 목
+        ],
       },
       {
         id: "HABIT-002",
         name: "스트레칭",
         deletedAt: null,
-        records: [{ id: "R3" }],
+        records: [
+          { id: "R4", createdAt: "2026-01-27T08:00:00.000Z" }, // 화
+          { id: "R5", createdAt: "2026-01-30T08:00:00.000Z" }, // 금
+        ],
       },
     ],
 
@@ -46,7 +54,10 @@ export const studiesMock = [
         id: "HABIT-003",
         name: "팔굽혀펴기",
         deletedAt: null,
-        records: [],
+        records: [
+          { id: "R6", createdAt: "2026-01-26T19:00:00.000Z" }, // 월
+          { id: "R7", createdAt: "2026-01-28T19:00:00.000Z" }, // 수
+        ],
       },
     ],
 
@@ -62,9 +73,7 @@ export const studiesMock = [
     totalPoint: 0,
     createdAt: "2026-01-26T09:00:00.000Z",
     updatedAt: "2026-01-26T09:00:00.000Z",
-
     habits: [],
-
     emojis: [],
   },
 
@@ -83,7 +92,15 @@ export const studiesMock = [
         id: "HABIT-004",
         name: "커밋하기",
         deletedAt: null,
-        records: new Array(27).fill({ id: "R" }),
+        records: [
+          { id: "R8", createdAt: "2026-01-26T09:00:00.000Z" }, // 월
+          { id: "R9", createdAt: "2026-01-27T09:00:00.000Z" }, // 화
+          { id: "R10", createdAt: "2026-01-28T09:00:00.000Z" }, // 수
+          { id: "R11", createdAt: "2026-01-29T09:00:00.000Z" }, // 목
+          { id: "R12", createdAt: "2026-01-30T09:00:00.000Z" }, // 금
+          { id: "R13", createdAt: "2026-01-31T09:00:00.000Z" }, // 토
+          { id: "R14", createdAt: "2026-02-01T09:00:00.000Z" }, // 일
+        ],
       },
     ],
 
