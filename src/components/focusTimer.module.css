@@ -60,6 +60,7 @@
 
 .timerRed {
   color: var(--red-red_F50E0E, #f50e0e);
+  animation: blink 1s step-end infinite;
 }
 
 .timerGrey {
@@ -177,5 +178,17 @@
   .resetButton {
     width: 48px;
     height: 48px;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
   }
 }
