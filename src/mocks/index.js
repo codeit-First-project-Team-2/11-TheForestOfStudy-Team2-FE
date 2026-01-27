@@ -1,10 +1,14 @@
+import greenBg from "../assets/green.jpg";
+import pinkBg from "../assets/pink.jpg";
+import skyblueBg from "../assets/skyblue.jpg";
+import study1Bg from "../assets/study1.jpg";
 export const studiesMock = [
   {
     id: "01HV3001A9Q7R5M8Y6C1Z4E",
     nickname: "젠승황",
     title: "아침 루틴 스터디",
     introduction: "아침을 지배하면 하루가 편해진다.",
-    background: "https://cdn.theforest.study/backgrounds/green-forest.jpg",
+    background: greenBg,
     totalPoint: 145,
     createdAt: "2026-01-10T08:30:00.000Z",
     updatedAt: "2026-01-27T13:12:44.000Z",
@@ -32,7 +36,7 @@ export const studiesMock = [
     nickname: "민수",
     title: "퇴근 후 운동 기록",
     introduction: "하루 30분이라도 몸을 쓰자.",
-    background: "https://cdn.theforest.study/backgrounds/gym-dark.jpg",
+    background: study1Bg,
     totalPoint: 32,
     createdAt: "2026-01-20T18:00:00.000Z",
     updatedAt: "2026-01-26T21:10:10.000Z",
@@ -54,7 +58,7 @@ export const studiesMock = [
     nickname: "소라",
     title: "감정 기록 스터디",
     introduction: "오늘의 감정을 솔직하게 남기기.",
-    background: "https://cdn.theforest.study/backgrounds/pink-sky.jpg",
+    background: pinkBg,
     totalPoint: 0,
     createdAt: "2026-01-26T09:00:00.000Z",
     updatedAt: "2026-01-26T09:00:00.000Z",
@@ -69,7 +73,7 @@ export const studiesMock = [
     nickname: "현우",
     title: "코딩 1일 1커밋",
     introduction: "작게라도 매일 남기기.",
-    background: "",
+    background: skyblueBg,
     totalPoint: 410,
     createdAt: "2025-12-01T10:00:00.000Z",
     updatedAt: "2026-01-27T01:40:00.000Z",
