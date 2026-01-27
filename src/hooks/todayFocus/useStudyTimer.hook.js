@@ -1,7 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { INITIAL_SECONDS } from '../constants/index.js';
-
-
+import { INITIAL_SECONDS } from '../../constants/index.js';
 
 export const useStudyTimer = () => {
   const [seconds, setSeconds] = useState(INITIAL_SECONDS);
@@ -16,11 +14,10 @@ export const useStudyTimer = () => {
         const nextValue = prev - 1;
         if (nextValue < 0 && !isOvertime) {
           setIsOvertime(true);
-         
         }
-         return nextValue;
+        return nextValue;
       });
-    }, 1000); 
+    }, 1000);
 
     return () => clearInterval(interval);
   }, [status, isOvertime]);

@@ -1,1 +1,1 @@
-export const INITIAL_SECONDS = 1500; 
+export const INITIAL_SECONDS = 1500;

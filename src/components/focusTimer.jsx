@@ -1,5 +1,5 @@
 import { INITIAL_SECONDS } from '../constants/index.js';
-import { useStudyTimer } from '../hooks/useStudyTimer.js';
+import { useStudyTimer } from '../hooks/todayFocus/useStudyTimer.hook.js';
 import styles from './focusTimer.module.css';
 import startImage from '../assets/focusTimerImages/start_image.svg';
 import pauseImage from '../assets/focusTimerImages/pause_image.svg';
@@ -61,10 +61,7 @@ export function FocusTimer() {
               <span>start!</span>
             </button>
           ) : (
-            <button
-              className={styles.startStopButton}
-              onClick={reset}
-            >
+            <button className={styles.startStopButton} onClick={reset}>
               <img src={stopImage} alt="stop" />
               <span>stop!</span>
             </button>
