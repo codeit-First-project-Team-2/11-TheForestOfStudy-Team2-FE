@@ -87,6 +87,7 @@ src/
 ├── pages/      # 페이지 단위 컴포넌트 (큰 단위)
 ├── mocks/      # 개발용 Mock 데이터
 ├── providers/  # Context API / State 관리
+├── routes/     # 화면 라우팅 관리
 └── styles/     # 전역 스타일 및 폰트 설정
 ```
 
