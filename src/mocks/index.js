@@ -49,7 +49,7 @@ export const studiesMock = [
     totalPoint: 32,
     createdAt: '2026-01-20T18:00:00.000Z',
     updatedAt: '2026-01-26T21:10:10.000Z',
-    pasword: 'a123123',
+    password: 'a123123',
 
     habits: [
       {
@@ -75,7 +75,7 @@ export const studiesMock = [
     totalPoint: 0,
     createdAt: '2026-01-26T09:00:00.000Z',
     updatedAt: '2026-01-26T09:00:00.000Z',
-    pasword: '1212aaa',
+    password: '1212aaa',
     habits: [],
     emojis: [],
   },
@@ -89,7 +89,7 @@ export const studiesMock = [
     totalPoint: 410,
     createdAt: '2025-12-01T10:00:00.000Z',
     updatedAt: '2026-01-27T01:40:00.000Z',
-    pasword: '9876111',
+    password: '9876111',
 
     habits: [
       {
