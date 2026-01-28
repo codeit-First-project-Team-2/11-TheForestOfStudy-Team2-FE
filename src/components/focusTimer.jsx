@@ -1,5 +1,6 @@
 import { INITIAL_SECONDS } from '../constants/time.js';
 import { useStudyTimer } from '../hooks/todayFocus/useStudyTimer.hook.js';
+import clsx from 'clsx';
 import styles from './focusTimer.module.css';
 import startImage from '../assets/focusTimerImages/start_image.svg';
 import pauseImage from '../assets/focusTimerImages/pause_image.svg';
@@ -28,6 +29,8 @@ export function FocusTimer() {
     return styles.timerBlack;
   };
 
+  const isNormalRunning = status !== 'initial' && !isOvertime;
+
   return (
     <section className={styles.timerContainer}>
       <div className={styles.timerInfo}>
@@ -40,11 +43,11 @@ export function FocusTimer() {
         </div>
       </div>
       <div className={styles.timerWrapper}>
-        <p className={`${styles.timerContent} ${getTimerColorClass()}`}>
+        <p className={clsx(styles.timerContent, getTimerColorClass())}>
           {formatTime(seconds)}
         </p>
         <div className={styles.timerButtons}>
-          {status !== 'initial' && !isOvertime && (
+          {isNormalRunning && (
             <button
               className={styles.pauseButton}
               onClick={pause}
@@ -55,7 +58,7 @@ export function FocusTimer() {
           )}
           {!isOvertime ? (
             <button
-              className={`${styles.stopButton} ${styles.startButton}`}
+              className={clsx(styles.stopButton, styles.startButton)}
               onClick={start}
               disabled={status === 'running'}
             >
@@ -69,7 +72,7 @@ export function FocusTimer() {
             </button>
           )}
 
-          {status !== 'initial' && !isOvertime && (
+          {isNormalRunning && (
             <button
               className={styles.resetButton}
               onClick={reset}

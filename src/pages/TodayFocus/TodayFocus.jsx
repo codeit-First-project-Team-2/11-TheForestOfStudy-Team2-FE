@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
 // import { Nav } from '../../components/Nav'
 import { FocusTimer } from '../../components/focusTimer';
+import { Link } from 'react-router-dom';
+import clsx from 'clsx';
 import styles from './TodayFocus.module.css';
 import pointIcon from '../../assets/focusTimerImages/point_image.svg';
 
@@ -18,7 +19,7 @@ export function TodayFocus() {
               </Link>
               <Link
                 to="/"
-                className={`${styles.habbitButton} ${styles.homeButton}`}
+                className={clsx(styles.habbitButton, styles.homeButton)}
               >
                 홈 &nbsp;&gt;
               </Link>
