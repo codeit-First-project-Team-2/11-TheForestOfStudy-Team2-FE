@@ -24,8 +24,8 @@ git switch -c feature/<기능명>
 # 의존성 설치
 npm install
 
-# 필요한 라이브러리 추가 설치 (필요시)
-npm install clsx axios 
+# 필요한 라이브러리 추가 설치 (넘어가도 됩니다. 설치한 라이브러리 목록이라고 생각해주세요!)
+npm install clsx axios zustand immer react-hot-toast
 
 
 # 로컬 개발 서버 실행
@@ -70,7 +70,7 @@ git pull origin develop
 
 - **Framework**: React (Vite)
 - **Language**: JavaScript
-- **Styling**: Vanilla-Extract (Pretendard Font 적용)
+- **Styling**: css (Pretendard Font 적용)
 - **Linting**: ESLint, Prettier
 
 ---
@@ -87,12 +87,15 @@ src/
 ├── pages/      # 페이지 단위 컴포넌트 (큰 단위)
 ├── mocks/      # 개발용 Mock 데이터
 ├── providers/  # Context API / State 관리
+├── routes/     # 화면 라우팅 관리
 └── styles/     # 전역 스타일 및 폰트 설정
 ```
 
 ---
 
 ## 📝 커밋 메시지 컨벤션
+
+  **메세지는 영어가 아닌 한글로 적어주세요!**
 
 - **feat** : 새로운 기능 추가
 - **fix** : 버그 수정
