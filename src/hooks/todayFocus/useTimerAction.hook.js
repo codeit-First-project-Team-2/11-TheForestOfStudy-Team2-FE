@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { INITIAL_SECONDS } from '../../constants/time.js';
 
-export const useStudyTimer = () => {
+export const useTimerAction = () => {
   const [seconds, setSeconds] = useState(INITIAL_SECONDS);
   const [status, setStatus] = useState('initial');
   const [isOvertime, setIsOvertime] = useState(false);

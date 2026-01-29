@@ -1,4 +1,4 @@
-import { TodayFocus } from './pages/TodayFocus/TodayFocus';
+import { TodayFocus } from './pages/TodayFocus.jsx';
 
 function App() {
   return (

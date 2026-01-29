@@ -1,35 +1,27 @@
+import { useFocusTimer } from '../hooks/todayFocus/useFocusTimer.hook';
 import { INITIAL_SECONDS } from '../constants/time.js';
-import { useStudyTimer } from '../hooks/todayFocus/useStudyTimer.hook.js';
 import clsx from 'clsx';
 import styles from './focusTimer.module.css';
+
 import startImage from '../assets/focusTimerImages/start_image.svg';
 import pauseImage from '../assets/focusTimerImages/pause_image.svg';
 import resetImage from '../assets/focusTimerImages/reset_image.svg';
 import stopImage from '../assets/focusTimerImages/stop_image.svg';
 import timerTagImage from '../assets/focusTimerImages/timerTag_image.svg';
 
-export function FocusTimer() {
-  const { seconds, status, isOvertime, start, pause, reset } = useStudyTimer();
-
-  const formatTime = (leftTime) => {
-    const abs = Math.abs(leftTime);
-    const minutes = String(Math.floor(abs / 60)).padStart(2, '0');
-    const seconds = String(abs % 60).padStart(2, '0');
-
-    return leftTime < 0 ? `-${minutes}:${seconds}` : `${minutes}:${seconds}`;
-  };
-
-  const getTimerColorClass = () => {
-    if (isOvertime) {
-      return styles.timerGrey;
-    }
-    if (seconds <= 10) {
-      return styles.timerRed;
-    }
-    return styles.timerBlack;
-  };
-
-  const isNormalRunning = status !== 'initial' && !isOvertime;
+export function FocusTimer({ studyId, onSettle }) {
+  const {
+    seconds,
+    status,
+    isOvertime,
+    start,
+    pause,
+    reset,
+    formatTime,
+    getTimerColorClass,
+    isNormalRunning,
+    handleStop,
+  } = useFocusTimer(studyId, onSettle);
 
   return (
     <section className={styles.timerContainer}>
@@ -66,7 +58,7 @@ export function FocusTimer() {
               <span>start!</span>
             </button>
           ) : (
-            <button className={styles.stopButton} onClick={reset}>
+            <button className={styles.stopButton} onClick={handleStop}>
               <img src={stopImage} alt="stop" />
               <span>stop!</span>
             </button>

@@ -1,28 +1,30 @@
-// import { Nav } from '../../components/Nav'
-import { FocusTimer } from '../../components/focusTimer';
-import { Link, useParams, useLocation, useNavigate } from 'react-router';
+// import { Nav } from '../components/Nav'
+import { Link } from 'react-router';
+import { FocusTimer } from '../components/focusTimer';
 import clsx from 'clsx';
 import styles from './TodayFocus.module.css';
-import pointIcon from '../../assets/focusTimerImages/point_image.svg';
-import { useEffect } from 'react';
+import pointIcon from '../assets/focusTimerImages/point_image.svg';
+import { useTodayFocus } from '../hooks/todayFocus/useTodayFocus.hook';
 
 export function TodayFocus() {
-  const { studyId } = useParams();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const { studyId, studyData, handleSettle } = useTodayFocus();
 
-  const studyData = location.state?.studyData;
+  // // 임시데이터!!
+  // const studyId = 123;
+  // const studyData = {
+  //   nickname: '열공하는 코린이',
+  //   totalPoint: 5600,
+  //   title: '스터디임',
+  // };
+  // const handleSettle = () => console.log('정산 요청 됨!');
 
-  //포인트 정산 시 필요한 수도? 고민..
-  //const password = location.state?.password; 
-
-  useEffect(() => {
-    if (!studyData) {
-      navigate(`/studies/${studyId}`);
-    }
-  }, [studyData, navigate, studyId]);
-
-  if (!studyData) return null; //가장 처음에 앱 깨짐 방지
+  //서버 응답 전 로딩화면
+  if (!studyData)
+    return (
+      <div>
+        <p>...잠시만 기다려 주세요.</p>
+      </div>
+    );
 
   return (
     <div>
@@ -30,7 +32,9 @@ export function TodayFocus() {
       <main>
         <section className={styles.timerNavContainer}>
           <div className={styles.timerNavWrapper}>
-            <h1 className={styles.timerNavTitle}>{studyData.nickname}</h1>
+            <h1 className={styles.timerNavTitle}>
+              {studyData.nickname}의 {studyData.title}
+            </h1>
             <div className={styles.timerNavButtons}>
               <Link
                 to={`/studies/${studyId}/habits`}
@@ -54,7 +58,7 @@ export function TodayFocus() {
             </div>
           </div>
         </section>
-        <FocusTimer />
+        <FocusTimer studyId={studyId} onSettle={handleSettle} />
       </main>
     </div>
   );
