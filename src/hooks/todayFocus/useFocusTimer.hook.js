@@ -2,6 +2,7 @@ import { useTimerAction } from './useTimerAction.hook';
 import { settlePointsApi } from '../../apis/focusTimer.api.js';
 import { INITIAL_SECONDS } from '../../constants/time.js';
 import styles from '../../components/focusTimer.module.css';
+// import { showToast } from '../../utils/toast.util.js';
 
 export const useFocusTimer = (studyId, onSettle) => {
   const { seconds, status, isOvertime, start, pause, reset } = useTimerAction();
@@ -33,6 +34,8 @@ export const useFocusTimer = (studyId, onSettle) => {
     pause();
 
     try {
+      // showToast.error("집중이 중단되었습니다.")
+
       const focusedSeconds = INITIAL_SECONDS - seconds;
       const actualMinutes = Math.floor(focusedSeconds / 60);
 
@@ -42,7 +45,8 @@ export const useFocusTimer = (studyId, onSettle) => {
         onSettle(data.totalPoint, data.earedPoint || 0);
       }
     } catch (error) {
-      console.log(error); // 나중에 토스트 추가 후 변경
+      console.log(error);
+      // showToast.error("포인트 정산에 실패했습니다.");
     } finally {
       reset();
     }

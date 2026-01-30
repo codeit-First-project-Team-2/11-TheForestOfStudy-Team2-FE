@@ -1,4 +1,4 @@
-// import { Nav } from '../components/Nav'
+// import { Header } from '../components/ui/Header/Header'
 import { useParams, Link } from 'react-router';
 import { FocusTimer } from '../components/focusTimer';
 import clsx from 'clsx';
@@ -29,7 +29,7 @@ export function TodayFocus() {
 
   return (
     <div>
-      {/* <Nav /> */}
+      {/* <Header /> */}
       <main>
         <section className={styles.timerNavContainer}>
           <div className={styles.timerNavWrapper}>

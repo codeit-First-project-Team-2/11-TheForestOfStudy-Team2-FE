@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
+// import { showToast } from '../../utils/toast.util.js';
 
 export const useTodayFocus = (studyId) => {
   const location = useLocation();
@@ -22,7 +23,8 @@ export const useTodayFocus = (studyId) => {
   const handleSettle = (newTotalPoint, earnedPoint) => {
     setStudyData((prev) => ({ ...prev, totalPoint: newTotalPoint }));
 
-    console.log(`🎉 ${earnedPoint}포인트를 획득했습니다!`); // 나중에 토스트 추가 후 변경
+    console.log(`사용자: ${earnedPoint}포인트 획득!`);
+    // showToast.success(`${earnedPoint}포인트를 획득했습니다!`);
   };
 
   return { studyData, handleSettle };
