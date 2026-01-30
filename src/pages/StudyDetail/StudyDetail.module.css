@@ -1,0 +1,114 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px;
+}
+.studyDetailContainer {
+  width: 1200px;
+}
+.headContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.emojiContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.emojiWrapper {
+}
+.linkWrapper {
+  font-size: 10px;
+}
+.gapContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.StudyDetailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.StudyDetailHeadContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.studyTitleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.studyNicknameWrapper {
+}
+.studyTitleWrapper {
+}
+.todayButtonContainer {
+  display: flex;
+  gap: 10px;
+}
+.todayButtonWrapper {
+}
+.introPointContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+.introContainer {
+}
+.pointContainer {
+}
+.labelWrapper {
+  color: #818181;
+}
+.studyIntroduction {
+}
+/*habits*/
+.habitTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.habitTrContainer th {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #eee;
+}
+.tbodyContainer{
+  overflow-y: auto;
+  max-height: 400px;
+  border: 1px solid #eee; /* 영역 구분을 위한 테두리 */
+  border-radius: 8px;
+}
+
+.habitNameCell {
+  width: 250px;
+  text-align: left;
+  padding: 20px;
+}
+
+.habitStatusCell {
+  text-align: center;
+  vertical-align: middle;
+}
+.noHabitCell {
+  text-align: center;
+  padding: 40px 0;
+  color: #999;
+  font-size: 16px;
+}
