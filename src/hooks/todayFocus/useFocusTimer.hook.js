@@ -33,7 +33,6 @@ export const useFocusTimer = (studyId, onSettle) => {
     pause();
 
     try {
-      //초기 설정한 초에서 지금의 초를 빼면 집중한 시간이 나온다.
       const focusedSeconds = INITIAL_SECONDS - seconds;
       const actualMinutes = Math.floor(focusedSeconds / 60);
 

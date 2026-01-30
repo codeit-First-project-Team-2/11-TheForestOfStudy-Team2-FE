@@ -1,1 +1,2 @@
-export const INITIAL_SECONDS = 12; //테스트용.  기본 = 1500;
+export const INITIAL_SECONDS = 1500; //기본
+export const TEST_INITIAL_SECONDS = 11; //테스트용.

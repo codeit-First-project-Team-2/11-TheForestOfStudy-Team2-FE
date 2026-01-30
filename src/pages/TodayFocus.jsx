@@ -1,5 +1,5 @@
 // import { Nav } from '../components/Nav'
-import { Link } from 'react-router';
+import { useParams, Link } from 'react-router';
 import { FocusTimer } from '../components/focusTimer';
 import clsx from 'clsx';
 import styles from './TodayFocus.module.css';
@@ -7,14 +7,15 @@ import pointIcon from '../assets/focusTimerImages/point_image.svg';
 import { useTodayFocus } from '../hooks/todayFocus/useTodayFocus.hook';
 
 export function TodayFocus() {
-  const { studyId, studyData, handleSettle } = useTodayFocus();
+  const { studyId } = useParams();
+  const { studyData, handleSettle } = useTodayFocus(studyId);
 
   // // 임시데이터!!
   // const studyId = 123;
   // const studyData = {
   //   nickname: '열공하는 코린이',
-  //   totalPoint: 5600,
-  //   title: '스터디임',
+  //   title: '스터디!',
+  //   totalPoint: 1995,
   // };
   // const handleSettle = () => console.log('정산 요청 됨!');
 
