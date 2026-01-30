@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px;
+  color: #414141;
 }
 .studyDetailContainer {
   width: 1200px;
@@ -12,19 +12,24 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .navContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: var(--color-text-primary);
 }
-.emojiWrapper {
+.green {
+  display: flex;
+  gap: 16px;
+  color: #558b58;
 }
-.linkWrapper {
-  font-size: 10px;
-}
+
 .gapContainer {
   display: flex;
   flex-direction: column;
@@ -45,22 +50,26 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
 }
-.studyNicknameWrapper {
-}
-.studyTitleWrapper {
-}
+
 .todayButtonContainer {
   display: flex;
   gap: 10px;
 }
 .todayButtonWrapper {
+  padding: 14px 20px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 16px;
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
 }
 .introPointContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 24px;
+  gap: 25px;
 }
 .introContainer {
 }
@@ -68,8 +77,18 @@
 }
 .labelWrapper {
   color: #818181;
+  margin-bottom: 10px;
 }
 .studyIntroduction {
+}
+.pointWrapper {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 20px;
+  padding: 8px 12px;
+  width: fit-content;
 }
 /*habits*/
 .habitsRecordContainer {
@@ -77,48 +96,4 @@
   border: 1px solid #f0f0f0;
   border-radius: 16px;
   overflow: hidden;
-}
-.habitsRecordInnerContainer {
-  height: 400px;
-}
-.tableContainer {
-  max-height: 380px; /* 원하는 고정 높이 (습관이 많아지면 스크롤 발생) */
-  overflow-y: auto;
-}
-.habitTable {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-.habitTrContainer th {
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-bottom: 20px;
-  text-align: center;
-  vertical-align: middle;
-  border-bottom: 1px solid #eee;
-  position: sticky;
-  top: 0;
-  background-color: white;
-  z-index: 10;
-}
-
-.tbodyContainer {
-}
-
-.habitNameCell {
-  width: 250px;
-  text-align: left;
-  padding: 20px;
-}
-
-.habitStatusCell {
-  text-align: center;
-  vertical-align: middle;
-}
-.noHabitCell {
-  text-align: center;
-  padding: 40px 0;
-  color: #999;
-  font-size: 16px;
 }

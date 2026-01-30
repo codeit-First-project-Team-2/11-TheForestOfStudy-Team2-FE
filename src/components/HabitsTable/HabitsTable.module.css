@@ -1,9 +1,15 @@
 .habitsRecordInnerContainer {
   height: 400px;
+  color: #414141;
 }
 .tableContainer {
   max-height: 380px; /* 원하는 고정 높이 (습관이 많아지면 스크롤 발생) */
   overflow-y: auto;
+}
+.titleWrapper {
+  font-size: 25px;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 20px;
 }
 .habitTable {
   width: 100%;
@@ -16,20 +22,17 @@
   padding-bottom: 20px;
   text-align: center;
   vertical-align: middle;
-  border-bottom: 1px solid #eee;
   position: sticky;
   top: 0;
   background-color: white;
   z-index: 10;
 }
 
-.tbodyContainer {
-}
-
 .habitNameCell {
   width: 250px;
-  text-align: left;
+  text-align: right;
   padding: 20px;
+  font-weight: 600;
 }
 
 .habitStatusCell {

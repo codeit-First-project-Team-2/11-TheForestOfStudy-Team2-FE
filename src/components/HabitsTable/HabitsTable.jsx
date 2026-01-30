@@ -24,7 +24,7 @@ export const HabitsTable = () => {
   return (
     <div>
       <div className={styles.habitsRecordInnerContainer}>
-        <h3>습관 기록표</h3>
+        <h3 className={styles.titleWrapper}>습관 기록표</h3>
         <div className={styles.tableContainer}>
           <table className={styles.habitTable}>
             <thead className={styles.theadContainer}>
