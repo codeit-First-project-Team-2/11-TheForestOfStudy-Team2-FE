@@ -1,0 +1,194 @@
+.timerContainer {
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid var(--gray-gray_DDDDDD, #ddd);
+}
+
+.timerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.timerTitle {
+  width: 110px;
+  height: 29px;
+  color: var(--black-black_414141, #414141);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.timerTag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 45px;
+  padding: 6px 8px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hiddenTag {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.timerWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 94px;
+  font-size: 150px;
+  font-weight: 800;
+}
+
+.timerBlack {
+  color: var(--black-black_414141, #414141);
+}
+
+.timerRed {
+  color: var(--red-red_F50E0E, #f50e0e);
+  animation: blink 1s step-end infinite;
+}
+
+.timerGrey {
+  color: var(--gray-gray_818181, #818181);
+}
+
+.timerButtons {
+  display: flex;
+  gap: 24px;
+}
+
+.pauseButton {
+  width: 64px;
+  height: 64px;
+  background-color: var(--brand-brand_99C08E, #99c08e);
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.resetButton {
+  width: 64px;
+  height: 64px;
+  background-color: var(--brand-brand_99C08E, #99c08e);
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.stopButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 333px;
+  height: 60px;
+  border: none;
+  flex-shrink: 0;
+  border-radius: 50px;
+  background: var(--brand-brand_99C08E, #99c08e);
+  color: #fff;
+  text-align: center;
+  font-size: 28px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.stopButton span {
+  padding-bottom: 4px;
+}
+
+.startButton {
+  justify-content: start;
+  padding-left: 78px;
+}
+
+.stopButton:disabled,
+.pauseButton:disabled,
+.resetButton:disabled {
+  background-color: var(--gray-gray_818181, #818181);
+  cursor: not-allowed;
+  transition: background-color 0.3s;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .timerContent {
+    margin-bottom: 100px;
+    font-size: 120px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .timerContainer {
+    padding: 24px 16px;
+  }
+
+  .timerInfo {
+    gap: 16px;
+  }
+
+  .timerTag {
+    margin-bottom: 17px;
+  }
+
+  .timerContent {
+    margin-bottom: 63.94px;
+    font-size: 80px;
+  }
+
+  .timerButtons {
+    gap: 8px;
+  }
+
+  .stopButton {
+    width: 140px;
+    height: 45px;
+    gap: 8px;
+    padding-left: 20px;
+    font-size: 18px;
+    margin-bottom: 25px;
+  }
+
+  .stopButton img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pauseButton {
+    width: 48px;
+    height: 48px;
+  }
+
+  .resetButton {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
+}
