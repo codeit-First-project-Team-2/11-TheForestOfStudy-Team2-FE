@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './StudyDetail.module.css';
-import EmojiPicker from 'emoji-picker-react';
 import { studiesMock } from '../../mocks/index.js';
-import { PawIcon } from '../../components/pawIcon.jsx';
-import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '../../constants/color.js';
 import { HabitsTable } from '../../components/HabitsTable/HabitsTable.jsx';
+import { EmojiAddition } from '../../components/EmojiAddition/EmojiAddition.jsx';
 
 export const StudyDetail = () => {
-  const [emojiOpen, setEmojiOpen] = useState(false);
-  const handleOpenEmoji = () => setEmojiOpen(!emojiOpen);
-  //todo 1.스타일 적용안하는 className 삭제 2. 컴포넌트 분리 3.발바닥컬러 습관id를기준으로 변경
-
   //study가 undefined인 경우 보여줄 내용
   const study = studiesMock[0] || {
     habits: [],
@@ -22,13 +16,7 @@ export const StudyDetail = () => {
     <main className={styles.layout}>
       <div className={styles.studyDetailContainer}>
         <section className={styles.headContainer}>
-          <div className={styles.emojiContainer}>
-            <div>이모지버튼들 자리</div>
-            <button className={styles.emojiWrapper} onClick={handleOpenEmoji}>
-              이모지추가
-            </button>
-          </div>
-          <EmojiPicker open={emojiOpen} />
+        <EmojiAddition />
           <nav className={styles.navContainer}>
             <p className={styles.linkWrapper}>공유하기</p>
             <p className={styles.linkWrapper}>수정하기</p>
