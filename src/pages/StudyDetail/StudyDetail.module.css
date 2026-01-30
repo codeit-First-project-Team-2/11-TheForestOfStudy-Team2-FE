@@ -76,6 +76,19 @@
 .studyIntroduction {
 }
 /*habits*/
+.habitsRecordContainer {
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.habitsRecordInnerContainer {
+  height: 400px;
+}
+.tableContainer {
+  max-height: 380px; /* 원하는 고정 높이 (습관이 많아지면 스크롤 발생) */
+  overflow-y: auto;
+}
 .habitTable {
   width: 100%;
   border-collapse: collapse;
@@ -88,12 +101,13 @@
   text-align: center;
   vertical-align: middle;
   border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
 }
-.tbodyContainer{
-  overflow-y: auto;
-  max-height: 400px;
-  border: 1px solid #eee; /* 영역 구분을 위한 테두리 */
-  border-radius: 8px;
+
+.tbodyContainer {
 }
 
 .habitNameCell {

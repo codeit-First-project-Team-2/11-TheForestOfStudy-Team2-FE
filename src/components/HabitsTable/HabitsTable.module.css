@@ -1,0 +1,44 @@
+.habitsRecordInnerContainer {
+  height: 400px;
+}
+.tableContainer {
+  max-height: 380px; /* 원하는 고정 높이 (습관이 많아지면 스크롤 발생) */
+  overflow-y: auto;
+}
+.habitTable {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.habitTrContainer th {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 20px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+}
+
+.tbodyContainer {
+}
+
+.habitNameCell {
+  width: 250px;
+  text-align: left;
+  padding: 20px;
+}
+
+.habitStatusCell {
+  text-align: center;
+  vertical-align: middle;
+}
+.noHabitCell {
+  text-align: center;
+  padding: 40px 0;
+  color: #999;
+  font-size: 16px;
+}
