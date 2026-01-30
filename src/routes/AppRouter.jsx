@@ -1,11 +1,15 @@
 import React from 'react';
 import { Routes, Route } from 'react-router';
 import { StudyDetail } from '../pages/StudyDetail/StudyDetail';
+import { UiPreview } from '../pages/UiPreview';
+
 // 주석처리된 Routes들을 꺼내서 쓰면 됩니다. 
 // 페이지 import도 해주세요~!
 export const AppRouter = () => {
   return (
     <Routes>
+    {/* UI 테스트용 */}
+      <Route path="/ui" element={<UiPreview />} />
       <Route path="/studies/:studyId" element={<StudyDetail />} />
       {/* <Route path="/" element={<Home />} />
       <Route path="/write" element={<StudyForm />} />
