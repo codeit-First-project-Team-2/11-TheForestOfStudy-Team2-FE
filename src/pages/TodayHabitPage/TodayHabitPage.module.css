@@ -1,0 +1,167 @@
+.pageHeader {
+  padding: var(--padding-md) 0;
+}
+
+/* 현재시간 */
+.currentTime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+}
+
+.timeLabel {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+}
+
+.timeValue {
+  font-size: var(--font-size-md);
+  color: var(--color-gray-900);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--spacing-md);
+  padding: var(--padding-sm);
+}
+
+.cardMeta {
+  font-size: var(--font-size-md);
+  opacity: 0.6;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-lg);
+  justify-content: center;
+}
+
+.cardTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+}
+
+.editButton {
+  background: var(--color-white);
+  border: none;
+  color: var(--color-text-primary);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.editButton:not(:disabled):hover {
+  filter: brightness(1.03);
+}
+
+.editButton:not(:disabled):active {
+  transform: translateY(1px);
+  filter: brightness(0.98);
+}
+
+.disabled,
+.editButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/*  Modal */
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--padding-sm-md);
+  max-height: 70vh;
+  overflow: hidden;
+}
+
+.habitList {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  gap: var(--padding-xs);
+  list-style: none;
+}
+
+.habitItem {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  width: 100%;
+  align-items: center;
+  padding: var(--padding-xs);
+}
+
+.habitTitle {
+  padding: var(--padding-sm-md);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  grid-column: 2;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  background: var(--color-gray-200);
+}
+
+.deleteButton {
+  display: grid;
+  grid-column: 3;
+  flex: 0 0 32px; /* 고정폭 */
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+/* Input */
+.habitInput {
+  display: grid;
+  grid-column: 2;
+  width: 100%;
+  border: 1px solid var(--color-gray-100);
+  background: var(--color-gray-200);
+}
+
+.inputButton {
+  display: grid;
+  grid-column: 2;
+  border: 2px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  padding: var(--padding-sm-md);
+  color: var(--color-text-primary);
+}
+
+.rightSlot {
+  grid-column: 3;
+  width: 32px;
+  height: 32px;
+}
+
+/*  Footer */
+.modalFooter {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.footerButton {
+  width: 100%;
+}
+
+/*  Empty State  */
+.emptyText {
+  margin: 0;
+  opacity: 0.7;
+}
