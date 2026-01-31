@@ -4,7 +4,7 @@
   align-items: flex-start;
   max-width: 960px;
   margin: 0 auto;
-  padding: var(--padding-lg);
+
 }
 
 .left {
@@ -33,6 +33,7 @@
   gap: var(--spacing-sm);
   font-size: var (--font-size-sm);
   color: var(--color-gray-600);
+  padding: var(--padding-sm) 0;
 }
 
 .label {
@@ -57,7 +58,7 @@
   border-radius: 999px;
   border: 1px solid var(--color-gray-200);
   background: #ffffff;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-md);
 }
 
 .buttonSecondary {
@@ -66,5 +67,5 @@
   border-radius: 999px;
   border: 1px solid var(--color-gray-200);
   background: #ffffff;
-  font-size: var(--font-size-sm);;
+  font-size: var(--font-size-md);;
 }

@@ -1,19 +1,16 @@
 .textField {
-  width: auto; /* 기본은 강제 100% 아님 */
-  min-width: 0; /* flex 내부 overflow 방지 */
+  width: auto; 
+  min-width: 0; 
   box-sizing: border-box;
-
   height: 44px;
-  padding: 0 12px;
-
-  border-radius: 10px;
+  padding: var(--padding-md);
+  border-radius: var(--radius-md);
   border: 1px solid rgba(0, 0, 0, 0.1);
-
   background-color: #fff;
   color: rgba(0, 0, 0, 0.9);
   font-size: 14px;
-
   outline: none;
+  text-align: center;
 }
 
 .fullWidth {
@@ -22,11 +19,9 @@
 
 .textField::placeholder {
   color: rgba(0, 0, 0, 0.35);
+
 }
 
-.textField:focus {
-  border-color: rgba(0, 0, 0, 0.22);
-}
 .textField:disabled {
   cursor: not-allowed;
   opacity: 0.55;
