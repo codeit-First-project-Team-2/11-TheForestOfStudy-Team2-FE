@@ -6,7 +6,7 @@ export default function Home() {
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
 
-  // 🔍 검색 상태
+  // 검색 상태
   const [keyword, setKeyword] = useState('');
   const [searchKeyword, setSearchKeyword] = useState('');
 
@@ -31,7 +31,7 @@ export default function Home() {
     fetchStudies(page, searchKeyword);
   }, [page, searchKeyword]);
 
-  // 🔍 검색 실행
+  //  검색 실행
   const handleSearch = () => {
     setPage(1);
     setSearchKeyword(keyword);
@@ -41,7 +41,7 @@ export default function Home() {
     <div>
       <h2>스터디 목록</h2>
 
-      {/* 🔍 검색 input */}
+      {/* 검색 input */}
       <div>
         <input
           type="text"
@@ -55,7 +55,7 @@ export default function Home() {
         <button onClick={handleSearch}>검색</button>
       </div>
 
-      {/* 📄 목록 */}
+      {/*  목록 */}
       <ul>
         {studies.length === 0 ? (
           <li>검색 결과가 없습니다.</li>
@@ -70,7 +70,7 @@ export default function Home() {
         )}
       </ul>
 
-      {/* 📑 페이지네이션 */}
+      {/* 페이지네이션 */}
       <Pagenation
         currentPage={page}
         totalPage={totalPage}
