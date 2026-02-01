@@ -1,0 +1,99 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #414141;
+}
+.studyDetailContainer {
+  width: 1200px;
+}
+.headContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: var(--color-text-primary);
+}
+.green {
+  display: flex;
+  gap: 16px;
+  color: #558b58;
+}
+
+.gapContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.StudyDetailContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.StudyDetailHeadContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.studyTitleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 28px;
+  font-weight: var(--font-weight-bold);
+}
+
+.todayButtonContainer {
+  display: flex;
+  gap: 10px;
+}
+.todayButtonWrapper {
+  padding: 14px 20px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 16px;
+  background-color: var(--color-white);
+  color: var(--color-text-primary);
+}
+.introPointContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
+}
+.introContainer {
+}
+.pointContainer {
+}
+.labelWrapper {
+  color: #818181;
+  margin-bottom: 10px;
+}
+.studyIntroduction {
+}
+.pointWrapper {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 20px;
+  padding: 8px 12px;
+  width: fit-content;
+}
+/*habits*/
+.habitsRecordContainer {
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  overflow: hidden;
+}
