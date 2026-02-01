@@ -4,7 +4,7 @@
  * - client(axios 인스턴스)를 사용하여 요청을 보냅니다.
  * - 에러메시지는 constants에 상수로 사용합니다.
  * - 기능에 따라 추가해야할 에러메시지 상수도 constants에서 작성해주세요.
- * - 각 함수는 비동기(async/await)로 작성하며, 데이터 반환 형식은 response.data를 기본으로 합니다.
+ * - 각 함수는 비동기(async/await)로 작성하며, 데이터 반환은 (response.data) client.js에서 다루고 있어요.
  */
 import client from './client';
 import { STUDY_ERROR_MESSAGES } from '../constants/error';
