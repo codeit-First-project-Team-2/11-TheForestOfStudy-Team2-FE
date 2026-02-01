@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header className={styles.container}>
       <div className={styles.inner}>
-        <a href="/" className={styles.logoLink}>
+        <a href="/">
           <img
             src={logo}
             alt="TodayHabit"
