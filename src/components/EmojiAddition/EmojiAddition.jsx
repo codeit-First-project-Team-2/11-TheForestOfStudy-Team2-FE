@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import styles from './EmojiAddition.module.css';
 import EmojiPicker from 'emoji-picker-react';
 import smileIcon from '../../assets/smile.jpg';
+
+//1.피커클릭하면 button 생성 로직 2. api 작성한거 넣기
 export const EmojiAddition = () => {
   const [emojiOpen, setEmojiOpen] = useState(false);
   const handleOpenEmoji = () => setEmojiOpen(!emojiOpen);
-  //todo 1.스타일 적용안하는 className 삭제 2. 컴포넌트 분리 3.발바닥컬러 습관id를기준으로 변경
 
   const selectedEmojis = [
     { id: 1, emoji: '👩‍💻', count: 37 },
