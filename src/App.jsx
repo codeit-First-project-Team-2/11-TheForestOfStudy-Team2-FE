@@ -1,12 +1,7 @@
-// import { AppRouter } from './routes/AppRouter.jsx';
-import { UiPreview } from '@/pages/UiPreview.jsx';
+import { AppRouter } from './routes/AppRouter.jsx';
 
 function App() {
-  return (
-    <>
-      <UiPreview />
-    </>
-  );
+  return <AppRouter />;
 }
 
 export default App;
