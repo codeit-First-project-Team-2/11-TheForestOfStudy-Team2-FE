@@ -1,11 +1,8 @@
 import styles from './HabitsTable.module.css';
-import { PawIcon } from '../../components/pawIcon.jsx';
-import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '../../constants/color.js';
+import { PawIcon } from '@/components/pawIcon.jsx';
+import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '@/constants/color.js';
 import { useStudyStore } from '../../stores/useStudyStore';
-
 import { DAYS, WEEK_DATES } from '@/constants/date.js';
-
-const TABLE_COLUMN_COUNT = DAYS.length + 1;
 
 export const HabitsTable = () => {
   //todo 1.스타일 적용안하는 className 삭제 2. 컴포넌트 분리 3.발바닥컬러 습관id를기준으로 변경
@@ -67,7 +64,7 @@ export const HabitsTable = () => {
               ) : (
                 <tr>
                   <td
-                    colSpan={TABLE_COLUMN_COUNT}
+                    colSpan={DAYS.length + 1}
                     className={styles.noHabitCell}
                   >
                     등록된 습관이 없습니다.
