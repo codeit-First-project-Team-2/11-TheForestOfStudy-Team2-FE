@@ -1,7 +1,7 @@
-import greenBg from '../assets/green.jpg';
-import pinkBg from '../assets/pink.jpg';
-import skyblueBg from '../assets/skyblue.jpg';
-import study1Bg from '../assets/study1.jpg';
+import greenBg from '../assets/background/green.jpg';
+import pinkBg from '../assets/background/pink.jpg';
+import skyblueBg from '../assets/background/skyblue.jpg';
+import study1Bg from '../assets/background/study1.jpg';
 
 export const studiesMock = [
   {

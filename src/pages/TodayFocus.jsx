@@ -1,4 +1,4 @@
-// import { Header } from '../components/ui/Header/Header'
+// import { Header } from '../../components/ui/Header/Header.jsx'
 import { useParams, Link } from 'react-router';
 import { FocusTimer } from '../components/focusTimer';
 import clsx from 'clsx';
@@ -9,15 +9,6 @@ import { useTodayFocus } from '../hooks/todayFocus/useTodayFocus.hook';
 export function TodayFocus() {
   const { studyId } = useParams();
   const { studyData, handleSettle } = useTodayFocus(studyId);
-
-  // // 임시데이터!!
-  // const studyId = 123;
-  // const studyData = {
-  //   nickname: '열공하는 코린이',
-  //   title: '스터디!',
-  //   totalPoint: 1995,
-  // };
-  // const handleSettle = () => console.log('정산 요청 됨!');
 
   //서버 응답 전 로딩화면
   if (!studyData)

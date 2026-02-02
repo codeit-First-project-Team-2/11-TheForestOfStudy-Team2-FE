@@ -1,11 +1,18 @@
 import { useTimerAction } from './useTimerAction.hook';
-import { settlePointsApi } from '../../apis/focusTimer.api.js';
+import { settlePointsApi } from '../../apis/focusTimerService.js';
 import { INITIAL_SECONDS } from '../../constants/time.js';
 import styles from '../../components/focusTimer.module.css';
-// import { showToast } from '../../utils/toast.util.js';
+import { showToast } from '../../utils/toast.util.js';
 
 export const useFocusTimer = (studyId, onSettle) => {
-  const { seconds, status, isOvertime, start, pause, reset } = useTimerAction();
+  const {
+    seconds,
+    status,
+    isOvertime,
+    start,
+    pause: pauseTimer,
+    reset,
+  } = useTimerAction();
 
   //시간 포맷팅 로직
   const formatTime = (leftTime) => {
@@ -29,24 +36,33 @@ export const useFocusTimer = (studyId, onSettle) => {
   //UI 조건 설정하는 변수
   const isNormalRunning = status !== 'initial' && !isOvertime;
 
+  //일시정지 시 토스트 출력
+  const handlePause = async () => {
+    pauseTimer();
+    showToast.error('집중이 중단되었습니다.');
+  };
+
   //정지버튼 누를 시 포인트 정산 로직
   const handleStop = async () => {
-    pause();
+    pauseTimer();
+
+    // 정산 성공시 테스트
+    // if (onSettle) {
+    //   onSettle(145, 100);
+    // }
 
     try {
-      // showToast.error("집중이 중단되었습니다.")
-
       const focusedSeconds = INITIAL_SECONDS - seconds;
       const actualMinutes = Math.floor(focusedSeconds / 60);
 
       const data = await settlePointsApi(studyId, actualMinutes);
 
       if (onSettle) {
-        onSettle(data.totalPoint, data.earedPoint || 0);
+        onSettle(data.totalPoint, data.earnedPoint || 0);
       }
     } catch (error) {
       console.log(error);
-      // showToast.error("포인트 정산에 실패했습니다.");
+      showToast.error('포인트 정산에 실패했습니다.');
     } finally {
       reset();
     }
@@ -57,7 +73,7 @@ export const useFocusTimer = (studyId, onSettle) => {
     status,
     isOvertime,
     start,
-    pause,
+    pause: handlePause,
     reset,
     formatTime,
     getTimerColorClass,

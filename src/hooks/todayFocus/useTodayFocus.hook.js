@@ -1,12 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-// import { showToast } from '../../utils/toast.util.js';
+import { showToast } from '../../utils/toast.util.js';
+import { studiesMock } from '../../mocks';
+
+const isDev = true; // 배포시 false로 변경
 
 export const useTodayFocus = (studyId) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const initialData = location.state?.studyData;
+  const targetMockData = isDev //목데이터 활용 로직 추가
+    ? studiesMock.find((mock) => {
+        return mock.id === studyId;
+      }) || studiesMock[0]
+    : null;
+
+  const initialData = location.state?.studyData || targetMockData;
   const [studyData, setStudyData] = useState(initialData);
 
   useEffect(() => {
@@ -23,8 +32,7 @@ export const useTodayFocus = (studyId) => {
   const handleSettle = (newTotalPoint, earnedPoint) => {
     setStudyData((prev) => ({ ...prev, totalPoint: newTotalPoint }));
 
-    console.log(`사용자: ${earnedPoint}포인트 획득!`);
-    // showToast.success(`${earnedPoint}포인트를 획득했습니다!`);
+    showToast.success(`${earnedPoint}포인트를 획득했습니다!`);
   };
 
   return { studyData, handleSettle };
