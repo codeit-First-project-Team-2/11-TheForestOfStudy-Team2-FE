@@ -22,7 +22,10 @@ export const PageHeader = ({
 
           <div className={styles.status}>
             {/* 시간 또는 포인트 */}
-            {currentTime && <span>{currentTime}</span>}
+            <div className={styles.currentTime}>
+              <span className={styles.timeLabel}>현재 시간</span>
+              <span className={styles.timeValue}>{currentTime}</span>
+            </div>
             {totalPoint !== undefined && <span>{totalPoint}P</span>}
           </div>
         </div>

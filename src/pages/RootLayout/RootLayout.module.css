@@ -1,0 +1,28 @@
+.pageBackground {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  flex-direction: column;
+}
+
+.pageLayout {
+  padding: 0 var(--page-gutter);
+  padding-top: 39px;
+  padding-bottom: 39px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageContent {
+  background: var(--color-white);
+  margin: 0 auto;
+  width: 100%;
+  max-width: 960px;
+  border-radius: var(--radius-md);
+  padding: var(--padding-lg);
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}

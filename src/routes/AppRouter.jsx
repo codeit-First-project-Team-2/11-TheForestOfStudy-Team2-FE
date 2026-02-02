@@ -1,6 +1,6 @@
 
 import { Routes, Route } from "react-router";
-import { RootLayout } from "@/pages/RootLayout";
+import { RootLayout } from "@/pages/RootLayout/RootLayout.jsx";
 import { UiPreview } from "@/pages/UiPreview";
 import { TodayFocus } from "@/pages/TodayFocus.jsx";
 import { StudyDetail } from "@/pages/StudyDetail/StudyDetail";
