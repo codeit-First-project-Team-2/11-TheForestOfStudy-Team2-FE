@@ -30,6 +30,19 @@
   color: #558b58;
 }
 
+.alertContainer {
+  margin-bottom: 20px;
+  color: var(--color-text-primary);
+}
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.modalLabelWrapper {
+  color: var(--color-text-primary);
+}
+
 .gapContainer {
   display: flex;
   flex-direction: column;
