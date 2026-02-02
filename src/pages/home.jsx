@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
-
+import StudyCard from '../components/studycard';
+// (매직 넘버 제거)
+const INITIAL_PAGE = 1;
+const INITIAL_TOTAL_PAGE = 1;
 const LIMIT_PER_PAGE = 6;
 
 export default function Home() {
   const [studies, setStudies] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(1);
+  const [page, setPage] = useState(INITIAL_PAGE);
+  const [totalPage, setTotalPage] = useState(INITIAL_TOTAL_PAGE);
   const [loading, setLoading] = useState(false);
 
   // 검색
@@ -24,11 +27,10 @@ export default function Home() {
       sort: 'latest',
     });
 
-    const res = await fetch(`/api/studies?${params.toString()}`);
+    const res = await fetch(`/api?${params.toString()}`);
     const data = await res.json();
 
-    // 더보기 핵심
-    if (pageNumber === 1) {
+    if (pageNumber === INITIAL_PAGE) {
       setStudies(data.studies);
     } else {
       setStudies((prev) => [...prev, ...data.studies]);
@@ -40,16 +42,16 @@ export default function Home() {
 
   // 최초 로딩 & 검색
   useEffect(() => {
-    setPage(1);
-    fetchStudies(1, searchKeyword);
+    const firstPage = INITIAL_PAGE;
+
+    setPage(firstPage);
+    fetchStudies(firstPage, searchKeyword);
   }, [searchKeyword]);
 
-  //  검색 실행
   const handleSearch = () => {
     setSearchKeyword(keyword);
   };
 
-  //  더보기
   const handleLoadMore = () => {
     const nextPage = page + 1;
     setPage(nextPage);
@@ -57,7 +59,7 @@ export default function Home() {
   };
 
   return (
-    <section>
+    <section aria-busy={loading}>
       <h2>스터디 목록</h2>
 
       {/* 검색 */}
@@ -73,28 +75,24 @@ export default function Home() {
         <button onClick={handleSearch}>검색</button>
       </div>
 
+      {/* 상태 메시지 */}
+      {loading && <p>불러오는 중...</p>}
+      {!loading && isEmpty && <p>스터디가 없습니다.</p>}
+
       {/* 목록 */}
-      <ul>
-        {loading ? (
-          <li>불러오는 중...</li>
-        ) : isEmpty ? (
-          <li>스터디가 없습니다.</li>
-        ) : (
-          studies.map((study) => (
+      {!loading && !isEmpty && (
+        <ul className="study-list">
+          {studies.map((study) => (
             <li key={study.id}>
-              <h3>{study.title}</h3>
-              <p>포인트: {study.totalPoint}</p>
-              <p>생성 후 {study.daysAfterCreated}일</p>
+              <StudyCard study={study} />
             </li>
-          ))
-        )}
-      </ul>
+          ))}
+        </ul>
+      )}
 
       {/* 더보기 */}
-      {page < totalPage && (
-        <button onClick={handleLoadMore} disabled={loading}>
-          {loading ? '불러오는 중...' : '더보기'}
-        </button>
+      {page < totalPage && !loading && (
+        <button onClick={handleLoadMore}>더보기</button>
       )}
     </section>
   );
