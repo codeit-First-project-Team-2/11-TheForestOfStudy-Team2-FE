@@ -11,7 +11,9 @@ import useStudyStore from '../../stores/useStudyStore.js';
 import { TextField } from '../../components/ui/TextField/TextField.jsx';
 import { Button } from '../../components/ui/Button/Button.jsx';
 import toast from 'react-hot-toast';
-//todo 1.스타일 적용안하는 className 삭제 2. 컴포넌트 분리 3.발바닥컬러 습관id를기준으로 변경
+import NoVisible from '../../assets/studyDetail/Novisible.jpg';
+import Visible from '../../assets/studyDetail/Visible.jpg';
+//todo 1.스타일 적용안하는 className 삭제
 export const StudyDetail = () => {
   const { studyId } = useParams();
   const nav = useNavigate();
@@ -20,7 +22,7 @@ export const StudyDetail = () => {
 
   //모달
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isShowPassword, setIsShowPassword] = useState(false);
+  const [isShowPassword, setIsShowPassword] = useState(true);
   const [targetPath, setTargetPath] = useState(''); //비번 인증 성공 시 해당 path 저장
   const [password, setPassword] = useState('');
   const [isDeleteConfirm, setIsDeleteConfirm] = useState(false);
@@ -138,12 +140,21 @@ export const StudyDetail = () => {
                         권한이 필요해요!
                       </p>
                     </div>
-                    <TextField
-                      type={isShowPassword ? 'text' : 'password'}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="비밀번호 입력"
-                    />
+                    <div className={styles.modalTextContainer}>
+                      <TextField
+                        type={isShowPassword ? 'password' : 'text'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="비밀번호 입력"
+                        fullWidth
+                      />
+                      <button
+                        onClick={() => setIsShowPassword(!isShowPassword)}
+                        className={styles.visibleButton}
+                      >
+                        <img src={isShowPassword ? Visible : NoVisible} />
+                      </button>
+                    </div>
 
                     <Button onClick={handleConfirmPassword}>확인</Button>
                   </div>

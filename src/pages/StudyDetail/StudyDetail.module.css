@@ -42,6 +42,24 @@
 .modalLabelWrapper {
   color: var(--color-text-primary);
 }
+.modalTextContainer {
+  position: relative;
+  width: 100%;
+}
+.visibleButton {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
 
 .gapContainer {
   display: flex;

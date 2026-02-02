@@ -1,7 +1,7 @@
 import styles from './HabitsTable.module.css';
 import { PawIcon } from '@/components/pawIcon.jsx';
 import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '@/constants/color.js';
-import { useStudyStore } from '../../stores/useStudyStore';
+import useStudyStore from '../../stores/useStudyStore.js';
 import { DAYS, WEEK_DATES } from '@/constants/date.js';
 
 export const HabitsTable = () => {
@@ -63,10 +63,7 @@ export const HabitsTable = () => {
                 })
               ) : (
                 <tr>
-                  <td
-                    colSpan={DAYS.length + 1}
-                    className={styles.noHabitCell}
-                  >
+                  <td colSpan={DAYS.length + 1} className={styles.noHabitCell}>
                     등록된 습관이 없습니다.
                   </td>
                 </tr>
