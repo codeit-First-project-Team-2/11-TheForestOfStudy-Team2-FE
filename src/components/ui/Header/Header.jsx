@@ -1,5 +1,5 @@
-import styles from './Header.module.css';
-import logo from '@/assets/logo/logo.svg';
+import styles from "./Header.module.css";
+import logo from "@/assets/logo/logo.svg";
 
 export const Header = () => {
   return (
@@ -11,6 +11,7 @@ export const Header = () => {
             alt="TodayHabit"
             className={styles.logo}
           />
+          <img src={logo} alt="TodayHabit" className={styles.logo} />
         </a>
       </div>
     </header>

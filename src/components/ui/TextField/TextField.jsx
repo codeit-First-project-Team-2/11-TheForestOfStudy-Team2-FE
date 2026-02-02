@@ -15,7 +15,6 @@ export const TextField = ({
   hasError,
   ...rest
 }) => {
-
   return (
     <input
       id={id}
@@ -26,7 +25,12 @@ export const TextField = ({
       placeholder={placeholder}
       disabled={disabled}
       aria-label={ariaLabel}
-      className={clsx(styles.textField, fullWidth && styles.fullWidth, hasError && styles.error, className)}
+      className={clsx(
+        styles.textField,
+        fullWidth && styles.fullWidth,
+        hasError && styles.error,
+        className,
+      )}
       {...rest}
     />
   );

@@ -24,6 +24,7 @@ export const TodayHabitPage = () => {
     deleteDraftHabit,
   } = useTodayHabitModal({ habits, setHabits });
 
+  console.log('TodayHabitPage mounted');
   return (
     <>
       <PageHeader className={styles.pageHeader} title="연우의 개발공장" />

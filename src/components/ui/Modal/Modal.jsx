@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import clsx from "clsx";
-import styles from "./Modal.module.css";
+import { useEffect } from 'react';
+import clsx from 'clsx';
+import styles from './Modal.module.css';
 
-const VALID_SIZES = ["sm", "md", "lg"];
+const VALID_SIZES = ['sm', 'md', 'lg'];
 
-export const Modal = ({ title, children, isOpen, onClose, size = "md" }) => {
-  const safeSize = VALID_SIZES.includes(size) ? size : "md";
+export const Modal = ({ title, children, isOpen, onClose, size = 'md' }) => {
+  const safeSize = VALID_SIZES.includes(size) ? size : 'md';
 
   useEffect(() => {
     if (!isOpen) {
@@ -13,15 +13,15 @@ export const Modal = ({ title, children, isOpen, onClose, size = "md" }) => {
     }
 
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         onClose?.();
       }
     };
 
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen, onClose]);
 
@@ -44,9 +44,8 @@ export const Modal = ({ title, children, isOpen, onClose, size = "md" }) => {
         onClick={handleModalClick}
         role="dialog"
         aria-modal="true"
-        aria-label={title || "modal"}
+        aria-label={title || 'modal'}
       >
-      
         <div>
           <button
             type="button"
@@ -62,10 +61,7 @@ export const Modal = ({ title, children, isOpen, onClose, size = "md" }) => {
           </div>
         ) : null}
 
-        <div className={
-          styles.content
-          }>{children}
-        </div>
+        <div className={styles.content}>{children}</div>
       </div>
     </div>
   );

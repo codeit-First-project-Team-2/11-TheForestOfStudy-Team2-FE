@@ -51,7 +51,6 @@
   filter: brightness(1.03);
 }
 
-
 .button:not(:disabled):active {
   transform: translateY(1px);
   filter: brightness(0.98);

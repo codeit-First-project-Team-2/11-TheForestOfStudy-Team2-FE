@@ -8,6 +8,7 @@
 ## 🚀 시작하기
 
 ### 1. 프로젝트 불러오기
+
 ```bash
 # 레포지토리 클론
 git clone https://github.com/codeit-First-project-Team-2/11-TheForestOfStudy-Team2-FE.git
@@ -20,6 +21,7 @@ git switch -c feature/<기능명>
 ```
 
 ### 2. 패키지 설치 및 실행
+
 ```bash
 # 의존성 설치
 npm install
@@ -33,6 +35,7 @@ npm run dev
 ```
 
 ### 3. pull / push (⚠️ Git 충돌 방지 규칙)
+
 ```bash
 # 아래 과정 반복
 pull -> coding -> commit -> push -> (PR)
@@ -45,6 +48,7 @@ git pull origin develop
 git checkout feature/...
 git pull origin develop
 ```
+
 **!!! 반드시 pull 해야 하는 타이밍?**
 
 - **작업 시작하기 직전**
@@ -95,7 +99,7 @@ src/
 
 ## 📝 커밋 메시지 컨벤션
 
-  **메세지는 영어가 아닌 한글로 적어주세요!**
+**메세지는 영어가 아닌 한글로 적어주세요!**
 
 - **feat** : 새로운 기능 추가
 - **fix** : 버그 수정
