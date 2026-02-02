@@ -1,0 +1,23 @@
+.commonToast {
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.successToast {
+  padding: 14px 18px;
+  background-color: var(--green-green_E1EDDE, #e1edde);
+  color: var(--green-green_text_578246, #578246);
+}
+
+.errorToast {
+  background-color: var(--pink-pink_FDE0E9, #fde0e9);
+  color: var(--red-red_F50E0E, #f50e0e);
+}
+
+@media (max-width: 767px) {
+  .commonToast {
+    font-size: 14px;
+  }
+}
