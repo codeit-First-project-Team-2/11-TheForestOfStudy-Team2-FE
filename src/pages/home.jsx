@@ -1,99 +1,102 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import StudyCard from '../components/studycard';
-// (매직 넘버 제거)
-const INITIAL_PAGE = 1;
-const INITIAL_TOTAL_PAGE = 1;
-const LIMIT_PER_PAGE = 6;
+import '../styles/Home.css';
+
+const MOCK_STUDIES = [
+  {
+    id: 1,
+    title: '리액트 스터디',
+    nickname: '동철',
+    introduction: '리액트 기초부터 같이 공부해요',
+    emoji: '🔥',
+    backgroundImage: '/',
+    totalPoint: 120,
+    daysAfterCreated: 3,
+  },
+  {
+    id: 2,
+    title: '알고리즘 스터디',
+    nickname: '코딩왕',
+    introduction: '하루 한 문제!',
+    emoji: '🧠',
+    backgroundImage: '/',
+    totalPoint: 80,
+    daysAfterCreated: 7,
+  },
+  {
+    id: 3,
+    title: '노드JS 스터디',
+    nickname: '서버짱',
+    introduction: '백엔드 기초부터 실습까지',
+    emoji: '💻',
+    backgroundImage: '/images/',
+    totalPoint: 95,
+    daysAfterCreated: 2,
+  },
+  {
+    id: 4,
+    title: '프론트엔드 스터디',
+    nickname: '화면천재',
+    introduction: 'UI/UX 감각 키우기',
+    emoji: '🎨',
+    backgroundImage: '/images/',
+    totalPoint: 110,
+    daysAfterCreated: 5,
+  },
+  {
+    id: 5,
+    title: '타입스크립트 스터디',
+    nickname: '타입마스터',
+    introduction: '타입 안정성 확보하기',
+    emoji: '📝',
+    backgroundImage: '/images/',
+    totalPoint: 70,
+    daysAfterCreated: 6,
+  },
+  {
+    id: 6,
+    title: '자료구조 스터디',
+    nickname: '메모리왕',
+    introduction: '자료구조 완전 정복!',
+    emoji: '📚',
+    backgroundImage: '/images/bg6.png',
+    totalPoint: 130,
+    daysAfterCreated: 1,
+  },
+];
 
 export default function Home() {
-  const [studies, setStudies] = useState([]);
-  const [page, setPage] = useState(INITIAL_PAGE);
-  const [totalPage, setTotalPage] = useState(INITIAL_TOTAL_PAGE);
-  const [loading, setLoading] = useState(false);
-
-  // 검색
-  const [keyword, setKeyword] = useState('');
-  const [searchKeyword, setSearchKeyword] = useState('');
-
-  const isEmpty = !loading && studies.length === 0;
-
-  const fetchStudies = async (pageNumber, keywordValue) => {
-    setLoading(true);
-
-    const params = new URLSearchParams({
-      page: pageNumber,
-      limit: LIMIT_PER_PAGE,
-      keyword: keywordValue,
-      sort: 'latest',
-    });
-
-    const res = await fetch(`/api?${params.toString()}`);
-    const data = await res.json();
-
-    if (pageNumber === INITIAL_PAGE) {
-      setStudies(data.studies);
-    } else {
-      setStudies((prev) => [...prev, ...data.studies]);
-    }
-
-    setTotalPage(data.totalPage);
-    setLoading(false);
-  };
-
-  // 최초 로딩 & 검색
-  useEffect(() => {
-    const firstPage = INITIAL_PAGE;
-
-    setPage(firstPage);
-    fetchStudies(firstPage, searchKeyword);
-  }, [searchKeyword]);
-
-  const handleSearch = () => {
-    setSearchKeyword(keyword);
-  };
-
-  const handleLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    fetchStudies(nextPage, searchKeyword);
-  };
+  const [studies] = useState(MOCK_STUDIES);
+  const isEmpty = studies.length === 0;
 
   return (
-    <section aria-busy={loading}>
-      <h2>스터디 목록</h2>
+    <main className="home">
+      <section className="home-header">
+        <h2 className="home-title">스터디 목록</h2>
 
-      {/* 검색 */}
-      <div>
-        <input
-          value={keyword}
-          placeholder="스터디 제목 검색"
-          onChange={(e) => setKeyword(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') handleSearch();
-          }}
-        />
-        <button onClick={handleSearch}>검색</button>
+        <div className="search-box">
+          <input placeholder="스터디 제목 검색" />
+          <button>검색</button>
+        </div>
+      </section>
+
+      <section className="study-section">
+        {isEmpty ? (
+          <p className="empty-text">아직 생성된 스터디가 없습니다.</p>
+        ) : (
+          <ul className="study-list">
+            {studies.map((study) => (
+              <li key={study.id}>
+                <StudyCard study={study} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <div className="load-more">
+        <button>더보기</button>
       </div>
-
-      {/* 상태 메시지 */}
-      {loading && <p>불러오는 중...</p>}
-      {!loading && isEmpty && <p>스터디가 없습니다.</p>}
-
-      {/* 목록 */}
-      {!loading && !isEmpty && (
-        <ul className="study-list">
-          {studies.map((study) => (
-            <li key={study.id}>
-              <StudyCard study={study} />
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {/* 더보기 */}
-      {page < totalPage && !loading && (
-        <button onClick={handleLoadMore}>더보기</button>
-      )}
-    </section>
+    </main>
   );
 }

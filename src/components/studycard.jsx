@@ -1,9 +1,11 @@
+import '../styles/StudyCard.css';
+
 export default function StudyCard({ study }) {
   const {
     title,
+    nickname,
     introduction,
     emoji,
-    nickname,
     backgroundImage,
     totalPoint,
     daysAfterCreated,
@@ -12,24 +14,22 @@ export default function StudyCard({ study }) {
   return (
     <article
       className="study-card"
-      style={{
-        backgroundImage: backgroundImage
-          ? `url(${backgroundImage})`
-          : undefined,
-      }}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <header>
-        <span>{emoji || ''}</span>
-        <h3>{title}</h3>
-      </header>
+      <div className="card-overlay">
+        <header className="card-header">
+          <span className="emoji">{emoji}</span>
+          <h3 className="title">{title}</h3>
+        </header>
 
-      <p>{introduction || ''}</p>
+        <p className="intro">{introduction}</p>
 
-      <footer>
-        <span> {nickname || ''}</span>
-        <span> {totalPoint}</span>
-        <span>생성 후 {daysAfterCreated}일</span>
-      </footer>
+        <footer className="card-footer">
+          <span className="nickname">{nickname}</span>
+          <span className="point"> {totalPoint}</span>
+          <span className="date">{daysAfterCreated}일 전</span>
+        </footer>
+      </div>
     </article>
   );
 }
