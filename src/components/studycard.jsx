@@ -1,4 +1,4 @@
-import '../styles/StudyCard.css';
+import styles from '../styles/StudyCard.module.css';
 
 export default function StudyCard({ study }) {
   const {
@@ -13,21 +13,23 @@ export default function StudyCard({ study }) {
 
   return (
     <article
-      className="study-card"
+      className={styles.card}
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      <div className="card-overlay">
-        <header className="card-header">
-          <span className="emoji">{emoji}</span>
-          <h3 className="title">{title}</h3>
+      <div className={styles.overlay}>
+        <header className={styles.header}>
+          <span className={styles.emoji}>{emoji}</span>
+          <h3 className={styles.title}>{title}</h3>
         </header>
 
-        <p className="intro">{introduction}</p>
+        <p className={styles.introduction}>{introduction}</p>
 
-        <footer className="card-footer">
-          <span className="nickname">{nickname}</span>
-          <span className="point"> {totalPoint}</span>
-          <span className="date">{daysAfterCreated}일 전</span>
+        <footer className={styles.footer}>
+          <span className={styles.nickname}>{nickname}</span>
+          <span className={styles.point}>{totalPoint}</span>
+          <span className={styles.date}>
+            {daysAfterCreated}일 전
+          </span>
         </footer>
       </div>
     </article>

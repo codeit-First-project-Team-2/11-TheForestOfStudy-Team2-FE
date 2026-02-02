@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import StudyCard from '../components/studycard';
-import '../styles/Home.css';
+import styles from '../styles/Home.module.css';
+import StudyCard from '../components/StudyCard/StudyCard';
 
 const MOCK_STUDIES = [
   {
@@ -29,7 +29,7 @@ const MOCK_STUDIES = [
     nickname: '서버짱',
     introduction: '백엔드 기초부터 실습까지',
     emoji: '💻',
-    backgroundImage: '/images/',
+    backgroundImage: '/',
     totalPoint: 95,
     daysAfterCreated: 2,
   },
@@ -39,7 +39,7 @@ const MOCK_STUDIES = [
     nickname: '화면천재',
     introduction: 'UI/UX 감각 키우기',
     emoji: '🎨',
-    backgroundImage: '/images/',
+    backgroundImage: '/',
     totalPoint: 110,
     daysAfterCreated: 5,
   },
@@ -49,7 +49,7 @@ const MOCK_STUDIES = [
     nickname: '타입마스터',
     introduction: '타입 안정성 확보하기',
     emoji: '📝',
-    backgroundImage: '/images/',
+    backgroundImage: '/',
     totalPoint: 70,
     daysAfterCreated: 6,
   },
@@ -59,7 +59,7 @@ const MOCK_STUDIES = [
     nickname: '메모리왕',
     introduction: '자료구조 완전 정복!',
     emoji: '📚',
-    backgroundImage: '/images/bg6.png',
+    backgroundImage: '/',
     totalPoint: 130,
     daysAfterCreated: 1,
   },
@@ -70,23 +70,28 @@ export default function Home() {
   const isEmpty = studies.length === 0;
 
   return (
-    <main className="home">
-      <section className="home-header">
-        <h2 className="home-title">스터디 목록</h2>
+    <main className={styles.home}>
+      <section className={styles.header}>
+        <h2 className={styles.title}>스터디 목록</h2>
 
-        <div className="search-box">
-          <input placeholder="스터디 제목 검색" />
-          <button>검색</button>
+        <div className={styles.searchBox}>
+          <input
+            className={styles.searchInput}
+            placeholder="스터디 제목 검색"
+          />
+          <button className={styles.searchButton}>검색</button>
         </div>
       </section>
 
-      <section className="study-section">
+      <section className={styles.studySection}>
         {isEmpty ? (
-          <p className="empty-text">아직 생성된 스터디가 없습니다.</p>
+          <p className={styles.emptyText}>
+            아직 생성된 스터디가 없습니다.
+          </p>
         ) : (
-          <ul className="study-list">
+          <ul className={styles.studyList}>
             {studies.map((study) => (
-              <li key={study.id}>
+              <li key={study.id} className={styles.studyItem}>
                 <StudyCard study={study} />
               </li>
             ))}
@@ -94,8 +99,8 @@ export default function Home() {
         )}
       </section>
 
-      <div className="load-more">
-        <button>더보기</button>
+      <div className={styles.loadMore}>
+        <button className={styles.loadMoreButton}>더보기</button>
       </div>
     </main>
   );

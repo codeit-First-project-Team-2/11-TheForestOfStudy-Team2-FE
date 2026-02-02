@@ -1,25 +1,30 @@
-.study-card {
-  height: 200px;
+.card {
+  position: relative;
+  height: 220px;
   border-radius: 12px;
   background-size: cover;
   background-position: center;
   overflow: hidden;
 }
 
-.card-overlay {
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
+.overlay {
   height: 100%;
   padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.card-header {
+.header {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.emoji {
+  font-size: 22px;
 }
 
 .title {
@@ -27,13 +32,27 @@
   font-weight: 600;
 }
 
-.intro {
+.introduction {
   font-size: 14px;
   line-height: 1.4;
+  opacity: 0.9;
 }
 
-.card-footer {
+.footer {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
+  opacity: 0.85;
+}
+
+.nickname {
+  font-weight: 500;
+}
+
+.point {
+  font-weight: 600;
+}
+
+.date {
+  white-space: nowrap;
 }
