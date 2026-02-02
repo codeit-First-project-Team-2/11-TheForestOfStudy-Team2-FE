@@ -6,6 +6,7 @@ const useStudyStore = create((set) => ({
   isAuthenticated: false, //비밀번호 인증 성공여부
   error: null,
 
+  //인증상태 변경 액션
   setStudyData: (data) =>
     set({ studyData: data, isAuthenticated: true, error: null }),
 

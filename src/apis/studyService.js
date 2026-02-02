@@ -34,7 +34,7 @@ export const getStudies = async ({
   }
 };
 
-//스터디 상세 조회 및 비밀번호 인증
+//스터디 상세 조회 할 때 비밀번호 인증
 // 담당: 안예진
 export const verifyStudyPassword = (studyId, password) => {
   return client.post(`/studies/${studyId}/password/verify`, { password });
@@ -47,7 +47,7 @@ export const getStudyDetail = (studyId) => {
 };
 
 // 3. 스터디 내 습관 목록 조회 (GET /:studyId/habits)
-// 담당: 000
+// 담당: 안예진
 export const getStudyHabits = async (studyId) => {
   await client.get(`/studies/${studyId}/habits`);
 };
@@ -59,7 +59,7 @@ export const getTodayHabitStatus = async (studyId) => {
 };
 
 // 5. 스터디 이모지 목록 조회 (GET /:studyId/emojis)
-// 담당: 000
+// 담당: 안예진
 export const getEmojiStats = (studyId) => {
   return client.get(`/studies/${studyId}/emojis`);
 };
