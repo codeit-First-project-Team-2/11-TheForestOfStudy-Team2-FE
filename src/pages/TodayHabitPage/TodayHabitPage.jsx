@@ -80,6 +80,7 @@ export const TodayHabitPage = () => {
     setIsEditOpen(false);
   };
 
+  console.log('TodayHabitPage mounted');
   return (
     <>
       <PageHeader

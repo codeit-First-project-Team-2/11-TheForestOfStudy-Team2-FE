@@ -1,6 +1,6 @@
 .textField {
-  width: auto; 
-  min-width: 0; 
+  width: auto;
+  min-width: 0;
   box-sizing: border-box;
   height: 44px;
   padding: var(--padding-md);
@@ -19,7 +19,6 @@
 
 .textField::placeholder {
   color: rgba(0, 0, 0, 0.35);
-
 }
 
 .textField:disabled {
