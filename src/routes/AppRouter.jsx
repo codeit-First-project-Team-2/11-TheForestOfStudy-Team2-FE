@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router';
-// import { StudyDetail } from '../pages/StudyDetail/StudyDetail';
 import { UiPreview } from '../pages/UiPreview';
 import { TodayHabitPage } from '@/pages/TodayHabitPage';
 import { TodayFocus } from "../pages/TodayFocus.jsx";
