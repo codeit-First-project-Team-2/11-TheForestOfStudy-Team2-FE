@@ -1,9 +1,10 @@
+
 import { Routes, Route } from "react-router";
 import { RootLayout } from "@/pages/RootLayout";
 import { UiPreview } from "@/pages/UiPreview";
-import { TodayHabitPage } from "@/pages/TodayHabitPage";
 import { TodayFocus } from "@/pages/TodayFocus.jsx";
 import { StudyDetail } from "@/pages/StudyDetail/StudyDetail";
+import { TodayHabitPage } from "@/pages/TodayHabitPage";
 
 // 주석처리된 Routes들을 꺼내서 쓰면 됩니다.
 // 페이지 import도 해주세요~!
