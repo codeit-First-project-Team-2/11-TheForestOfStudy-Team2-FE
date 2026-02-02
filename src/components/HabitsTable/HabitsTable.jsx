@@ -19,7 +19,7 @@ export const HabitsTable = () => {
     title: '스터디',
   };
 
-  const weekDates = [
+  const WEEK_DATES = [
     '2026-01-26',
     '2026-01-27',
     '2026-01-28',
@@ -28,6 +28,13 @@ export const HabitsTable = () => {
     '2026-01-31',
     '2026-02-01',
   ];
+
+  const getHabitColor = (habit) =>
+    habit.themeColor ??
+    HABIT_THEME_COLORS[habit.id % HABIT_THEME_COLORS.length];
+
+  const isHabitCompleted = (habit, date) =>
+    habit.records?.some((record) => record.createdAt?.slice(0, 10) === date);
 
   return (
     <div>
@@ -44,27 +51,26 @@ export const HabitsTable = () => {
                 ))}
               </tr>
             </thead>
+
             <tbody className={styles.tbodyContainer}>
               {study.habits.length > 0 ? (
-                study.habits.map((habit) => {
+                study.habits.map((habit, index) => {
                   const habitThemeColor =
-                    HABIT_THEME_COLORS[habit.id % HABIT_THEME_COLORS.length];
+                    HABIT_THEME_COLORS[index % HABIT_THEME_COLORS.length];
 
                   return (
                     <tr key={habit.id}>
                       <td className={styles.habitNameCell}>{habit.name}</td>
 
-                      {weekDates.map((date) => {
-                        const isCompleted = habit.records?.some(
-                          (record) => record.createdAt?.slice(0, 10) === date,
-                        );
+                      {WEEK_DATES.map((date) => {
+                        const completed = isHabitCompleted(habit, date);
 
                         return (
                           <td key={date} className={styles.habitStatusCell}>
                             <div className={styles.pawIconWrapper}>
                               <PawIcon
                                 color={
-                                  isCompleted ? habitThemeColor : INACTIVE_COLOR
+                                  completed ? habitThemeColor : INACTIVE_COLOR
                                 }
                               />
                             </div>
@@ -76,7 +82,10 @@ export const HabitsTable = () => {
                 })
               ) : (
                 <tr>
-                  <td colSpan={TABLE_COLUMN_COUNT} className={styles.noHabitCell}>
+                  <td
+                    colSpan={TABLE_COLUMN_COUNT}
+                    className={styles.noHabitCell}
+                  >
                     등록된 습관이 없습니다.
                   </td>
                 </tr>
