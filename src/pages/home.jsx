@@ -1,52 +1,70 @@
 import { useEffect, useState } from 'react';
-import Pagenation from '../components/pagenation';
+
+const LIMIT_PER_PAGE = 6;
 
 export default function Home() {
   const [studies, setStudies] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
-  // 검색 상태
+  // 검색
   const [keyword, setKeyword] = useState('');
   const [searchKeyword, setSearchKeyword] = useState('');
 
+  const isEmpty = !loading && studies.length === 0;
+
   const fetchStudies = async (pageNumber, keywordValue) => {
+    setLoading(true);
+
     const params = new URLSearchParams({
       page: pageNumber,
-      limit: 6,
+      limit: LIMIT_PER_PAGE,
       keyword: keywordValue,
       sort: 'latest',
     });
 
-    const res = await fetch(`/api?${params.toString()}`);
+    const res = await fetch(`/api/studies?${params.toString()}`);
     const data = await res.json();
 
-    setStudies(data.studies);
+    // 더보기 핵심
+    if (pageNumber === 1) {
+      setStudies(data.studies);
+    } else {
+      setStudies((prev) => [...prev, ...data.studies]);
+    }
+
     setTotalPage(data.totalPage);
-    setPage(data.currentPage);
+    setLoading(false);
   };
 
-  // 최초 & 페이지 변경
+  // 최초 로딩 & 검색
   useEffect(() => {
-    fetchStudies(page, searchKeyword);
-  }, [page, searchKeyword]);
+    setPage(1);
+    fetchStudies(1, searchKeyword);
+  }, [searchKeyword]);
 
   //  검색 실행
   const handleSearch = () => {
-    setPage(1);
     setSearchKeyword(keyword);
   };
 
+  //  더보기
+  const handleLoadMore = () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    fetchStudies(nextPage, searchKeyword);
+  };
+
   return (
-    <div>
+    <section>
       <h2>스터디 목록</h2>
 
-      {/* 검색 input */}
+      {/* 검색 */}
       <div>
         <input
-          type="text"
-          placeholder="스터디 제목 검색"
           value={keyword}
+          placeholder="스터디 제목 검색"
           onChange={(e) => setKeyword(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleSearch();
@@ -55,27 +73,29 @@ export default function Home() {
         <button onClick={handleSearch}>검색</button>
       </div>
 
-      {/*  목록 */}
+      {/* 목록 */}
       <ul>
-        {studies.length === 0 ? (
-          <li>검색 결과가 없습니다.</li>
+        {loading ? (
+          <li>불러오는 중...</li>
+        ) : isEmpty ? (
+          <li>스터디가 없습니다.</li>
         ) : (
           studies.map((study) => (
             <li key={study.id}>
               <h3>{study.title}</h3>
               <p>포인트: {study.totalPoint}</p>
-              <p>생성일: {study.createdAt}</p>
+              <p>생성 후 {study.daysAfterCreated}일</p>
             </li>
           ))
         )}
       </ul>
 
-      {/* 페이지네이션 */}
-      <Pagenation
-        currentPage={page}
-        totalPage={totalPage}
-        onPageChange={setPage}
-      />
-    </div>
+      {/* 더보기 */}
+      {page < totalPage && (
+        <button onClick={handleLoadMore} disabled={loading}>
+          {loading ? '불러오는 중...' : '더보기'}
+        </button>
+      )}
+    </section>
   );
 }
