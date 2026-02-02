@@ -1,10 +1,10 @@
-import React from 'react';
 import styles from './HabitsTable.module.css';
 import { PawIcon } from '../../components/pawIcon.jsx';
 import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '../../constants/color.js';
 import { useStudyStore } from '../../stores/useStudyStore';
 
-const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
+import { DAYS, WEEK_DATES } from '@/constants/date.js';
+
 const TABLE_COLUMN_COUNT = DAYS.length + 1;
 
 export const HabitsTable = () => {
@@ -19,20 +19,6 @@ export const HabitsTable = () => {
     title: '스터디',
   };
 
-  const WEEK_DATES = [
-    '2026-01-26',
-    '2026-01-27',
-    '2026-01-28',
-    '2026-01-29',
-    '2026-01-30',
-    '2026-01-31',
-    '2026-02-01',
-  ];
-
-  const getHabitColor = (habit) =>
-    habit.themeColor ??
-    HABIT_THEME_COLORS[habit.id % HABIT_THEME_COLORS.length];
-
   const isHabitCompleted = (habit, date) =>
     habit.records?.some((record) => record.createdAt?.slice(0, 10) === date);
 
@@ -43,16 +29,16 @@ export const HabitsTable = () => {
 
         <div className={styles.tableContainer}>
           <table className={styles.habitTable}>
-            <thead className={styles.theadContainer}>
+            <thead>
               <tr className={styles.habitTrContainer}>
-                <th className={styles.habitNameHeader}></th>
+                <th></th>
                 {DAYS.map((day) => (
                   <th key={day}>{day}</th>
                 ))}
               </tr>
             </thead>
 
-            <tbody className={styles.tbodyContainer}>
+            <tbody>
               {study.habits.length > 0 ? (
                 study.habits.map((habit, index) => {
                   const habitThemeColor =
@@ -67,13 +53,11 @@ export const HabitsTable = () => {
 
                         return (
                           <td key={date} className={styles.habitStatusCell}>
-                            <div className={styles.pawIconWrapper}>
-                              <PawIcon
-                                color={
-                                  completed ? habitThemeColor : INACTIVE_COLOR
-                                }
-                              />
-                            </div>
+                            <PawIcon
+                              color={
+                                completed ? habitThemeColor : INACTIVE_COLOR
+                              }
+                            />
                           </td>
                         );
                       })}
