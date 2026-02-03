@@ -25,7 +25,7 @@ export default function Home() {
           <p className={styles.emptyText}>아직 생성된 스터디가 없습니다.</p>
         ) : (
           <ul className={styles.studyList}>
-            {studies.map((study) => (
+            {studyId.map(() => (
               <li key={studyId} className={styles.studyItem}>
                 <StudyCard/>
               </li>
