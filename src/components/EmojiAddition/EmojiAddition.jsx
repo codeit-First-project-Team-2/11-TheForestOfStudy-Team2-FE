@@ -7,7 +7,7 @@ import { getEmojiStats, createEmoji } from '../../apis/studyService';
 import useStudyStore from '../../stores/useStudyStore';
 import { showToast } from '../../utils/toast.util';
 import { EMOJI_LIMITS } from '../../constants/validation';
-import { EMOJI_ERROR, TOAST } from '../../constants/error';
+import { TOAST } from '../../constants/error';
 
 export const EmojiAddition = () => {
   const { studyId } = useParams(); // props 대신 여기서 직접 추출!

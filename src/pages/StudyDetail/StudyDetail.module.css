@@ -128,3 +128,84 @@
   border-radius: 16px;
   overflow: hidden;
 }
+
+@media (max-width: 1240px) {
+  .studyDetailContainer {
+    width: 95%;
+  }
+}
+
+@media (max-width: 767px) {
+  .studyDetailContainer {
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .headContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .navContainer {
+    font-size: 14px;
+    gap: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .StudyDetailHeadContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .studyTitleContainer {
+    font-size: 20px;
+    flex-wrap: wrap;
+  }
+
+  .todayButtonContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .todayButtonWrapper {
+    padding: 12px 10px;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .introPointContainer {
+    gap: 20px;
+  }
+
+  .studyIntroduction {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .pointWrapper {
+    font-size: 14px;
+  }
+
+  .habitsRecordContainer {
+    padding: 12px;
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .modalTextContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .visibleButton {
+    right: 8px;
+  }
+}

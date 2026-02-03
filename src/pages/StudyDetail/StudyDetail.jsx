@@ -87,7 +87,7 @@ export const StudyDetail = () => {
         const studyDetail = await getStudyDetail(studyId);
         setStudyData(studyDetail);
       } catch (error) {
-        showToast.error(error);
+        showToast.error(TOAST.STUDY_ERROR, error);
       }
     };
     fetchStudyDetail();
