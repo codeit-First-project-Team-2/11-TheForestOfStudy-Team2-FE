@@ -1,33 +1,22 @@
 import styles from '../StudyCard/StudyCard.module.css';
 
-export default function StudyCard({ study }) {
-  const {
-    title,
-    nickname,
-    introduction,
-    emoji,
-    backgroundImage,
-    totalPoint,
-    daysAfterCreated,
-  } = study;
+import GREEN from '../../assets/background/green.jpg';
 
+export default function StudyCard() {
   return (
-    <article
-      className={styles.card}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    <article className={styles.card} style={{ backgroundImage: GREEN }}>
       <div className={styles.overlay}>
         <header className={styles.header}>
-          <span className={styles.emoji}>{emoji}</span>
-          <h3 className={styles.title}>{title}</h3>
+          <span className={styles.emoji}>이모지</span>
+          <h3 className={styles.title}>타이틀</h3>
         </header>
 
-        <p className={styles.introduction}>{introduction}</p>
+        <p className={styles.introduction}>인트로덕션</p>
 
         <footer className={styles.footer}>
-          <span className={styles.nickname}>{nickname}</span>
-          <span className={styles.point}>{totalPoint}</span>
-          <span className={styles.date}>{daysAfterCreated}일 전</span>
+          <span className={styles.nickname}>닉네임</span>
+          <span className={styles.point}>100</span>
+          <span className={styles.date}>10일 전</span>
         </footer>
       </div>
     </article>
