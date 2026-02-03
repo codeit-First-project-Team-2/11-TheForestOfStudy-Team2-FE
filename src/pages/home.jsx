@@ -1,12 +1,10 @@
-
-import styles from '../styles/Home.module.css';
+import styles from '../pages/Home.module.css';
 import StudyCard from '../components/StudyCard/StudyCard';
-import { mockStudies } from '../mocks/index';
-
+import { useParams } from 'react-router';
 
 export default function Home() {
-  const studies = mockStudies;
-  const isEmpty = studies.length === 0;
+  const { studyId } = useParams();
+  const isEmpty = studyId.length === 0;
 
   return (
     <main className={styles.home}>
@@ -24,14 +22,12 @@ export default function Home() {
 
       <section className={styles.studySection}>
         {isEmpty ? (
-          <p className={styles.emptyText}>
-            아직 생성된 스터디가 없습니다.
-          </p>
+          <p className={styles.emptyText}>아직 생성된 스터디가 없습니다.</p>
         ) : (
           <ul className={styles.studyList}>
             {studies.map((study) => (
-              <li key={study.id} className={styles.studyItem}>
-                <StudyCard study={study} />
+              <li key={studyId} className={styles.studyItem}>
+                <StudyCard/>
               </li>
             ))}
           </ul>

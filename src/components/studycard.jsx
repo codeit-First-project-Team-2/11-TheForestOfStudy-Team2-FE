@@ -1,4 +1,4 @@
-import styles from '../styles/StudyCard.module.css';
+import styles from '../components/StudyCard.module.css';
 
 export default function StudyCard({ study }) {
   const {
