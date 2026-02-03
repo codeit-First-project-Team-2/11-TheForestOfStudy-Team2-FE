@@ -1,20 +1,23 @@
 import styles from './HabitsTable.module.css';
 import { PawIcon } from '@/components/pawIcon.jsx';
 import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '@/constants/color.js';
-import { useStudyStore } from '../../stores/useStudyStore';
+import useStudyStore from '../../stores/useStudyStore.js';
 import { DAYS, WEEK_DATES } from '@/constants/date.js';
 
 export const HabitsTable = () => {
-  //todo 1.스타일 적용안하는 className 삭제 2. 컴포넌트 분리 3.발바닥컬러 습관id를기준으로 변경
-
   const studyData = useStudyStore((state) => state.studyData);
+  const habits = studyData?.habits || [];
 
-  //study가 undefined인 경우 보여줄 내용
-  const study = studyData ?? {
-    habits: [],
-    nickname: '사용자',
-    title: '스터디',
-  };
+  if (!studyData) {
+    return <div>데이터를 불러오는중입니다 ..</div>;
+  }
+
+  // //study가 undefined인 경우 보여줄 내용
+  // const study = studyData ?? {
+  //   habits: [],
+  //   nickname: '사용자',
+  //   title: '스터디',
+  // };
 
   const isHabitCompleted = (habit, date) =>
     habit.records?.some((record) => record.createdAt?.slice(0, 10) === date);
@@ -36,8 +39,8 @@ export const HabitsTable = () => {
             </thead>
 
             <tbody>
-              {study.habits.length > 0 ? (
-                study.habits.map((habit, index) => {
+              {habits.length > 0 ? (
+                habits.map((habit, index) => {
                   const habitThemeColor =
                     HABIT_THEME_COLORS[index % HABIT_THEME_COLORS.length];
 
@@ -63,10 +66,7 @@ export const HabitsTable = () => {
                 })
               ) : (
                 <tr>
-                  <td
-                    colSpan={DAYS.length + 1}
-                    className={styles.noHabitCell}
-                  >
+                  <td colSpan={DAYS.length + 1} className={styles.noHabitCell}>
                     등록된 습관이 없습니다.
                   </td>
                 </tr>

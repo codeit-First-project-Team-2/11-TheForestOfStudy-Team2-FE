@@ -1,5 +1,7 @@
 export const DAYS = ['월', '화', '수', '목', '금', '토', '일'];
 
+
+
 export const WEEK_DATES = [
   '2026-01-26',
   '2026-01-27',
