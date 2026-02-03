@@ -3,7 +3,7 @@ import { UiPreview } from '../pages/UiPreview';
 import { TodayHabitPage } from '@/pages/TodayHabitPage';
 import { TodayFocus } from '../pages/TodayFocus';
 import { StudyDetail } from '../pages/StudyDetail/StudyDetail';
-import Home from '../pages/Home/home';
+import { Home } from '../pages/Home/home';
 
 // 주석처리된 Routes들을 꺼내서 쓰면 됩니다.
 // 페이지 import도 해주세요~!
