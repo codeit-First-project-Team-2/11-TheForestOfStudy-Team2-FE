@@ -10,9 +10,10 @@ import { Modal } from '../../components/ui/Modal/Modal.jsx';
 import useStudyStore from '../../stores/useStudyStore.js';
 import { TextField } from '../../components/ui/TextField/TextField.jsx';
 import { Button } from '../../components/ui/Button/Button.jsx';
-import toast from 'react-hot-toast';
 import NoVisible from '../../assets/studyDetail/Novisible.jpg';
 import Visible from '../../assets/studyDetail/Visible.jpg';
+import { TOAST } from '../../constants/error.js';
+import { showToast } from '../../utils/toast.util.js';
 //todo 1.스타일 적용안하는 className 삭제
 export const StudyDetail = () => {
   const { studyId } = useParams();
@@ -54,7 +55,8 @@ export const StudyDetail = () => {
       setStudyData(data);
       if (targetPath === 'delete') {
         deleteStudy(studyId, password);
-        toast.success('스터디가 성공적으로 삭제되었습니다.');
+        showToast.success(TOAST.SUCCESS_DELETE);
+
         clearStudy(); //삭제후 스토어 초기화.
         nav('/');
       } else {
@@ -63,7 +65,7 @@ export const StudyDetail = () => {
       handleCloseModal();
     } catch (error) {
       setError(error.message);
-      toast.error(error.response?.data?.message || '비밀번호가 틀렸습니다.');
+      showToast.error(error.response?.data?.message || TOAST.PASSWORD_INVALID);
     }
   };
   //study가 undefined인 경우 보여줄 내용
