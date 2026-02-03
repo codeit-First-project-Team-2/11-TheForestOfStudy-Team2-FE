@@ -7,6 +7,8 @@ import BackgroundSelector from '@/components/study/BackgroundSelector';
 
 import styles from './CreateStudyForm.module.css';
 
+// TODO: 에러처리, 토스트
+
 const CreateStudyForm = ({ mode, studyId }) => {
   const isEdit = mode === 'edit';
 
