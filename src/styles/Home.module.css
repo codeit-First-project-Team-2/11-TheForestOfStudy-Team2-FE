@@ -1,0 +1,70 @@
+.home {
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.searchBox {
+  display: flex;
+  gap: 8px;
+}
+
+.searchInput {
+  padding: 8px 12px;
+}
+
+.searchButton {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #222;
+  color: #fff;
+  cursor: pointer;
+}
+
+.studySection {
+  min-height: 200px;
+}
+
+.studyList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.studyItem {
+  list-style: none;
+}
+
+.emptyText {
+  text-align: center;
+  color: #888;
+  padding: 60px 0;
+}
+
+.loadMore {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.loadMoreButton {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
