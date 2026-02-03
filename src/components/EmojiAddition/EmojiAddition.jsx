@@ -61,7 +61,11 @@ export const EmojiAddition = () => {
   return (
     <div className={styles.emojiContainer}>
       {visibleEmojis.map((item) => (
-        <button key={item.emoji} className={styles.emojiReactionBadge}>
+        <button
+          onClick={handleEmojiAction}
+          key={item.emoji}
+          className={styles.emojiReactionBadge}
+        >
           <span>{item.emoji}</span>
           <span className={styles.emojiCount}>{item.count}</span>
         </button>
@@ -79,7 +83,11 @@ export const EmojiAddition = () => {
           {emojiButtonOpen && (
             <div className={styles.extraPanel}>
               {hiddenEmojis.map((item) => (
-                <button key={item.emoji} className={styles.emojiReactionBadge}>
+                <button
+                  onClick={handleEmojiAction}
+                  key={item.emoji}
+                  className={styles.emojiReactionBadge}
+                >
                   <span>{item.emoji}</span>
                   <span className={styles.emojiCount}>{item.count}</span>
                 </button>
