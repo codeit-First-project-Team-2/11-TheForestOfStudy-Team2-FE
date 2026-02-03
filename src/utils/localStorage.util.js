@@ -26,7 +26,6 @@ export const addRecentStudies = () => {
   //저장 객체 (studyId, viewedAt)
   const newStoredStudy = {
     studyId: study.id,
-    viewedAt: new Date().toISOString(),
   };
 
   //방금 본건 가장 앞으로
