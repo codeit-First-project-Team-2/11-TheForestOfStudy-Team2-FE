@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './StudyDetail.module.css';
 import { studiesMock } from '../../mocks/index.js';
 import { HabitsTable } from '../../components/HabitsTable/HabitsTable.jsx';
 import { EmojiAddition } from '../../components/EmojiAddition/EmojiAddition.jsx';
 import pointImg from '../../assets/studyDetail/Group.jpg';
 import { useNavigate, useParams } from 'react-router';
-import { deleteStudy, verifyStudyPassword } from '../../apis/studyService.js';
+import {
+  deleteStudy,
+  verifyStudyPassword,
+  getStudyDetail,
+} from '../../apis/studyService.js';
 import { Modal } from '../../components/ui/Modal/Modal.jsx';
 import useStudyStore from '../../stores/useStudyStore.js';
 import { TextField } from '../../components/ui/TextField/TextField.jsx';
@@ -19,7 +23,7 @@ export const StudyDetail = () => {
   const { studyId } = useParams();
   const nav = useNavigate();
 
-  const { setStudyData, setError, clearStudy } = useStudyStore();
+  const { studyData, setStudyData, setError, clearStudy } = useStudyStore();
 
   //모달
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,11 +73,25 @@ export const StudyDetail = () => {
     }
   };
   //study가 undefined인 경우 보여줄 내용
-  const study = studiesMock[0] || {
+  const study = studyData || {
     habits: [],
     nickname: '사용자',
     title: '스터디',
+    introdcution: '',
+    totalPoint: 0,
   };
+  useEffect(() => {
+    const fetchStudyDetail = async () => {
+      try {
+        if (!studyId) return;
+        const studyDetail = await getStudyDetail(studyId);
+        setStudyData(studyDetail);
+      } catch (error) {
+        showToast.error(error);
+      }
+    };
+    fetchStudyDetail();
+  }, [studyId, setStudyData]);
 
   return (
     <main className={styles.layout}>
