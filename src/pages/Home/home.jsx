@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 import styles from './Home.module.css';
 import { TextField } from '@/components/ui/TextField/TextField';
 import SearchIcon from '@/assets/ic_search.jpg';
+=======
+>>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
 import { useEffect, useState } from 'react';
 <<<<<<< HEAD
 import { getStudyList } from '@/apis/homeService';
@@ -11,6 +14,7 @@ import { StudyCard } from '@/components/study/studyCard';
 import { getStudyList } from '../../apis/homeService';
 import { showToast } from '../../utils/toast.util';
 import { TOAST } from '../../constants/error';
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 import { StudyCard } from '../../components/study/studyCard';
@@ -26,18 +30,21 @@ import {
   addRecentStudies,
 } from '../../utils/localStorage.util';
 import { StudyCard } from '../../components/study/studyCard';
+=======
+import { addRecentStudies } from '../../utils/localStorage.util';
+import { RecentStudy } from '../../components/RecentStudy/RecentStudy';
+import { AllStudy } from '../../components/AllStudy/AllStudy';
+import styles from './Home.module.css';
+>>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
 
 const LIMIT = 6;
 
 export const Home = () => {
   const [studies, setStudies] = useState([]);
-  const [recentStudies, setRecentStudies] = useState([]);
   const [keyword, setKeyword] = useState('');
-
   const [page, setPage] = useState(1);
   const [morePage, setMorePage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState({
     value: '-createdAt',
@@ -51,6 +58,7 @@ export const Home = () => {
     { value: 'totalPoint', label: '적은 포인트 순' },
   ];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
   const handleOptionClick = (option) => {
     setSelected(option);
@@ -66,39 +74,26 @@ export const Home = () => {
 >>>>>>> 583213f (feat:최근 조회 스터디 로직작성)
 
   /* ---------------- 서버 데이터 fetch ---------------- */
+=======
+  // API 호출 로직
+>>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
   useEffect(() => {
     let cancelled = false;
-
     const fetchStudies = async () => {
-      if (!morePage || isLoading) return;
-
+      if (!morePage && page !== 1) return;
       setIsLoading(true);
       try {
-        const res = await getStudyList({
-          sort: selected.value,
-          keyword,
-          page,
-        });
-
+        const res = await getStudyList({ sort: selected.value, keyword, page });
         if (cancelled) return;
-
         const newStudies = res.data || [];
-
         setStudies((prev) =>
           page === 1 ? newStudies : [...prev, ...newStudies],
         );
-
-        if (newStudies.length < LIMIT) {
-          setMorePage(false);
-        }
+        if (newStudies.length < LIMIT) setMorePage(false);
       } catch (error) {
-        if (!cancelled) {
-          showToast.error(TOAST.STUDIES_LOAD_ERROR, error);
-        }
+        if (!cancelled) showToast.error(TOAST.STUDIES_LOAD_ERROR, error);
       } finally {
-        if (!cancelled) {
-          setIsLoading(false);
-        }
+        if (!cancelled) setIsLoading(false);
       }
     };
 
@@ -107,19 +102,12 @@ export const Home = () => {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [keyword, selected.value, page, isLoading, morePage]);
+  }, [keyword, selected.value, page]);
 
-  /* ---------------- 최근 조회 화면용 리스트 (최신 3개) ---------------- */
-  const recentStudyList = recentStudyIds
-    .slice(0, 3) // ⭐️ 최신 3개만
-    .map(({ studyId }) => studies.find((study) => study.id === studyId))
-    .filter(Boolean);
-
-  /* ---------------- 카드 클릭 ---------------- */
   const handleStudyClick = (study) => {
     addRecentStudies(study);
-    setRecentStudyIds(getRecentStudies());
-    // navigate(`/studies/${study.id}`);
+    // 상태를 강제로 트리거하기 위해 studies를 유지하며 최근 본 목록 갱신 유도
+    setStudies((prev) => [...prev]);
   };
 
   const handleOptionClick = (option) => {
@@ -131,6 +119,7 @@ export const Home = () => {
 
   return (
     <main className={styles.homeLayout}>
+<<<<<<< HEAD
       {/* ---------------- 최근 조회 ---------------- */}
       <section className={styles.latestStudyContainer}>
         <div className={styles.latestStudyInnerContainer}>
@@ -284,6 +273,24 @@ export const Home = () => {
           )}
         </div>
       </section>
+=======
+      <RecentStudy allStudies={studies} onCardClick={handleStudyClick} />
+
+      <AllStudy
+        studies={studies}
+        isLoading={isLoading}
+        morePage={morePage}
+        keyword={keyword}
+        setKeyword={setKeyword}
+        onPageChange={setPage}
+        selected={selected}
+        onOptionClick={handleOptionClick}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        options={options}
+        onCardClick={handleStudyClick}
+      />
+>>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
     </main>
   );
 };
