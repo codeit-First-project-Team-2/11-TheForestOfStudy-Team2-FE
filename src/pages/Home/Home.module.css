@@ -23,6 +23,12 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.noResult {
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+  color: var(--color-text-primary);
+}
 .AllStudyContainter {
   border-radius: 20px;
   border: 1px solid var(--gray-gray_DDDDDD, #ddd);
@@ -153,4 +159,14 @@
   background-color: #f0f7ff;
   font-weight: bold;
   color: #007aff;
+}
+.moreButton {
+  display: block;
+  margin: 10px auto;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 12px;
+  border-radius: 12px;
+  width: 200px;
+  color: var(--color-primary-strong);
 }

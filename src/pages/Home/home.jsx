@@ -2,15 +2,32 @@ import styles from './Home.module.css';
 import { TextField } from '@/components/ui/TextField/TextField';
 import SearchIcon from '@/assets/ic_search.jpg';
 import { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { getStudyList } from '@/apis/homeService';
 import { showToast } from '@/utils/toast.util';
 import { TOAST } from '@/constants/error';
 import { StudyCard } from '@/components/study/studyCard';
+=======
+import { getStudyList } from '../../apis/homeService';
+import { showToast } from '../../utils/toast.util';
+import { TOAST } from '../../constants/error';
 
+import { StudyCard } from '../../components/study/studyCard';
+<<<<<<< Updated upstream
+
+>>>>>>> fdd3dd4 (fix: 더보기 버튼 로직 변경)
+
+=======
+import {
+  getRecentStudies,
+  addRecentStudies,
+} from '../../utils/localStorage.util';
+>>>>>>> Stashed changes
 const LIMIT = 6;
 
 export const Home = () => {
   const [studies, setStudies] = useState([]);
+  const [recentStudies, setRecentStudies] = useState([]);
   const [keyword, setKeyword] = useState('');
 
   const [page, setPage] = useState(1);
@@ -160,11 +177,18 @@ export const Home = () => {
               ? studies.map((study) => (
                   <StudyCard key={study.id} data={study} />
                 ))
+<<<<<<< HEAD
               : !isLoading && <p>검색 결과가 없습니다.</p>}
+=======
+              : !isLoading && (
+                  <p className={styles.noResult}>둘러 볼 스터디가 없어요</p>
+                )}
+>>>>>>> fdd3dd4 (fix: 더보기 버튼 로직 변경)
           </div>
 
-          {morePage && (
+          {morePage && studies.length > 0 && (
             <button
+              className={styles.moreButton}
               disabled={isLoading}
               onClick={() => setPage((prev) => prev + 1)}
             >
