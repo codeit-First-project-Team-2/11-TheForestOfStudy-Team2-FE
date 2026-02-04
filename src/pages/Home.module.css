@@ -70,12 +70,12 @@
 }
 
 //ipad mini max:1023px
-@media (max-width: 1023px){
+@media (max-width: 1023px) {
   .home {
     padding: 20px;
   }
   .studyList {
-    grid-template-column: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
   .title {
@@ -83,7 +83,7 @@
   }
 }
 //mobile max:767px
-@media (max-width: 767px){
+@media (max-width: 767px) {
   .home {
     padding: 16px;
   }
@@ -102,11 +102,10 @@
     flex: 1;
   }
   .studyList {
-    grid-template-column:1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
   }
   .loadMore {
     margin-top: 24px;
   }
-
-}  
+}

@@ -56,3 +56,37 @@
 .date {
   white-space: nowrap;
 }
+
+//ipad mini max:1023px
+@media (max-width: 1023px) {
+  .card {
+    height: 200px;
+  }
+
+  .title {
+    font-size: 17px;
+  }
+}
+
+//mobile max:767px
+@media (max-width: 767px) {
+  .card {
+    height: 180px;
+  }
+
+  .overlay {
+    padding: 14px;
+  }
+
+  .emoji {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .introduction {
+    font-size: 13px;
+  }
+}
