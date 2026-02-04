@@ -11,7 +11,7 @@ export const getRecentStudies = () => {
   }
 };
 
-export const addRecentStudies = () => {
+export const addRecentStudies = (study) => {
   //스터디 없거나 스터디 아이디 없으면 실행 x
   if (!study || !study.id) return;
 
@@ -28,13 +28,11 @@ export const addRecentStudies = () => {
     studyId: study.id,
   };
 
-  //방금 본건 가장 앞으로
-  const updatedList = [newStoredStudy, ...filteredList];
-
-  //10개까지만 기억
-  if (updatedList > MAX_STORAGE_COUNT) {
-    updatedList = MAX_STORAGE_COUNT;
-  }
+  //방금 본건 가장 앞으로 + 10개까지만
+  const updatedList = [newStoredStudy, ...filteredList].slice(
+    0,
+    MAX_STORAGE_COUNT,
+  );
 
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedList));
