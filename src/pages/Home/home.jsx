@@ -1,11 +1,11 @@
 import styles from '../Home/Home.module.css';
-import StudyCard from '../../components/StudyCard/studycard';
 import { TextField } from '../../components/ui/TextField/TextField';
 import SearchIcon from '../../assets/ic_search.jpg';
 import { useEffect, useState } from 'react';
 import { getStudyList } from '../../apis/homeService';
 import { showToast } from '../../utils/toast.util';
 import { TOAST } from '../../constants/error';
+import { StudyCard } from '../../components/study/studyCard';
 
 const LIMIT = 6;
 
@@ -87,9 +87,13 @@ export const Home = () => {
         <div className={styles.latestStudyInnerContainer}>
           <h3 className={styles.homeTitlewrapper}>최근 조회한 스터디</h3>
           <div className={styles.cardWapper}>
-            <StudyCard />
-            <StudyCard />
-            <StudyCard />
+            {studies.length > 0
+              ? studies.map((study) => (
+                  <StudyCard key={study.id} data={study} />
+                ))
+              : !isLoading && (
+                  <p className={styles.noResult}>조회한 스터디가 없습니다.</p>
+                )}
           </div>
         </div>
       </section>
@@ -154,10 +158,13 @@ export const Home = () => {
           </div>
 
           <div className={styles.cardWapper}>
-            {/* 나중에 map으로 교체 */}
-            <StudyCard />
-            <StudyCard />
-            <StudyCard />
+            {studies.length > 0
+              ? studies.map((study) => (
+                  <StudyCard key={study.id} data={study} />
+                ))
+              : !isLoading && (
+                  <p className={styles.noResult}>검색 결과가 없습니다.</p>
+                )}
           </div>
 
           {morePage && (

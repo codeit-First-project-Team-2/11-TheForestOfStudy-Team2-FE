@@ -3,6 +3,7 @@
   border: none;
   display: flex;
   gap: 50px;
+  width: 1200px;
 }
 .latestStudyContainer {
   border-radius: 20px;

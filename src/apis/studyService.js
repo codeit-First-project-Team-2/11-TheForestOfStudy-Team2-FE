@@ -11,28 +11,28 @@ import client from './client';
 
 // 1. 스터디 목록 조회 (GET /)
 // 담당: 000
-export const getStudies = async ({
-  page = 1,
-  pageSize = 10,
-  orderBy = 'recent',
-  keyword,
-}) => {
-  try {
-    const params = {
-      page,
-      pageSize,
-      orderBy,
-      ...(keyword && { keyword }),
-    };
-    const response = await client.get('/studies', { params });
-    const data = response.data;
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log(`[getStudies] - 에러발생: ${error.message}`);
-    throw error;
-  }
-};
+// export const getStudies = async ({
+//   page = 1,
+//   pageSize = 10,
+//   orderBy = 'recent',
+//   keyword,
+// }) => {
+//   try {
+//     const params = {
+//       page,
+//       pageSize,
+//       orderBy,
+//       ...(keyword && { keyword }),
+//     };
+//     const response = await client.get('/studies', { params });
+//     const data = response.data;
+//     console.log(data);
+//     return data;
+//   } catch (error) {
+//     console.log(`[getStudies] - 에러발생: ${error.message}`);
+//     throw error;
+//   }
+// };
 
 //스터디 상세 조회 할 때 비밀번호 인증
 // 담당: 안예진
