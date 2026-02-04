@@ -3,7 +3,14 @@
   flex-direction: column;
   align-items: center;
   color: #414141;
+  border-radius: 20px;
+  background: #fff;
 }
+
+.layoutWrapper {
+  padding: 40px;
+}
+
 .studyDetailContainer {
   width: 1200px;
 }

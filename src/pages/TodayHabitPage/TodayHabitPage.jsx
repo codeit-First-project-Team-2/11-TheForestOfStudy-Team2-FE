@@ -201,7 +201,7 @@ export const TodayHabitPage = () => {
   }, []);
 
   return (
-    <>
+    <div className={styles.test}>
       <PageHeader
         className={styles.pageHeader}
         title="연우의 개발공장"
@@ -267,6 +267,6 @@ export const TodayHabitPage = () => {
           isAddDisabled={isAddDisabled}
         />
       </PageCard>
-    </>
+    </div>
   );
 };

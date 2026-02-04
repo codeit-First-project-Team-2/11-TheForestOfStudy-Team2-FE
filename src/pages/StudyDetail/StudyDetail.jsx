@@ -94,6 +94,7 @@ export const StudyDetail = () => {
 
   return (
     <main className={styles.layout}>
+      <div className={styles.layoutWrapper}>
       <div className={styles.studyDetailContainer}>
         <section className={styles.headContainer}>
           <EmojiAddition />
@@ -199,6 +200,7 @@ export const StudyDetail = () => {
             <HabitsTable />
           </section>
         </div>
+      </div>
       </div>
     </main>
   );
