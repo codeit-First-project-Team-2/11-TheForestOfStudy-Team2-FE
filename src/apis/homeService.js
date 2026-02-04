@@ -18,12 +18,10 @@ export const getStudyList = async ({
   //쿼리 파라미터 설정
   const params = { page, limit };
 
-  if (sort) {
-    return (params.sort = sort);
-  }
-  if (keyword) {
-    return (params.keyword = keyword);
-  }
+  if (sort) params.sort = sort;
+  if (keyword) params.keyword = keyword;
+
+  //지금 if 문에서 return 문 대신 값지정만.
 
   //api 리턴값
   return await client.get('/', { params });
