@@ -27,13 +27,17 @@ import {
 } from '../../utils/localStorage.util';
 import { StudyCard } from '../../components/study/studyCard';
 
+import {
+  getRecentStudies,
+  addRecentStudies,
+} from '../../utils/localStorage.util';
 const LIMIT = 6;
 
 export const Home = () => {
-  const [studies, setStudies] = useState([]); // 서버 스터디
-  const [recentStudyIds, setRecentStudyIds] = useState([]); // { studyId }[]
-
+  const [studies, setStudies] = useState([]);
+  const [recentStudies, setRecentStudies] = useState([]);
   const [keyword, setKeyword] = useState('');
+
   const [page, setPage] = useState(1);
   const [morePage, setMorePage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -224,6 +228,7 @@ export const Home = () => {
 
           <div className={styles.cardWapper}>
 <<<<<<< HEAD
+<<<<<<< HEAD
             {studies.length > 0
               ? studies.map((study) => (
                   <StudyCard key={study.id} data={study} />
@@ -236,6 +241,8 @@ export const Home = () => {
                 )}
 >>>>>>> fdd3dd4 (fix: 더보기 버튼 로직 변경)
 =======
+=======
+>>>>>>> d4021fe (fix:충돌수정)
             {studies.length > 0 ? (
               studies.map((study) => (
                 <StudyCard
@@ -251,7 +258,19 @@ export const Home = () => {
                 </p>
               )
             )}
+<<<<<<< HEAD
 >>>>>>> 583213f (feat:최근 조회 스터디 로직작성)
+=======
+=======
+            {studies.length > 0
+              ? studies.map((study) => (
+                  <StudyCard key={study.id} data={study} />
+                ))
+              : !isLoading && (
+                  <p className={styles.noResult}>둘러 볼 스터디가 없어요</p>
+                )}
+>>>>>>> e4ec000 (fix: 자잘한 수정)
+>>>>>>> d4021fe (fix:충돌수정)
           </div>
 
           {morePage && studies.length > 0 && (
