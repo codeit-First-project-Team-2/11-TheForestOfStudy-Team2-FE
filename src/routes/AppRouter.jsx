@@ -18,7 +18,7 @@ export const AppRouter = () => {
       </Route>
       {/* UI 테스트용 */}
       <Route path="*" element={<UiPreview />} />
-      {/* <Route path="/" element={<Home />} />
+      {/* 
       <Route path="/write" element={<StudyForm />} />
       <Route path="/studies/:studyId" element={<StudyDetail />} /> */}
     </Routes>
