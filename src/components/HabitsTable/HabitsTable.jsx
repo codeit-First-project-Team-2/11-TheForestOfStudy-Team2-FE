@@ -1,63 +1,63 @@
-import React from 'react';
 import styles from './HabitsTable.module.css';
-import { studiesMock } from '../../mocks/index.js';
-import { PawIcon } from '../../components/pawIcon.jsx';
-import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '../../constants/color.js';
+import { PawIcon } from '@/components/pawIcon.jsx';
+import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '@/constants/color.js';
+import useStudyStore from '../../stores/useStudyStore.js';
+import { DAYS, WEEK_DATES } from '@/constants/date.js';
 
 export const HabitsTable = () => {
-  //todo 1.스타일 적용안하는 className 삭제 2. 컴포넌트 분리 3.발바닥컬러 습관id를기준으로 변경
-  const weekDates = [
-    '2026-01-26',
-    '2026-01-27',
-    '2026-01-28',
-    '2026-01-29',
-    '2026-01-30',
-    '2026-01-31',
-    '2026-02-01',
-  ];
-  //study가 undefined인 경우 보여줄 내용
-  const study = studiesMock[0] || {
-    habits: [],
-    nickname: '사용자',
-    title: '스터디',
-  };
+  const studyData = useStudyStore((state) => state.studyData);
+  const habits = studyData?.habits || [];
+
+  if (!studyData) {
+    return <div>데이터를 불러오는중입니다 ..</div>;
+  }
+
+  // //study가 undefined인 경우 보여줄 내용
+  // const study = studyData ?? {
+  //   habits: [],
+  //   nickname: '사용자',
+  //   title: '스터디',
+  // };
+
+  const isHabitCompleted = (habit, date) =>
+    habit.records?.some((record) => record.createdAt?.slice(0, 10) === date);
+
   return (
     <div>
       <div className={styles.habitsRecordInnerContainer}>
         <h3 className={styles.titleWrapper}>습관 기록표</h3>
+
         <div className={styles.tableContainer}>
           <table className={styles.habitTable}>
-            <thead className={styles.theadContainer}>
+            <thead>
               <tr className={styles.habitTrContainer}>
-                <th className={styles.habitNameHeader}></th>
-                {['월', '화', '수', '목', '금', '토', '일'].map((day) => (
+                <th></th>
+                {DAYS.map((day) => (
                   <th key={day}>{day}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className={styles.tbodyContainer}>
-              {study.habits && study.habits.length > 0 ? (
-                study.habits.map((habit, index) => {
-                  const habitThemeColor = //수정필요
+
+            <tbody>
+              {habits.length > 0 ? (
+                habits.map((habit, index) => {
+                  const habitThemeColor =
                     HABIT_THEME_COLORS[index % HABIT_THEME_COLORS.length];
 
                   return (
                     <tr key={habit.id}>
                       <td className={styles.habitNameCell}>{habit.name}</td>
-                      {weekDates.map((date) => {
-                        const isCompleted = habit.records.some(
-                          (record) => record.createdAt.includes(date), // 수정필요
-                        );
 
-                        const iconColor = isCompleted
-                          ? habitThemeColor
-                          : INACTIVE_COLOR;
+                      {WEEK_DATES.map((date) => {
+                        const completed = isHabitCompleted(habit, date);
 
                         return (
                           <td key={date} className={styles.habitStatusCell}>
-                            <div className={styles.pawIconWrapper}>
-                              <PawIcon color={iconColor} />
-                            </div>
+                            <PawIcon
+                              color={
+                                completed ? habitThemeColor : INACTIVE_COLOR
+                              }
+                            />
                           </td>
                         );
                       })}
@@ -66,7 +66,7 @@ export const HabitsTable = () => {
                 })
               ) : (
                 <tr>
-                  <td colSpan={8} className={styles.noHabitCell}>
+                  <td colSpan={DAYS.length + 1} className={styles.noHabitCell}>
                     등록된 습관이 없습니다.
                   </td>
                 </tr>
