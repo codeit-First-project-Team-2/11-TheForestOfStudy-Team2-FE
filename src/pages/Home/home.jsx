@@ -5,7 +5,9 @@ import { useEffect, useState } from 'react';
 import { getStudyList } from '../../apis/homeService';
 import { showToast } from '../../utils/toast.util';
 import { TOAST } from '../../constants/error';
+
 import { StudyCard } from '../../components/study/studyCard';
+
 
 const LIMIT = 6;
 
