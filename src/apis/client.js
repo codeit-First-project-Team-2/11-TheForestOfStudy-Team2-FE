@@ -29,7 +29,8 @@ client.interceptors.response.use(
       // 인증 관련 로직 추가 가능
     }
 
-    return Promise.reject({//에러발생시, 비동기로 에러 
+    return Promise.reject({
+      //에러발생시, 비동기로 에러
       status,
       message: errorMessage,
       originalError: error,

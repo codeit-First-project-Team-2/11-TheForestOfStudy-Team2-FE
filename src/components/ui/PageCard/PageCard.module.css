@@ -1,5 +1,8 @@
 .container {
-  padding: 32px;
+  padding: var(--padding-lg);
+  width: 100%;
+  min-width: 0;
   border: 1px solid var(--color-gray-300);
   border-radius: var(--spacing-md);
+  box-sizing: border-box;
 }

@@ -56,7 +56,11 @@ const TodayHabitEditModal = ({
               <TextField
                 className={styles.habitInput}
                 value={newHabitTitle}
-                placeholder="새 습관 입력"
+                placeholder={
+                  isMaxReached
+                    ? '최대 6개까지 추가할 수 있어요'
+                    : '새 습관 입력'
+                }
                 onChange={(e) => {
                   onChangeNewHabitTitle(e.target.value);
                 }}
@@ -65,7 +69,10 @@ const TodayHabitEditModal = ({
                     onAddDraftHabit();
                   }
                 }}
+                disabled={isMaxReached}
+                aria-describedby="habitLimitHelp"
               />
+
               <span className={styles.rightSlot} aria-hidden="true" />
             </div>
 
@@ -74,8 +81,9 @@ const TodayHabitEditModal = ({
                 type="button"
                 className={styles.inputButton}
                 onClick={onAddDraftHabit}
-                disabled={isAddDisabled}
+                disabled={isAddDisabled || isMaxReached}
                 aria-label="추가"
+                aria-describedby="habitLimitHelp"
               >
                 +
               </Button>
@@ -180,12 +188,11 @@ export const TodayHabitPage = () => {
           day: '2-digit',
           hour: '2-digit',
           minute: '2-digit',
-          second: '2-digit',
         }),
       );
     };
 
-    update(); // ✅ 처음에도 바로 표시
+    update();
     const intervalId = window.setInterval(update, 1000);
 
     return () => {
@@ -210,6 +217,41 @@ export const TodayHabitPage = () => {
           >
             목록 수정
           </button>
+        </div>
+
+        {/* 습관이 0개일때  */}
+        <div className={styles.cardContent}>
+          {habits.length === 0 ? (
+            <div className={styles.emptyState}>
+              <p className={styles.emptyTitle}>아직 습관이 없어요</p>
+              <p className={styles.emptyDesc}>
+                목록 수정을 눌러 습관을 생성해보세요
+              </p>
+            </div>
+          ) : (
+            <ul className={styles.todayHabitList}>
+              {habits.map((habit) => (
+                <li key={habit.id} className={styles.todayHabitItem}>
+                  <button
+                    type="button"
+                    className={clsx(
+                      styles.habitButton,
+                      habit.isDone && styles.habitButtonCompleted,
+                    )}
+                    onClick={() => {
+                      setHabits((prev) =>
+                        prev.map((h) =>
+                          h.id === habit.id ? { ...h, isDone: !h.isDone } : h,
+                        ),
+                      );
+                    }}
+                  >
+                    {habit.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <TodayHabitEditModal

@@ -3,9 +3,12 @@ import axios from 'axios';
 //페이지 조회 전 비밀번호 확인 API
 export const verifyPasswordApi = async (studyId, inputPassword) => {
   try {
-    const response = await axios.post(`/api/studies/${studyId}/password/verify`, {
-      password: inputPassword,
-    });
+    const response = await axios.post(
+      `/api/studies/${studyId}/password/verify`,
+      {
+        password: inputPassword,
+      },
+    );
 
     return response.data;
   } catch (error) {
