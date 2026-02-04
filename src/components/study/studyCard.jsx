@@ -4,7 +4,7 @@ import styles from './studyCard.module.css';
 import { useTruncatedText } from '../../hooks/home/useTruncatedText';
 import { EMOJI_LIMITS } from '../../constants/validation.js';
 
-export function StudyCard({ data }) {
+export function StudyCard({ data, onClick }) {
   const {
     nickname,
     title,
@@ -25,9 +25,11 @@ export function StudyCard({ data }) {
       { type: '🔥', count: 21 },
       { type: '🌱', count: 5 },
     ],
-  }; //테스트
-  const truncatedIntro = useTruncatedText(introduction);
+  };
 
+  //소개글 30자이상일경우생략
+  const truncatedIntro = useTruncatedText(introduction, 30);
+  //배경화면 url
   const imageSrc = typeof background === 'string' ? background : background;
   //단색인 경우 닉네임 색 변경
   const getCardColor = (path) => {
@@ -50,9 +52,16 @@ export function StudyCard({ data }) {
     0,
     EMOJI_LIMITS.VISIBLE.MAX_VISIBLE_EMOJIS,
   );
+
+  const handleCardClick = () => {
+    if (onClick) onClick(data);
+  };
   return (
     <>
-      <div className={`${styles.cardContainer} ${themeColorClass}`}>
+      <div
+        onClick={handleCardClick}
+        className={`${styles.cardContainer} ${themeColorClass}`}
+      >
         <img
           src={imageSrc}
           alt="background"

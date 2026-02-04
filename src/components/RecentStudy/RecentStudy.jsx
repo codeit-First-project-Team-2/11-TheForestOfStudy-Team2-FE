@@ -3,12 +3,12 @@ import { StudyCard } from '../study/studyCard';
 import { getRecentStudies } from '../../utils/localStorage.util';
 import styles from '../RecentStudy/RecentStudy.module.css';
 
-export const RecentStudy = ({ RecentStudy, onCardClick }) => {
-  const recentStudyIds = getRecentStudies();
+export const RecentStudy = ({ allStudies = [], onCardClick }) => {
+  const storedStudies = getRecentStudies();
 
-  const recentStudyList = recentStudyIds
+  const recentStudyList = storedStudies
     .slice(0, 3)
-    .map(({ studyId }) => RecentStudy.find((study) => study.id === studyId))
+    .map(({ studyId }) => allStudies.find((study) => study.id === studyId))
     .filter(Boolean);
 
   return (

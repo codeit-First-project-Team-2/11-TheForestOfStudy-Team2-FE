@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import styles from './Home.module.css';
 import { TextField } from '@/components/ui/TextField/TextField';
 import SearchIcon from '@/assets/ic_search.jpg';
@@ -32,13 +33,23 @@ import {
 import { StudyCard } from '../../components/study/studyCard';
 =======
 import { addRecentStudies } from '../../utils/localStorage.util';
+=======
+import { useEffect, useState, useCallback } from 'react';
+import { getStudyList } from '../../apis/homeService';
+import { showToast } from '../../utils/toast.util';
+import { TOAST } from '../../constants/error';
+import {
+  addRecentStudies,
+  syncRecentStudies,
+} from '../../utils/localStorage.util'; // sync 추가
+>>>>>>> 3d72695 (feat:최근 조회한 스터디 로컬스토리지 저장 기능)
 import { RecentStudy } from '../../components/RecentStudy/RecentStudy';
 import { AllStudy } from '../../components/AllStudy/AllStudy';
 import styles from './Home.module.css';
 >>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
 
 const LIMIT = 6;
-
+//TODO home부분 hook으로 뺄거빼기
 export const Home = () => {
   const [studies, setStudies] = useState([]);
   const [keyword, setKeyword] = useState('');
@@ -51,6 +62,9 @@ export const Home = () => {
     label: '최근 순',
   });
 
+  // 최근 본 스터디의 변경을 감지하기 위한 상태 (리렌더링 트리거용)
+  const [recentUpdateTrigger, setRecentUpdateTrigger] = useState(0);
+
   const options = [
     { value: '-createdAt', label: '최근 순' },
     { value: 'createdAt', label: '오래된 순' },
@@ -58,6 +72,7 @@ export const Home = () => {
     { value: 'totalPoint', label: '적은 포인트 순' },
   ];
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   const handleOptionClick = (option) => {
@@ -77,6 +92,9 @@ export const Home = () => {
 =======
   // API 호출 로직
 >>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
+=======
+  // API 호출 및 데이터 동기화 로직
+>>>>>>> 3d72695 (feat:최근 조회한 스터디 로컬스토리지 저장 기능)
   useEffect(() => {
     let cancelled = false;
     const fetchStudies = async () => {
@@ -85,10 +103,20 @@ export const Home = () => {
       try {
         const res = await getStudyList({ sort: selected.value, keyword, page });
         if (cancelled) return;
+
         const newStudies = res.data || [];
-        setStudies((prev) =>
-          page === 1 ? newStudies : [...prev, ...newStudies],
-        );
+
+        // 1. 전체 스터디 상태 업데이트
+        setStudies((prev) => {
+          const updated = page === 1 ? newStudies : [...prev, ...newStudies];
+
+          // 2. [추가] 데이터가 로드된 시점에 로컬스토리 유령 데이터 청소
+          // 이 시점에 studies는 최신 DB 상태를 반영하므로 삭제된 건 알아서 걸러짐
+          if (updated.length > 0) syncRecentStudies(updated);
+
+          return updated;
+        });
+
         if (newStudies.length < LIMIT) setMorePage(false);
       } catch (error) {
         if (!cancelled) showToast.error(TOAST.STUDIES_LOAD_ERROR, error);
@@ -104,11 +132,14 @@ export const Home = () => {
     };
   }, [keyword, selected.value, page]);
 
-  const handleStudyClick = (study) => {
+  const handleStudyClick = useCallback((study) => {
     addRecentStudies(study);
-    // 상태를 강제로 트리거하기 위해 studies를 유지하며 최근 본 목록 갱신 유도
-    setStudies((prev) => [...prev]);
-  };
+
+    setRecentUpdateTrigger((prev) => prev + 1);
+
+    //navigate(`/studies/${study.id}`);
+    //검증이 필요함
+  }, []);
 
   const handleOptionClick = (option) => {
     setSelected(option);
@@ -119,6 +150,7 @@ export const Home = () => {
 
   return (
     <main className={styles.homeLayout}>
+<<<<<<< HEAD
 <<<<<<< HEAD
       {/* ---------------- 최근 조회 ---------------- */}
       <section className={styles.latestStudyContainer}>
@@ -275,6 +307,16 @@ export const Home = () => {
       </section>
 =======
       <RecentStudy allStudies={studies} onCardClick={handleStudyClick} />
+=======
+      {/* recentUpdateTrigger를 key나 prop으로 넘겨서 
+         로컬스토리지가 변했을 때 RecentStudy가 인지하도록 합니다.
+      */}
+      <RecentStudy
+        allStudies={studies}
+        onCardClick={handleStudyClick}
+        key={`recent-section-${recentUpdateTrigger}`}
+      />
+>>>>>>> 3d72695 (feat:최근 조회한 스터디 로컬스토리지 저장 기능)
 
       <AllStudy
         studies={studies}
