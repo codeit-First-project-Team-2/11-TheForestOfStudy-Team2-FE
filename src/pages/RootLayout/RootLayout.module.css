@@ -1,0 +1,46 @@
+.pageBackground,
+.pageLayout,
+.pageContent {
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.pageBackground {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-background);
+  display: flex;
+  padding-inline: var(--page-gutter);
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.pageLayout {
+  height: 100%;
+  min-width: 0;
+  width: 100%;
+  padding: var(--page-gutter);
+  padding-top: var(--padding-lg);
+  padding-bottom: var(--padding-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageContent {
+  display: flex;
+  background: var(--color-white);
+  margin: 0 auto;
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+  align-self: stretch;
+  max-width: 960px;
+  border-radius: var(--radius-md);
+  padding: var(--card-gutter);
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--spacing-lg);
+}

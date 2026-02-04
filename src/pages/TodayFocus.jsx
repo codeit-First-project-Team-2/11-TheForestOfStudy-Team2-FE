@@ -21,7 +21,7 @@ export function TodayFocus() {
   return (
     <div>
       {/* <Header /> */}
-      <main>
+      <div className={styles.container}>
         <section className={styles.timerNavContainer}>
           <div className={styles.timerNavWrapper}>
             <h1 className={styles.timerNavTitle}>
@@ -51,7 +51,7 @@ export function TodayFocus() {
           </div>
         </section>
         <FocusTimer studyId={studyId} onSettle={handleSettle} />
-      </main>
+      </div>
     </div>
   );
 }

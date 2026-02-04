@@ -51,9 +51,9 @@
 }
 
 .content {
-  flex: unset;       
+  flex: unset;
   overflow: visible;
-  flex-direction: column;  
+  flex-direction: column;
   text-align: center;
   align-items: center;
   gap: var(--spacing-md);

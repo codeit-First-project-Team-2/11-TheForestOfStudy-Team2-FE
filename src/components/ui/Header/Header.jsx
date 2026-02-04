@@ -6,11 +6,7 @@ export const Header = () => {
     <header className={styles.container}>
       <div className={styles.inner}>
         <a href="/">
-          <img
-            src={logo}
-            alt="TodayHabit"
-            className={styles.logo}
-          />
+          <img src={logo} alt="TodayHabit" className={styles.logo} />
         </a>
       </div>
     </header>

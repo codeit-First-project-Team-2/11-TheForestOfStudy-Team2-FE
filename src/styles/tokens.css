@@ -27,7 +27,7 @@
   --radius-md: 16px;
 
   /* padding */
-  --padding-xs: 6px; 
+  --padding-xs: 6px;
   --padding-sm: 12px;
   --padding-sm-md: 16px;
   --padding-md: 24px;
@@ -41,7 +41,9 @@
   --font-weight-extra-bold: 800;
 
   /* page-gutter */
-  --page-gutter: 16px; /* mobile (375 기준) */
+  --page-gutter: 16px;
+  --card-gutter: 30px;
+  /* mobile (375 기준) */
 }
 
 @media (min-width: 744px) {

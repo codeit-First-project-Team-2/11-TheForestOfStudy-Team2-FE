@@ -1,11 +1,10 @@
-main {
+.container {
   margin: 53.5px auto 152.5px;
   padding: 40px;
   display: flex;
   flex-direction: column;
   width: fit-content;
   border-radius: 20px;
-  border: 1px solid var(--gray-gray_DDDDDD, #ddd);
   /* 확인후 삭제 */
 }
 
@@ -80,7 +79,7 @@ main {
 
 /* Tablet */
 @media (max-width: 1023px) {
-  main {
+  .container {
     margin: 16px auto 200px;
     padding: 24px;
   }
@@ -94,7 +93,7 @@ main {
 
 /* Mobile */
 @media (max-width: 767px) {
-  main {
+  .container {
     margin: 20px auto 342px;
     padding: 16px;
     width: 344px;
