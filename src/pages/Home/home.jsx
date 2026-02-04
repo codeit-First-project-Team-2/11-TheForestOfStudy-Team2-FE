@@ -27,10 +27,6 @@ import {
 } from '../../utils/localStorage.util';
 import { StudyCard } from '../../components/study/studyCard';
 
-import {
-  getRecentStudies,
-  addRecentStudies,
-} from '../../utils/localStorage.util';
 const LIMIT = 6;
 
 export const Home = () => {
@@ -116,9 +112,7 @@ export const Home = () => {
   /* ---------------- 최근 조회 화면용 리스트 (최신 3개) ---------------- */
   const recentStudyList = recentStudyIds
     .slice(0, 3) // ⭐️ 최신 3개만
-    .map(({ studyId }) =>
-      studies.find((study) => study.id === studyId),
-    )
+    .map(({ studyId }) => studies.find((study) => study.id === studyId))
     .filter(Boolean);
 
   /* ---------------- 카드 클릭 ---------------- */
@@ -158,9 +152,7 @@ export const Home = () => {
                 />
               ))
             ) : (
-              <p className={styles.noResult}>
-                조회한 스터디가 없습니다.
-              </p>
+              <p className={styles.noResult}>조회한 스터디가 없습니다.</p>
             )}
 >>>>>>> 583213f (feat:최근 조회 스터디 로직작성)
           </div>
@@ -194,9 +186,7 @@ export const Home = () => {
                 className={styles.selectBox}
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <span className={styles.selectedLabel}>
-                  {selected.label}
-                </span>
+                <span className={styles.selectedLabel}>{selected.label}</span>
                 <span
                   className={`${styles.arrowIcon} ${
                     isOpen ? styles.arrowOpen : ''
@@ -227,6 +217,7 @@ export const Home = () => {
           </div>
 
           <div className={styles.cardWapper}>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
             {studies.length > 0
@@ -262,15 +253,24 @@ export const Home = () => {
 >>>>>>> 583213f (feat:최근 조회 스터디 로직작성)
 =======
 =======
+=======
+>>>>>>> e2fa022 (fix: 홈 충돌 코드 수정)
             {studies.length > 0
               ? studies.map((study) => (
-                  <StudyCard key={study.id} data={study} />
+                  <StudyCard
+                    key={study.id}
+                    data={study}
+                    onClick={() => handleStudyClick(study)}
+                  />
                 ))
               : !isLoading && (
                   <p className={styles.noResult}>둘러 볼 스터디가 없어요</p>
                 )}
+<<<<<<< HEAD
 >>>>>>> e4ec000 (fix: 자잘한 수정)
 >>>>>>> d4021fe (fix:충돌수정)
+=======
+>>>>>>> e2fa022 (fix: 홈 충돌 코드 수정)
           </div>
 
           {morePage && studies.length > 0 && (
