@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styles from './StudyDetail.module.css';
-import { studiesMock } from '../../mocks/index.js';
 import { HabitsTable } from '../../components/HabitsTable/HabitsTable.jsx';
 import { EmojiAddition } from '../../components/EmojiAddition/EmojiAddition.jsx';
 import pointImg from '../../assets/studyDetail/Group.jpg';

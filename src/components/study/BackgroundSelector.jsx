@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { ALLOWED_BACKGROUND_PATHS } from '@/constants/background';
+import { ALLOWED_BACKGROUND_PATHS } from '../../constants/background.constant.js';
 
 import styles from './BackgroundSelector.module.css';
 
@@ -14,17 +14,10 @@ const BackgroundSelector = ({ value, onChange }) => {
           <button
             key={path}
             type="button"
-            className={clsx(
-              styles.item,
-              value === path && styles.selected
-            )}
+            className={clsx(styles.item, value === path && styles.selected)}
             onClick={() => onChange(path)}
           >
-            <img
-              src={path}
-              alt="background option"
-              className={styles.image}
-            />
+            <img src={path} alt="background option" className={styles.image} />
           </button>
         ))}
       </div>

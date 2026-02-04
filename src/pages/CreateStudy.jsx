@@ -3,11 +3,11 @@ import { useParams, useLocation } from 'react-router-dom';
 import PageHeader from '@/components/ui/PageHeader';
 import PageCard from '@/components/ui/PageCard';
 
-import CreateStudyForm from '@/components/study/CreateStudyForm';
+import CreateStudyForm from '../components/study/StudyForm';
 
 import styles from './CreateStudy.module.css';
 
-const CreateStudyPage = () => {
+export const CreateStudyPage = () => {
   const { studyId } = useParams();
   const location = useLocation();
 
@@ -26,5 +26,3 @@ const CreateStudyPage = () => {
     </div>
   );
 };
-
-export default CreateStudyPage;

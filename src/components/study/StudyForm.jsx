@@ -2,10 +2,10 @@ import { Button } from '@/components/ui/Button';
 import { TextField } from '@/components/ui/TextField';
 import { useState } from 'react';
 
-import useCreateStudy from '@/hooks/study/useCreateStudy';
-import BackgroundSelector from '@/components/study/BackgroundSelector';
+import useCreateStudy from '../../hooks/study/useStudyForm.hook.js';
+import BackgroundSelector from './BackgroundSelector.jsx';
 
-import styles from './CreateStudyForm.module.css';
+import styles from './StudyForm.module.css';
 
 // TODO: 에러처리, 토스트
 

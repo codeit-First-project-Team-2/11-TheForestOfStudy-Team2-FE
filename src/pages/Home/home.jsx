@@ -8,7 +8,6 @@ import { TOAST } from '../../constants/error';
 
 import { StudyCard } from '../../components/study/studyCard';
 
-
 const LIMIT = 6;
 
 export const Home = () => {
@@ -81,7 +80,7 @@ export const Home = () => {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [keyword, selected.value, page]);
+  }, [keyword, selected.value, page, isLoading, morePage]);
 
   return (
     <main className={styles.homeLayout}>
