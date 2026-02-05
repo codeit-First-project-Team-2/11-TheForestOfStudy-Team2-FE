@@ -3,15 +3,15 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border-radius: var(--radius-sm);
+  border-radius: 16px;
   border: none;
   cursor: pointer;
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
-  padding: var(--padding-sm) var(--padding-md);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
   user-select: none;
   text-shadow: 0 -3px 0 rgba(0, 0, 0, 0.25);
-  box-shadow: 0 6px 0 #578246;
+  /* box-shadow: 0 6px 0 #578246; */
   transition:
     box-shadow 0.15s ease,
     transform 0.15s ease;
@@ -30,11 +30,13 @@
 }
 
 .md {
-  height: 44px;
+  width: 252px;
+  height: 58px;
 }
 
 .lg {
-  height: 52px;
+  width: 100%;
+  height: 58px;
   padding: 0 var(--padding-lg);
 }
 
