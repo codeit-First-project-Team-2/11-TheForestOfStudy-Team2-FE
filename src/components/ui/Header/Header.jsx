@@ -6,7 +6,7 @@ import { Button } from '../Button';
 export const Header = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const showButtonPaths = ['/'];
+  const showButtonPaths = ['/', '/create'];
   const showButton = showButtonPaths.includes(pathname);
   return (
     <header className={styles.container}>
