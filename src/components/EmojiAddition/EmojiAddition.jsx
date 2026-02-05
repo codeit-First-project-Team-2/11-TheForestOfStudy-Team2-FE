@@ -7,7 +7,7 @@ import { getEmojiStats, createEmoji } from '@/apis/studyService';
 import useStudyStore from '@/stores/useStudyStore';
 import { showToast } from '@/utils/toast.util';
 import { EMOJI_LIMITS } from '@/constants/validation';
-import { TOAST } from '@/constants/error';
+import { TOAST } from '@/constants/toastError';
 
 export const EmojiAddition = () => {
   const { studyId } = useParams();
@@ -42,7 +42,6 @@ export const EmojiAddition = () => {
     }
   };
 
-  
   const displayEmojis = Array.isArray(studyData?.emojiStats)
     ? studyData.emojiStats.map((item) => ({
         // 배열일 경우 (지금 상황)

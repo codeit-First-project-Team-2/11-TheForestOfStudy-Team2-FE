@@ -10,7 +10,7 @@ import {
   getStudyDetail,
 } from '@/apis/studyService.js';
 import useStudyStore from '@/stores/useStudyStore.js';
-import { TOAST } from '@/constants/error.js';
+import { TOAST } from '@/constants/toastError.js';
 import { showToast } from '@/utils/toast.util.js';
 import { PasswordModal } from '@/components/PasswordModal/PasswordModal';
 import { ShareModal } from '@/components/ui/Modal';
@@ -104,11 +104,9 @@ export const StudyDetail = () => {
             <section className={styles.StudyDetailContainer}>
               <div className={styles.StudyDetailHeadContainer}>
                 <div className={styles.studyTitleContainer}>
-                  <h2 className={styles.studyNicknameWrapper}>
-                    {study.nickname}
-                  </h2>
+                  <h2>{study.nickname}</h2>
                   <p>의&nbsp;</p>
-                  <h2 className={styles.studyTitleWrapper}>{study.title}</h2>
+                  <h2>{study.title}</h2>
                 </div>
                 <div className={styles.todayButtonContainer}>
                   <button
@@ -132,7 +130,7 @@ export const StudyDetail = () => {
                     {study.introduction}
                   </p>
                 </div>
-                <div className={styles.pointContainer}>
+                <div>
                   <p className={styles.labelWrapper}>현재까지 획득한 포인트</p>
                   <div className={styles.pointWrapper}>
                     <img src={pointImg} alt="point" />

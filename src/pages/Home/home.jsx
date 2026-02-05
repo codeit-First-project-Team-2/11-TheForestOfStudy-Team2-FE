@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { getStudyList } from '../../apis/homeService';
 import { verifyStudyPassword } from '../../apis/studyService';
 import { showToast } from '../../utils/toast.util';
-import { TOAST } from '../../constants/error';
+import { TOAST } from '../../constants/toastError';
 import {
   addRecentStudies,
   syncRecentStudies,
