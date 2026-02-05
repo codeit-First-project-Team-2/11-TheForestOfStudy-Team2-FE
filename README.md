@@ -29,6 +29,7 @@ npm run dev
 <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white">
 <img src="https://img.shields.io/badge/notion-000000?style=flat-square&logo=notion&logoColor=white">
 <img src="https://img.shields.io/badge/figma-e05a32?style=flat-square&logo=figma&logoColor=white">
+<img src="https://img.shields.io/badge/netlify-%23000000.svg?tyle=flat-square&logo=netlify&logoColor=#00C7B7"/>
    
 </div>
 
