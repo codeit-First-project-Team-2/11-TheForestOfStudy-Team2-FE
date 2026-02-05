@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import styles from './StudyDetail.module.css';
 import { HabitsTable } from '@/components/HabitsTable/HabitsTable.jsx';
