@@ -1,13 +1,13 @@
-import { useFocusTimer } from '../hooks/todayFocus/useFocusTimer.hook';
-import { INITIAL_SECONDS } from '../constants/time.js';
+import { useFocusTimer } from '@/hooks/todayFocus/useFocusTimer.hook.js';
+import { INITIAL_SECONDS } from '@/constants/time.js';
 import clsx from 'clsx';
 import styles from './focusTimer.module.css';
 
-import startImage from '../assets/focusTimerImages/start_image.svg';
-import pauseImage from '../assets/focusTimerImages/pause_image.svg';
-import resetImage from '../assets/focusTimerImages/reset_image.svg';
-import stopImage from '../assets/focusTimerImages/stop_image.svg';
-import timerTagImage from '../assets/focusTimerImages/timerTag_image.svg';
+import startImage from '@/assets/focusTimerImages/start_image.svg';
+import pauseImage from '@/assets/focusTimerImages/pause_image.svg';
+import resetImage from '@/assets/focusTimerImages/reset_image.svg';
+import stopImage from '@/assets/focusTimerImages/stop_image.svg';
+import timerTagImage from '@/assets/focusTimerImages/timerTag_image.svg';
 
 export function FocusTimer({ studyId, onSettle }) {
   const {

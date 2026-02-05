@@ -3,7 +3,7 @@
   color: #414141;
 }
 .tableContainer {
-  max-height: 380px; /* 원하는 고정 높이 (습관이 많아지면 스크롤 발생) */
+  max-height: 380px;
   overflow-y: auto;
 }
 .titleWrapper {

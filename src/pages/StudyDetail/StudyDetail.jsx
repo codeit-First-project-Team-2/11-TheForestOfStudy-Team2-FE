@@ -1,205 +1,153 @@
 import React, { useEffect, useState } from 'react';
-import styles from './StudyDetail.module.css';
-import { studiesMock } from '../../mocks/index.js';
-import { HabitsTable } from '../../components/HabitsTable/HabitsTable.jsx';
-import { EmojiAddition } from '../../components/EmojiAddition/EmojiAddition.jsx';
-import pointImg from '../../assets/studyDetail/Group.jpg';
 import { useNavigate, useParams } from 'react-router';
+import styles from './StudyDetail.module.css';
+import { HabitsTable } from '@/components/HabitsTable/HabitsTable.jsx';
+import { EmojiAddition } from '@/components/EmojiAddition/EmojiAddition.jsx';
+import pointImg from '@/assets/studyDetail/Group.jpg';
 import {
   deleteStudy,
   verifyStudyPassword,
   getStudyDetail,
-} from '../../apis/studyService.js';
-import { Modal } from '../../components/ui/Modal/Modal.jsx';
-import useStudyStore from '../../stores/useStudyStore.js';
-import { TextField } from '../../components/ui/TextField/TextField.jsx';
-import { Button } from '../../components/ui/Button/Button.jsx';
-import NoVisible from '../../assets/studyDetail/Novisible.jpg';
-import Visible from '../../assets/studyDetail/Visible.jpg';
-import { TOAST } from '../../constants/error.js';
-import { showToast } from '../../utils/toast.util.js';
-//todo 1.스타일 적용안하는 className 삭제
+} from '@/apis/studyService.js';
+import useStudyStore from '@/stores/useStudyStore.js';
+import { TOAST } from '@/constants/error.js';
+import { showToast } from '@/utils/toast.util.js';
+import { PasswordModal } from '@/components/PasswordModal/PasswordModal';
+
 export const StudyDetail = () => {
   const { studyId } = useParams();
   const nav = useNavigate();
+  const { studyData, setStudyData, clearStudy } = useStudyStore();
 
-  const { studyData, setStudyData, setError, clearStudy } = useStudyStore();
-
-  //모달
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isShowPassword, setIsShowPassword] = useState(true);
-  const [targetPath, setTargetPath] = useState(''); //비번 인증 성공 시 해당 path 저장
-  const [password, setPassword] = useState('');
-  const [isDeleteConfirm, setIsDeleteConfirm] = useState(false);
+  const [targetAction, setTargetAction] = useState(null);
 
-  const handleProtectedAction = (type) => {
-    const pathMap = {
-      edit: `/studies/${studyId}/write`,
-      delete: 'delete', // 삭제는 이동이 아니라 함수 실행이니까 키워드만
-      habit: `/studies/${studyId}/habits`,
-      focus: `/studies/${studyId}/focus`,
-    };
-    setTargetPath(pathMap[type]);
-    setIsModalOpen(true);
-    if (type === 'delete') {
-      setIsDeleteConfirm(true);
-    } else {
-      setIsDeleteConfirm(false);
-    }
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setPassword('');
-    setError(null);
-  };
-  const handleConfirmPassword = async () => {
-    try {
-      const data = await verifyStudyPassword(studyId, password);
-      setStudyData(data);
-      if (targetPath === 'delete') {
-        deleteStudy(studyId, password);
-        showToast.success(TOAST.SUCCESS_DELETE);
-
-        clearStudy(); //삭제후 스토어 초기화.
-        nav('/');
-      } else {
-        nav(targetPath);
-      }
-      handleCloseModal();
-    } catch (error) {
-      setError(error.message);
-      showToast.error(error.response?.data?.message || TOAST.PASSWORD_INVALID);
-    }
-  };
-  //study가 undefined인 경우 보여줄 내용
   const study = studyData || {
-    habits: [],
     nickname: '사용자',
     title: '스터디',
-    introdcution: '',
+    introduction: '',
     totalPoint: 0,
   };
+
   useEffect(() => {
     const fetchStudyDetail = async () => {
       try {
         if (!studyId) return;
-        const studyDetail = await getStudyDetail(studyId);
-        setStudyData(studyDetail);
+
+        if (studyData?.id === studyId) return;
+
+        const detail = await getStudyDetail(studyId);
+        setStudyData(detail);
       } catch (error) {
         showToast.error(TOAST.STUDY_ERROR, error);
+        nav('/');
       }
     };
     fetchStudyDetail();
-  }, [studyId, setStudyData]);
+  }, [studyId, setStudyData, studyData?.id, nav]);
+
+  const handleProtectedAction = (type) => {
+    setTargetAction(type);
+    setIsModalOpen(true);
+  };
+
+  const handlePasswordConfirm = async (password) => {
+    try {
+      const data = await verifyStudyPassword(studyId, password);
+      setStudyData(data);
+
+      if (targetAction === 'delete') {
+        await deleteStudy(studyId, password);
+        showToast.success(TOAST.SUCCESS_DELETE);
+        clearStudy();
+        nav('/');
+      } else {
+        const pathMap = {
+          edit: `/studies/${studyId}/write`,
+          habit: `/studies/${studyId}/habits`,
+          focus: `/studies/${studyId}/focus`,
+        };
+        const path = pathMap[targetAction];
+        if (!path) return;
+      }
+      setIsModalOpen(false);
+    } catch (err) {
+      showToast.error(err.response?.data?.message || TOAST.PASSWORD_INVALID);
+    }
+  };
 
   return (
     <main className={styles.layout}>
-      <div className={styles.studyDetailContainer}>
-        <section className={styles.headContainer}>
-          <EmojiAddition />
-          <nav className={styles.navContainer}>
-            <div className={styles.green}>
-              <p className={styles.linkWrapperShared}>공유하기</p>|
-              <p
-                onClick={() => handleProtectedAction('edit')}
-                className={styles.linkWrapperUpdate}
-              >
-                수정하기
+      <div className={styles.layoutWrapper}>
+        <div className={styles.studyDetailContainer}>
+          <section className={styles.headContainer}>
+            <EmojiAddition />
+            <nav className={styles.navContainer}>
+              <div className={styles.green}>
+                <p>공유하기</p>|
+                <p onClick={() => handleProtectedAction('edit')}>수정하기</p>
+              </div>
+              |
+              <p onClick={() => handleProtectedAction('delete')}>
+                스터디 삭제하기
               </p>
-            </div>
-            |
-            <p
-              onClick={() => handleProtectedAction('delete')}
-              className={styles.linkWrapperDelete}
-            >
-              스터디 삭제하기
-            </p>
-          </nav>
-        </section>
+            </nav>
+          </section>
 
-        <div className={styles.gapContainer}>
-          <section className={styles.StudyDetailContainer}>
-            <div className={styles.StudyDetailHeadContainer}>
-              <div className={styles.studyTitleContainer}>
-                <h2 className={styles.studyNicknameWrapper}>
-                  {study.nickname}
-                </h2>
-                <p>의&nbsp;</p>
-                <h2 className={styles.studyTitleWrapper}>{study.title}</h2>
-              </div>
-              <div className={styles.todayButtonContainer}>
-                <button
-                  onClick={() => handleProtectedAction('habit')}
-                  className={styles.todayButtonWrapper}
-                >
-                  오늘의 습관&nbsp;&nbsp;&nbsp;&gt;
-                </button>
-                <button
-                  onClick={() => handleProtectedAction('focus')}
-                  className={styles.todayButtonWrapper}
-                >
-                  오늘의 집중&nbsp;&nbsp;&nbsp;&gt;
-                </button>
-                <Modal
-                  isOpen={isModalOpen}
-                  onClose={handleCloseModal}
-                  title={study.title}
-                  size="sm"
-                >
-                  {isDeleteConfirm ? (
-                    <div className={styles.alertContainer}>
-                      <div>⚠️스터디를 삭제하면 복구할 수 없습니다.</div>
-                    </div>
-                  ) : (
-                    ''
-                  )}
-                  <div className={styles.modalContainer}>
-                    <div>
-                      <p className={styles.modalLabelWrapper}>
-                        권한이 필요해요!
-                      </p>
-                    </div>
-                    <div className={styles.modalTextContainer}>
-                      <TextField
-                        type={isShowPassword ? 'password' : 'text'}
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        placeholder="비밀번호 입력"
-                        fullWidth
-                      />
-                      <button
-                        onClick={() => setIsShowPassword(!isShowPassword)}
-                        className={styles.visibleButton}
-                      >
-                        <img src={isShowPassword ? Visible : NoVisible} />
-                      </button>
-                    </div>
-
-                    <Button onClick={handleConfirmPassword}>확인</Button>
-                  </div>
-                </Modal>
-              </div>
-            </div>
-            <div className={styles.introPointContainer}>
-              <div className={styles.introContainer}>
-                <p className={styles.labelWrapper}>소개</p>
-                <p className={styles.studyIntroduction}>{study.introduction}</p>
-              </div>
-              <div className={styles.pointContainer}>
-                <p className={styles.labelWrapper}>현재까지 획득한 포인트</p>
-                <div className={styles.pointWrapper}>
-                  <img src={pointImg} />
-                  {study.totalPoint}P 획득
+          <div className={styles.gapContainer}>
+            <section className={styles.StudyDetailContainer}>
+              <div className={styles.StudyDetailHeadContainer}>
+                <div className={styles.studyTitleContainer}>
+                  <h2 className={styles.studyNicknameWrapper}>
+                    {study.nickname}
+                  </h2>
+                  <p>의&nbsp;</p>
+                  <h2 className={styles.studyTitleWrapper}>{study.title}</h2>
+                </div>
+                <div className={styles.todayButtonContainer}>
+                  <button
+                    onClick={() => handleProtectedAction('habit')}
+                    className={styles.todayButtonWrapper}
+                  >
+                    오늘의 습관&nbsp;&nbsp;&nbsp;&gt;
+                  </button>
+                  <button
+                    onClick={() => handleProtectedAction('focus')}
+                    className={styles.todayButtonWrapper}
+                  >
+                    오늘의 집중&nbsp;&nbsp;&nbsp;&gt;
+                  </button>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section className={styles.habitsRecordContainer}>
-            <HabitsTable />
-          </section>
+              <div className={styles.introPointContainer}>
+                <div className={styles.introContainer}>
+                  <p className={styles.labelWrapper}>소개</p>
+                  <p className={styles.studyIntroduction}>
+                    {study.introduction}
+                  </p>
+                </div>
+                <div className={styles.pointContainer}>
+                  <p className={styles.labelWrapper}>현재까지 획득한 포인트</p>
+                  <div className={styles.pointWrapper}>
+                    <img src={pointImg} alt="point" />
+                    {study.totalPoint}P 획득
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section className={styles.habitsRecordContainer}>
+              <HabitsTable />
+            </section>
+          </div>
         </div>
+
+        <PasswordModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title={study.title}
+          onConfirm={handlePasswordConfirm}
+          isDelete={targetAction === 'delete'}
+        />
       </div>
     </main>
   );

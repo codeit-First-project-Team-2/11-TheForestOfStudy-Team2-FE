@@ -1,8 +1,8 @@
 import { useTimerAction } from './useTimerAction.hook';
-import { settlePointsApi } from '../../apis/focusTimerService.js';
-import { INITIAL_SECONDS } from '../../constants/time.js';
-import styles from '../../components/focusTimer.module.css';
-import { showToast } from '../../utils/toast.util.js';
+import { settlePointsApi } from '@/apis/focusTimerService.js';
+import { INITIAL_SECONDS } from '@/constants/time.js';
+import styles from '@/components/focusTimer/focusTimer.module.css';
+import { showToast } from '@/utils/toast.util.js';
 
 export const useFocusTimer = (studyId, onSettle) => {
   const {
@@ -14,7 +14,6 @@ export const useFocusTimer = (studyId, onSettle) => {
     reset,
   } = useTimerAction();
 
-  //시간 포맷팅 로직
   const formatTime = (leftTime) => {
     const abs = Math.abs(leftTime);
     const minutes = String(Math.floor(abs / 60)).padStart(2, '0');
@@ -22,7 +21,6 @@ export const useFocusTimer = (studyId, onSettle) => {
     return leftTime < 0 ? `-${minutes}:${seconds}` : `${minutes}:${seconds}`;
   };
 
-  //타이머 색상 로직
   const getTimerColorClass = () => {
     if (isOvertime) {
       return styles.timerGrey;
@@ -33,16 +31,13 @@ export const useFocusTimer = (studyId, onSettle) => {
     return styles.timerBlack;
   };
 
-  //UI 조건 설정하는 변수
   const isNormalRunning = status !== 'initial' && !isOvertime;
 
-  //일시정지 시 토스트 출력
   const handlePause = async () => {
     pauseTimer();
     showToast.error('집중이 중단되었습니다.');
   };
 
-  //정지버튼 누를 시 포인트 정산 로직
   const handleStop = async () => {
     pauseTimer();
 

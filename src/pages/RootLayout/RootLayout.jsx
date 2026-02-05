@@ -4,7 +4,7 @@ import styles from './RootLayout.module.css';
 
 export const RootLayout = () => {
   return (
-    <div className={styles.pageBackground}>
+    <div>
       <div className={styles.pageLayout}>
         <Header />
         <main className={styles.pageContent}>

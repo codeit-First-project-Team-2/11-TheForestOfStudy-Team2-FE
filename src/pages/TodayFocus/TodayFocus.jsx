@@ -1,16 +1,14 @@
-// import { Header } from '../../components/ui/Header/Header.jsx'
 import { useParams, Link } from 'react-router';
-import { FocusTimer } from '../components/focusTimer';
+import { FocusTimer } from '@/components/focusTimer/focusTimer.jsx';
 import clsx from 'clsx';
 import styles from './TodayFocus.module.css';
-import pointIcon from '../assets/focusTimerImages/point_image.svg';
-import { useTodayFocus } from '../hooks/todayFocus/useTodayFocus.hook';
+import pointIcon from '@/assets/focusTimerImages/point_image.svg';
+import { useTodayFocus } from '@/hooks/todayFocus/useTodayFocus.hook';
 
 export function TodayFocus() {
   const { studyId } = useParams();
   const { studyData, handleSettle } = useTodayFocus(studyId);
 
-  //서버 응답 전 로딩화면
   if (!studyData)
     return (
       <div>
@@ -20,7 +18,6 @@ export function TodayFocus() {
 
   return (
     <div>
-      {/* <Header /> */}
       <div className={styles.container}>
         <section className={styles.timerNavContainer}>
           <div className={styles.timerNavWrapper}>

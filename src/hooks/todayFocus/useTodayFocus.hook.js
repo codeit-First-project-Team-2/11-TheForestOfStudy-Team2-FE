@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { showToast } from '../../utils/toast.util.js';
-import { studiesMock } from '../../mocks';
+import { showToast } from '@/utils/toast.util.js';
+import { studiesMock } from '@/mocks';
 
 const isDev = true; // 배포시 false로 변경
 
@@ -9,7 +9,7 @@ export const useTodayFocus = (studyId) => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const targetMockData = isDev //목데이터 활용 로직 추가
+  const targetMockData = isDev
     ? studiesMock.find((mock) => {
         return mock.id === studyId;
       }) || studiesMock[0]

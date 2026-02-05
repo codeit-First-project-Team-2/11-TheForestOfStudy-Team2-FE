@@ -41,4 +41,14 @@ export const addRecentStudies = (study) => {
   }
 };
 
-//핸들러 함수로 불러서 onClick props에 넣어 로컬스토리지 활용할 수 있다.
+export const syncRecentStudies = (allStudies) => {
+  const currentList = getRecentStudies();
+  const allIds = allStudies.map((s) => s.id);
+
+  // 전체 목록(allIds)에 포함된 studyId만 남김
+  const syncedList = currentList.filter((item) =>
+    allIds.includes(item.studyId),
+  );
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(syncedList));
+};

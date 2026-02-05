@@ -1,9 +1,10 @@
-import { getStudyDayCount } from '../../utils/DayCount.util.js';
-import pointIcon from '../../assets/focusTimerImages/point_image.svg';
+import { getStudyDayCount } from '@/utils/DayCount.util.js';
+import pointIcon from '@/assets/focusTimerImages/point_image.svg';
 import styles from './studyCard.module.css';
-import greenBg from '../../assets/background/green.jpg'; //테스트
+import { useTruncatedText } from '../../hooks/home/useTruncatedText';
+import { EMOJI_LIMITS } from '../../constants/validation.js';
 
-export function StudyCard({ data }) {
+export function StudyCard({ data, onClick }) {
   const {
     nickname,
     title,
@@ -12,19 +13,24 @@ export function StudyCard({ data }) {
     background,
     createdAt,
     emojis,
+    _count,
   } = data || {
     nickname: '아이유',
     title: '테스트 스터디',
     totalPoint: 200,
     introduction: '테스트용 설명입니다.',
-    background: greenBg,
+    background: '/images/backgrounds/mikey.png',
     createdAt: '2026-01-10T08:30:00.000Z',
     emojis: [
       { type: '🔥', count: 21 },
       { type: '🌱', count: 5 },
     ],
-  }; //테스트
+  };
 
+  //소개글 30자이상일경우생략
+  const truncatedIntro = useTruncatedText(introduction, 30);
+  //배경화면 url
+  const imageSrc = typeof background === 'string' ? background : background;
   //단색인 경우 닉네임 색 변경
   const getCardColor = (path) => {
     if (!path) return null;
@@ -37,16 +43,27 @@ export function StudyCard({ data }) {
     return null;
   };
 
-  //단색일때와 사진 배경일 때 글자색 변경
   const cardColorClass = getCardColor(background);
   const isPastelColor = cardColorClass !== null;
   const themeColorClass = isPastelColor ? styles.lightMode : styles.darkMode;
 
+  const totalEmojiCount = _count?.emojis || 0;
+  const visibleEmojis = emojis.slice(
+    0,
+    EMOJI_LIMITS.VISIBLE.MAX_VISIBLE_EMOJIS,
+  );
+
+  const handleCardClick = () => {
+    if (onClick) onClick(data);
+  };
   return (
     <>
-      <div className={`${styles.cardContainer} ${themeColorClass}`}>
+      <div
+        onClick={handleCardClick}
+        className={`${styles.cardContainer} ${themeColorClass}`}
+      >
         <img
-          src={background}
+          src={imageSrc}
           alt="background"
           className={styles.backgroundCardImage}
         />
@@ -68,13 +85,13 @@ export function StudyCard({ data }) {
           </p>
         </div>
 
-        <h1 className={styles.cardIntroduction}>{introduction}</h1>
+        <h1 className={styles.cardIntroduction}>{truncatedIntro}</h1>
         <div className={styles.emojiWrapper}>
           {emojis &&
-            emojis.map((emoji, index) => (
+            visibleEmojis.map((emoji, index) => (
               <div key={index} className={styles.eachEmoji}>
                 <span>{emoji.type}</span>
-                <span>{emoji.count}</span>
+                <span>{totalEmojiCount}</span>
               </div>
             ))}
         </div>

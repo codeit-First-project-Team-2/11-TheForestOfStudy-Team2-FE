@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { createStudy, getStudyDetail, patchStudy } from '@/api/studyService';
-
-import { STUDY_VALIDATION } from '@/constants/validation';
-import { toast } from '@/utils/toast.util';
+import { showToast } from '@/utils/toast.util';
+import {
+  createStudy,
+  getStudyDetail,
+  updateStudy,
+} from '@/apis/studyService.js';
+// import { STUDY_VALIDATION } from '../../constants/validation.js';
 
 const initialForm = {
   nickname: '',
@@ -20,11 +22,9 @@ const useCreateStudy = ({ mode, studyId }) => {
   const isEdit = mode === 'edit';
 
   const [form, setForm] = useState(initialForm);
-  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // edit 모드 → 기존 스터디 정보 불러오기
   useEffect(() => {
     if (!isEdit || !studyId) return;
 
@@ -41,7 +41,8 @@ const useCreateStudy = ({ mode, studyId }) => {
           passwordConfirm: '',
         });
       } catch (error) {
-        toast.error('스터디 정보를 불러오지 못했습니다');
+        console.error(error);
+        showToast.error('스터디 정보를 불러오지 못했습니다');
         navigate('/');
       }
     };
@@ -49,7 +50,6 @@ const useCreateStudy = ({ mode, studyId }) => {
     fetchStudy();
   }, [isEdit, studyId, navigate]);
 
-  // 🔹 input handler
   const handleChange = (key) => (e) => {
     const value = e.target.value;
 
@@ -67,25 +67,26 @@ const useCreateStudy = ({ mode, studyId }) => {
   const validate = () => {
     const nextErrors = {};
 
-    if (!STUDY_VALIDATION.nickname.validate(form.nickname)) {
-      nextErrors.nickname = STUDY_VALIDATION.nickname.message;
-    }
+    // if (!STUDY_VALIDATION.nickname.validate(form.nickname)) {
+    //   nextErrors.nickname = STUDY_VALIDATION.nickname.message;
+    // }
 
-    if (!STUDY_VALIDATION.title.validate(form.title)) {
-      nextErrors.title = STUDY_VALIDATION.title.message;
-    }
+    // if (!STUDY_VALIDATION.title.validate(form.title)) {
+    //   nextErrors.title = STUDY_VALIDATION.title.message;
+    // }
 
-    if (!STUDY_VALIDATION.introduction.validate(form.introduction)) {
-      nextErrors.introduction = STUDY_VALIDATION.introduction.message;
-    }
+    // if (!STUDY_VALIDATION.introduction.validate(form.introduction)) {
+    //   nextErrors.introduction = STUDY_VALIDATION.introduction.message;
+    // }
 
     if (!isEdit) {
-      if (!STUDY_VALIDATION.password.validate(form.password)) {
-        nextErrors.password = STUDY_VALIDATION.password.message;
-    }
+      // if (!STUDY_VALIDATION.password.validate(form.password)) {
+      //   nextErrors.password = STUDY_VALIDATION.password.message;
+      // }
 
-    if (form.password !== form.passwordConfirm) {
-      nextErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
+      if (form.password !== form.passwordConfirm) {
+        nextErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
+      }
     }
 
     setErrors(nextErrors);
@@ -107,21 +108,22 @@ const useCreateStudy = ({ mode, studyId }) => {
       };
 
       if (isEdit) {
-        await patchStudy({
+        await updateStudy({
           studyId,
           ...payload,
         });
 
-        toast.success('스터디가 수정되었습니다');
+        showToast.success('스터디가 수정되었습니다');
         navigate(`/study/${studyId}`);
       } else {
         const data = await createStudy(payload);
 
-        toast.success('스터디가 생성되었습니다');
+        showToast.success('스터디가 생성되었습니다');
         navigate(`/study/${data.id}`);
       }
     } catch (error) {
-      toast.error('스터디 저장 중 오류가 발생했습니다');
+      console.error(error);
+      showToast.error('스터디 저장 중 오류가 발생했습니다');
     } finally {
       setIsLoading(false);
     }
@@ -133,7 +135,7 @@ const useCreateStudy = ({ mode, studyId }) => {
     isLoading,
     handleChange,
     handleSubmit,
-    setForm, // 배경 선택용
+    setForm,
   };
 };
 

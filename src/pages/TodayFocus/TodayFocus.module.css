@@ -5,7 +5,7 @@
   flex-direction: column;
   width: fit-content;
   border-radius: 20px;
-  /* 확인후 삭제 */
+  background: #fff;
 }
 
 .timerNavContainer {

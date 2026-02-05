@@ -3,7 +3,14 @@
   flex-direction: column;
   align-items: center;
   color: #414141;
+  border-radius: 20px;
+  background: #fff;
 }
+
+.layoutWrapper {
+  padding: 40px;
+}
+
 .studyDetailContainer {
   width: 1200px;
 }
@@ -28,37 +35,6 @@
   display: flex;
   gap: 16px;
   color: #558b58;
-}
-
-.alertContainer {
-  margin-bottom: 20px;
-  color: var(--color-text-primary);
-}
-.modalContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-.modalLabelWrapper {
-  color: var(--color-text-primary);
-}
-.modalTextContainer {
-  position: relative;
-  width: 100%;
-}
-.visibleButton {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.2s;
 }
 
 .gapContainer {
@@ -102,16 +78,18 @@
   justify-content: center;
   gap: 25px;
 }
+<<<<<<< HEAD
+=======
 .introContainer {
+  width: 700px;
 }
-.pointContainer {
-}
+>>>>>>> e166051 (feat: 비밀번호 모달 컴포넌트화,홈,스터디상세에 적용)
+
 .labelWrapper {
   color: #818181;
   margin-bottom: 10px;
 }
-.studyIntroduction {
-}
+
 .pointWrapper {
   display: flex;
   gap: 5px;
