@@ -75,7 +75,9 @@ export const StudyDetail = () => {
         };
         const path = pathMap[targetAction];
         if (!path) return;
-        nav(path);
+        if (path) {
+          nav(path, { state: { studyData: data } });
+        }
       }
 
       setIsModalOpen(false);
