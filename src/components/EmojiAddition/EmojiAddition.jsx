@@ -31,6 +31,8 @@ export const EmojiAddition = () => {
   }, [studyId, setEmojiStats]);
 
   const handleEmojiAction = async (emojiChar) => {
+    console.log('전송할 이모지:', emojiChar);
+    if (!emojiChar || typeof emojiChar !== 'string') return;
     try {
       const updatedStats = await createEmoji(studyId, emojiChar);
       setEmojiStats(updatedStats);
@@ -62,7 +64,7 @@ export const EmojiAddition = () => {
     <div className={styles.emojiContainer}>
       {visibleEmojis.map((item) => (
         <button
-          onClick={handleEmojiAction}
+          onClick={() => handleEmojiAction(item.emoji)}
           key={item.emoji}
           className={styles.emojiReactionBadge}
         >
@@ -84,7 +86,7 @@ export const EmojiAddition = () => {
             <div className={styles.extraPanel}>
               {hiddenEmojis.map((item) => (
                 <button
-                  onClick={handleEmojiAction}
+                  onClick={() => handleEmojiAction(item.emoji)}
                   key={item.emoji}
                   className={styles.emojiReactionBadge}
                 >

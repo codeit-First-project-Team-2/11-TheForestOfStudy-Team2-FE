@@ -35,36 +35,49 @@ import { StudyCard } from '../../components/study/studyCard';
 import { addRecentStudies } from '../../utils/localStorage.util';
 =======
 import { useEffect, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router';
 import { getStudyList } from '../../apis/homeService';
+import { verifyStudyPassword } from '../../apis/studyService';
 import { showToast } from '../../utils/toast.util';
 import { TOAST } from '../../constants/error';
 import {
   addRecentStudies,
   syncRecentStudies,
+<<<<<<< HEAD
 } from '../../utils/localStorage.util'; // sync 추가
 >>>>>>> 3d72695 (feat:최근 조회한 스터디 로컬스토리지 저장 기능)
+=======
+} from '../../utils/localStorage.util';
+>>>>>>> e166051 (feat: 비밀번호 모달 컴포넌트화,홈,스터디상세에 적용)
 import { RecentStudy } from '../../components/RecentStudy/RecentStudy';
 import { AllStudy } from '../../components/AllStudy/AllStudy';
+import { PasswordModal } from '../../components/PasswordModal/PasswordModal';
+import useStudyStore from '../../stores/useStudyStore';
 import styles from './Home.module.css';
 >>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
 
 const LIMIT = 6;
-//TODO home부분 hook으로 뺄거빼기
+
 export const Home = () => {
+  const nav = useNavigate();
+  const { setStudyData } = useStudyStore();
+
   const [studies, setStudies] = useState([]);
   const [keyword, setKeyword] = useState('');
   const [page, setPage] = useState(1);
   const [morePage, setMorePage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState({
     value: '-createdAt',
     label: '최근 순',
   });
 
-  // 최근 본 스터디의 변경을 감지하기 위한 상태 (리렌더링 트리거용)
-  const [recentUpdateTrigger, setRecentUpdateTrigger] = useState(0);
+  // 모달 제어 상태
+  const [isVerifyOpen, setIsVerifyOpen] = useState(false);
+  const [selectedStudyId, setSelectedStudyId] = useState(null);
+  const [recentTrigger, setRecentTrigger] = useState(0);
 
+<<<<<<< HEAD
   const options = [
     { value: '-createdAt', label: '최근 순' },
     { value: 'createdAt', label: '오래된 순' },
@@ -95,6 +108,8 @@ export const Home = () => {
 =======
   // API 호출 및 데이터 동기화 로직
 >>>>>>> 3d72695 (feat:최근 조회한 스터디 로컬스토리지 저장 기능)
+=======
+>>>>>>> e166051 (feat: 비밀번호 모달 컴포넌트화,홈,스터디상세에 적용)
   useEffect(() => {
     let cancelled = false;
     const fetchStudies = async () => {
@@ -103,20 +118,12 @@ export const Home = () => {
       try {
         const res = await getStudyList({ sort: selected.value, keyword, page });
         if (cancelled) return;
-
         const newStudies = res.data || [];
-
-        // 1. 전체 스터디 상태 업데이트
         setStudies((prev) => {
           const updated = page === 1 ? newStudies : [...prev, ...newStudies];
-
-          // 2. [추가] 데이터가 로드된 시점에 로컬스토리 유령 데이터 청소
-          // 이 시점에 studies는 최신 DB 상태를 반영하므로 삭제된 건 알아서 걸러짐
           if (updated.length > 0) syncRecentStudies(updated);
-
           return updated;
         });
-
         if (newStudies.length < LIMIT) setMorePage(false);
       } catch (error) {
         if (!cancelled) showToast.error(TOAST.STUDIES_LOAD_ERROR, error);
@@ -124,7 +131,6 @@ export const Home = () => {
         if (!cancelled) setIsLoading(false);
       }
     };
-
     const timer = setTimeout(fetchStudies, 500);
     return () => {
       cancelled = true;
@@ -132,24 +138,29 @@ export const Home = () => {
     };
   }, [keyword, selected.value, page]);
 
-  const handleStudyClick = useCallback((study) => {
-    addRecentStudies(study);
+  // 카드 클릭 시 모달 열기
+  const handleStudyClick = (study) => {
+    setSelectedStudyId(study.id);
+    setIsVerifyOpen(true);
+  };
 
-    setRecentUpdateTrigger((prev) => prev + 1);
-
-    //navigate(`/studies/${study.id}`);
-    //검증이 필요함
-  }, []);
-
-  const handleOptionClick = (option) => {
-    setSelected(option);
-    setPage(1);
-    setMorePage(true);
-    setIsOpen(false);
+  // 모달에서 비번 확인 성공 시 실행
+  const handleVerifyConfirm = async (password) => {
+    try {
+      const data = await verifyStudyPassword(selectedStudyId, password);
+      setStudyData(data);
+      addRecentStudies(data);
+      setRecentTrigger((prev) => prev + 1);
+      setIsVerifyOpen(false);
+      nav(`/studies/${selectedStudyId}`);
+    } catch (error) {
+      showToast.error('비밀번호가 일치하지 않습니다.', error);
+    }
   };
 
   return (
     <main className={styles.homeLayout}>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       {/* ---------------- 최근 조회 ---------------- */}
@@ -311,13 +322,18 @@ export const Home = () => {
       {/* recentUpdateTrigger를 key나 prop으로 넘겨서 
          로컬스토리지가 변했을 때 RecentStudy가 인지하도록 합니다.
       */}
+=======
+>>>>>>> e166051 (feat: 비밀번호 모달 컴포넌트화,홈,스터디상세에 적용)
       <RecentStudy
         allStudies={studies}
         onCardClick={handleStudyClick}
-        key={`recent-section-${recentUpdateTrigger}`}
+        key={recentTrigger}
       />
+<<<<<<< HEAD
 >>>>>>> 3d72695 (feat:최근 조회한 스터디 로컬스토리지 저장 기능)
 
+=======
+>>>>>>> e166051 (feat: 비밀번호 모달 컴포넌트화,홈,스터디상세에 적용)
       <AllStudy
         studies={studies}
         isLoading={isLoading}
@@ -326,13 +342,23 @@ export const Home = () => {
         setKeyword={setKeyword}
         onPageChange={setPage}
         selected={selected}
-        onOptionClick={handleOptionClick}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-        options={options}
+        onOptionClick={(opt) => {
+          setSelected(opt);
+          setPage(1);
+          setMorePage(true);
+        }}
         onCardClick={handleStudyClick}
       />
+<<<<<<< HEAD
 >>>>>>> 0ed3cc7 (feat:studyCard 데이터 정렬)
+=======
+      <PasswordModal
+        isOpen={isVerifyOpen}
+        onClose={() => setIsVerifyOpen(false)}
+        title="스터디 입장"
+        onConfirm={handleVerifyConfirm}
+      />
+>>>>>>> e166051 (feat: 비밀번호 모달 컴포넌트화,홈,스터디상세에 적용)
     </main>
   );
 };
