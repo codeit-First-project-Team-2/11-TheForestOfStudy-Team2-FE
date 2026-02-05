@@ -28,14 +28,14 @@ export const createStudy = async ({
   password,
 }) => {
   try {
-    const response = await client.post('/studies', {
+    const data = await client.post('/studies', {
       nickname,
       title,
       introduction,
       background,
       password,
     });
-    const data = response.data;
+
     console.log(data);
     return data;
   } catch (error) {

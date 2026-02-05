@@ -108,18 +108,15 @@ const useStudyForm = ({ mode, studyId }) => {
       };
 
       if (isEdit) {
-        await updateStudy({
-          studyId,
-          ...payload,
-        });
+        await updateStudy(studyId, payload);
 
         showToast.success('스터디가 수정되었습니다');
-        navigate(`/study/${studyId}`);
+        navigate(`/studies/${studyId}`);
       } else {
         const data = await createStudy(payload);
 
         showToast.success('스터디가 생성되었습니다');
-        navigate(`/study/${data.id}`);
+        navigate(`/studies/${data.id}`);
       }
     } catch (error) {
       console.error(error);
