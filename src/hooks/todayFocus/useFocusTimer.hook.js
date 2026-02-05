@@ -1,7 +1,7 @@
 import { useTimerAction } from './useTimerAction.hook';
 import { settlePointsApi } from '@/apis/focusTimerService.js';
 import { INITIAL_SECONDS } from '@/constants/time.js';
-import styles from '@/components/focusTimer/focusTimer.module.css';
+import styles from '../../components/focusTimer/focusTimer.module.css';
 import { showToast } from '@/utils/toast.util.js';
 
 export const useFocusTimer = (studyId, onSettle) => {

@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { showToast } from '@/utils/toast.util.js';
 import { studiesMock } from '@/mocks';
 
-const isDev = true; // 배포시 false로 변경
+const isDev = false; // 배포시 false로 변경
 
 export const useTodayFocus = (studyId) => {
   const location = useLocation();

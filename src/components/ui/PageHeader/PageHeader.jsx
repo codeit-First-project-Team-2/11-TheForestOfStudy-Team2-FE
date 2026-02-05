@@ -35,7 +35,7 @@ export const PageHeader = ({
             className={styles.buttonPrimary}
             onClick={onFocusClick}
           >
-            오늘의 집중
+            오늘의 집중 &nbsp;&gt;
           </button>
 
           <button
@@ -43,7 +43,7 @@ export const PageHeader = ({
             className={styles.buttonSecondary}
             onClick={onHomeClick}
           >
-            홈
+            홈 &nbsp;&gt;
           </button>
         </div>
       </div>
