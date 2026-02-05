@@ -36,7 +36,7 @@ export const AllStudy = ({
             placeholder="검색"
             onChange={(e) => {
               setKeyword(e.target.value);
-              onPageChange(1); // 검색 시 페이지 초기화
+              onPageChange(1); 
             }}
           />
 

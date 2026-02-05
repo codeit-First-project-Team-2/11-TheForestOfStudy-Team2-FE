@@ -9,5 +9,5 @@ export function getStudyDayCount(createdDate) {
 
   const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
 
-  return Math.floor(diffInDays) + 1; //1일 째
+  return Math.floor(diffInDays) + 1;
 }

@@ -12,7 +12,6 @@ const MAX_HABITS = 6;
 
 const INITIAL_HABITS = [];
 
-// ✅ 파일 내부 전용 컴포넌트: TodayHabitEditModal
 const TodayHabitEditModal = ({
   isOpen,
   draftHabits,
@@ -50,7 +49,6 @@ const TodayHabitEditModal = ({
             </li>
           ))}
 
-          {/* ✅ 입력 행 */}
           <li className={styles.habitList}>
             <div className={styles.habitItem}>
               <TextField
@@ -192,7 +190,7 @@ export const TodayHabitPage = () => {
   }, []);
 
   return (
-    <div className={styles.test}>
+    <div className={styles.pageContainer}>
       <PageHeader
         className={styles.pageHeader}
         title="연우의 개발공장"
@@ -210,7 +208,6 @@ export const TodayHabitPage = () => {
           </button>
         </div>
 
-        {/* 습관이 0개일때  */}
         <div className={styles.cardContent}>
           {habits.length === 0 ? (
             <div className={styles.emptyState}>

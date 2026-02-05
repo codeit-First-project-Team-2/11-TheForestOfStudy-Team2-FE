@@ -1,7 +1,7 @@
 import { StudyCard } from '../study/studyCard';
 import { getRecentStudies } from '../../utils/localStorage.util';
 import styles from '../RecentStudy/RecentStudy.module.css';
-//TODO 정렬방식바뀌면 최근조회한 스터디도 바뀌는데,어떤 sort를 하더라고 고정하게 해야함.
+
 export const RecentStudy = ({ allStudies = [], onCardClick }) => {
   const storedStudies = getRecentStudies();
 
@@ -12,7 +12,7 @@ export const RecentStudy = ({ allStudies = [], onCardClick }) => {
 
   return (
     <section className={styles.latestStudyContainer}>
-      <div className={styles.latestStudyInnerContainer}>
+      <div >
         <h3 className={styles.homeTitlewrapper}>최근 조회한 스터디</h3>
         <div className={styles.cardWapper}>
           {recentStudyList.length > 0 ? (

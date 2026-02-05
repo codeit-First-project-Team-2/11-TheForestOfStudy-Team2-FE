@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { getStudyList } from '../../apis/homeService';
 import { verifyStudyPassword } from '../../apis/studyService';
@@ -30,7 +30,6 @@ export const Home = () => {
     label: '최근 순',
   });
 
-  // 모달 제어 상태
   const [isVerifyOpen, setIsVerifyOpen] = useState(false);
   const [selectedStudyId, setSelectedStudyId] = useState(null);
   const [recentTrigger, setRecentTrigger] = useState(0);
@@ -61,23 +60,21 @@ export const Home = () => {
       cancelled = true;
       clearTimeout(timer);
     };
-  }, [keyword, selected.value, page]);
+  }, [keyword, selected.value, page, morePage]);
 
-  // 카드 클릭 시 모달 열기
   const handleStudyClick = (study) => {
     setSelectedStudyId(study.id);
     setIsVerifyOpen(true);
   };
 
-  // 모달에서 비번 확인 성공 시 실행
   const handleVerifyConfirm = async (password) => {
     try {
       const data = await verifyStudyPassword(selectedStudyId, password);
-      setStudyData(data); // 상세 데이터 스토어 저장
-      addRecentStudies(data); // 최근 본 목록 저장
+      setStudyData(data);
+      addRecentStudies(data);
       setRecentTrigger((prev) => prev + 1);
       setIsVerifyOpen(false);
-      nav(`/studies/${selectedStudyId}`); // 상세 페이지 이동
+      nav(`/studies/${selectedStudyId}`);
     } catch (error) {
       showToast.error('비밀번호가 일치하지 않습니다.', error);
     }

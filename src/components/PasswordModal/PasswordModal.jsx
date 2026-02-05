@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Modal } from '../ui/Modal/Modal.jsx';
 import { TextField } from '../ui/TextField/TextField.jsx';
 import { Button } from '../ui/Button/Button.jsx';
-import Visible from '../../assets/studyDetail/Visible.jpg';
-import NoVisible from '../../assets/studyDetail/Novisible.jpg';
+import Visible from '@/assets/studyDetail/Visible.jpg';
+import NoVisible from '@/assets/studyDetail/Novisible.jpg';
 import styles from './PasswordModal.module.css';
 
 export const PasswordModal = ({ isOpen, onClose, title, onConfirm, isDelete = false }) => {

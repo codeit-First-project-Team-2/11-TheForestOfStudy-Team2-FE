@@ -11,6 +11,7 @@
 .timerNavContainer {
   margin-bottom: 24px;
   width: 1168px;
+  white-space: nowrap;
 }
 
 .timerNavWrapper {

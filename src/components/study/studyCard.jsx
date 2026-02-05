@@ -1,8 +1,8 @@
 import { getStudyDayCount } from '@/utils/DayCount.util.js';
 import pointIcon from '@/assets/focusTimerImages/point_image.svg';
 import styles from './studyCard.module.css';
-import { useTruncatedText } from '../../hooks/home/useTruncatedText';
-import { EMOJI_LIMITS } from '../../constants/validation.js';
+import { useTruncatedText } from '@/hooks/home/useTruncatedText';
+import { EMOJI_LIMITS } from '@/constants/validation.js';
 
 export function StudyCard({ data, onClick }) {
   const {
