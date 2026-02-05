@@ -6,7 +6,7 @@ import StudyForm from '@/components/study/StudyForm';
 
 import styles from './CreateStudy.module.css';
 
-const CreateStudy = () => {
+export const CreateStudy = () => {
   const { studyId } = useParams();
   const location = useLocation();
 
@@ -19,13 +19,11 @@ const CreateStudy = () => {
     <div className={styles.wrapper}>
       <PageTitle children={isEdit ? '스터디 수정하기' : '스터디 만들기'} />
 
-        {isEdit ? (
-          <StudyForm mode="edit" studyId={studyId} />
-        ) : (
-          <StudyForm mode="create" />
-        )}
+      {isEdit ? (
+        <StudyForm mode="edit" studyId={studyId} />
+      ) : (
+        <StudyForm mode="create" />
+      )}
     </div>
   );
 };
-
-export default CreateStudy;
