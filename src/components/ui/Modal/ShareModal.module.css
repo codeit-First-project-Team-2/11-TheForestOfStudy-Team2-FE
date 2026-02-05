@@ -1,0 +1,96 @@
+.shareLayout {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.shareContainer {
+  position: relative;
+  padding: 40px 24px;
+  border: none;
+  border-radius: 20px;
+  background: #fff;
+  width: 648px;
+  height: 255px;
+}
+
+.closeModal {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.shareText {
+  color: var(--black-black_414141, #414141);
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 56px;
+}
+
+.shareInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 16px;
+  width: 600px;
+  height: 58px;
+  padding: 10px;
+  border: 1px solid var(--gray-gray_DDDDDD, #ddd);
+  margin-bottom: 10px;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.buttons {
+  display: flex;
+  width: 288px;
+  height: 58px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  background: #99c08e;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.close {
+  background-color: var(--gray-gray_818181, #818181);
+}
+
+@media (max-width: 767px) {
+  .shareContainer {
+    padding: 24px 28px;
+    width: 344px;
+    height: 223px;
+  }
+
+  .shareInput {
+    width: 288px;
+  }
+
+  .buttonWrapper {
+    gap: 16px;
+  }
+
+  .buttons {
+    width: 140px;
+  }
+}

@@ -13,12 +13,14 @@ import useStudyStore from '@/stores/useStudyStore.js';
 import { TOAST } from '@/constants/error.js';
 import { showToast } from '@/utils/toast.util.js';
 import { PasswordModal } from '@/components/PasswordModal/PasswordModal';
+import { ShareModal } from '@/components/ui/Modal';
 
 export const StudyDetail = () => {
   const { studyId } = useParams();
   const nav = useNavigate();
   const { studyData, setStudyData, clearStudy } = useStudyStore();
 
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [targetAction, setTargetAction] = useState(null);
 
@@ -84,7 +86,7 @@ export const StudyDetail = () => {
             <EmojiAddition />
             <nav className={styles.navContainer}>
               <div className={styles.green}>
-                <p>공유하기</p>|
+                <p onClick={() => setIsShareModalOpen(true)}>공유하기</p>|
                 <p onClick={() => handleProtectedAction('edit')}>수정하기</p>
               </div>
               |
@@ -147,6 +149,11 @@ export const StudyDetail = () => {
           title={study.title}
           onConfirm={handlePasswordConfirm}
           isDelete={targetAction === 'delete'}
+        />
+
+        <ShareModal
+          isOpen={isShareModalOpen}
+          onClose={() => setIsShareModalOpen(false)}
         />
       </div>
     </main>
