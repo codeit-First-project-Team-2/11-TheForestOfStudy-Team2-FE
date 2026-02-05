@@ -1,9 +1,16 @@
+import React, { useState } from 'react';
 import { TextField } from '../ui/TextField/TextField';
 import SearchIcon from '../../assets/ic_search.jpg';
 import { StudyCard } from '../study/studyCard';
 import styles from '../AllStudy/AllStudy.module.css';
 
 
+const SORT_OPTIONS = [
+  { value: '-createdAt', label: '최근 순' },
+  { value: 'createdAt', label: '오래된 순' },
+  { value: '-totalPoint', label: '많은 포인트 순' },
+  { value: 'totalPoint', label: '적은 포인트 순' },
+];
 
 export const AllStudy = ({
   studies,
@@ -14,11 +21,10 @@ export const AllStudy = ({
   onPageChange,
   selected,
   onOptionClick,
-  isOpen,
-  setIsOpen,
-  options,
   onCardClick,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section className={styles.AllStudyContainter}>
       <div className={styles.latestStudyInnerContainer}>
@@ -36,7 +42,7 @@ export const AllStudy = ({
             placeholder="검색"
             onChange={(e) => {
               setKeyword(e.target.value);
-              onPageChange(1); 
+              onPageChange(1);
             }}
           />
 
@@ -55,11 +61,15 @@ export const AllStudy = ({
 
             {isOpen && (
               <ul className={styles.selectOptions}>
-                {options.map((option) => (
+
+                {SORT_OPTIONS.map((option) => (
                   <li
                     key={option.value}
                     className={`${styles.optionItem} ${selected.value === option.value ? styles.optionActive : ''}`}
-                    onClick={() => onOptionClick(option)}
+                    onClick={() => {
+                      onOptionClick(option);
+                      setIsOpen(false);
+                    }}
                   >
                     {option.label}
                   </li>

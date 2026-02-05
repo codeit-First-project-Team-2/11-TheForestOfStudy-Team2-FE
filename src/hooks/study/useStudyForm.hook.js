@@ -6,7 +6,7 @@ import {
   getStudyDetail,
   updateStudy,
 } from '@/apis/studyService.js';
-// import { STUDY_VALIDATION } from '@/constants/index';
+import { STUDY_ERROR_MESSAGES } from '@/constants/index';
 
 const initialForm = {
   nickname: '',
@@ -67,22 +67,22 @@ const useStudyForm = ({ mode, studyId }) => {
   const validate = () => {
     const nextErrors = {};
 
-    // if (!STUDY_VALIDATION.nickname.validate(form.nickname)) {
-    //   nextErrors.nickname = STUDY_VALIDATION.nickname.message;
-    // }
+    if (!STUDY_ERROR_MESSAGES.nickname.validate(form.nickname)) {
+      nextErrors.nickname = STUDY_ERROR_MESSAGES.nickname.message;
+    }
 
-    // if (!STUDY_VALIDATION.title.validate(form.title)) {
-    //   nextErrors.title = STUDY_VALIDATION.title.message;
-    // }
+    if (!STUDY_ERROR_MESSAGES.title.validate(form.title)) {
+      nextErrors.title = STUDY_ERROR_MESSAGES.title.message;
+    }
 
-    // if (!STUDY_VALIDATION.introduction.validate(form.introduction)) {
-    //   nextErrors.introduction = STUDY_VALIDATION.introduction.message;
-    // }
+    if (!STUDY_ERROR_MESSAGES.introduction.validate(form.introduction)) {
+      nextErrors.introduction = STUDY_ERROR_MESSAGES.introduction.message;
+    }
 
     if (!isEdit) {
-      // if (!STUDY_VALIDATION.password.validate(form.password)) {
-      //   nextErrors.password = STUDY_VALIDATION.password.message;
-      // }
+      if (!STUDY_ERROR_MESSAGES.password.validate(form.password)) {
+        nextErrors.password = STUDY_ERROR_MESSAGES.password.message;
+      }
 
       if (form.password !== form.passwordConfirm) {
         nextErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
