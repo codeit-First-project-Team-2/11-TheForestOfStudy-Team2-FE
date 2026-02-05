@@ -1,4 +1,4 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router';
 
 import { PageTitle } from '@/components/ui/PageTitle';
 
@@ -13,7 +13,7 @@ export const CreateStudy = () => {
   // URL 기준으로 mode 판단
   // /study/new        → create
   // /study/:id/edit   → edit
-  const isEdit = location.pathname.includes('edit');
+  const isEdit = location.pathname.includes('write');
 
   return (
     <div className={styles.wrapper}>
