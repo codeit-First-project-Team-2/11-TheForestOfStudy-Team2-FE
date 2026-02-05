@@ -1,14 +1,18 @@
 .wrapper {
   width: 696px;
-  height: 1171px;
-  border-radius: 0px;
+  border-radius: 20px;
   border: none;
   display: flex;
   flex-direction: column;
   gap: 24px;
-  flex-direction: column;
   background: #fff;
-  padding: 24px 24px 40px 24px;
-  border-radius: 20px;
-  
+  padding: 30px 24px 40px 24px;
+}
+
+.wrapperCreate {
+  height: 1171px;
+}
+
+.wrapperEdit {
+  height: 930px;
 }

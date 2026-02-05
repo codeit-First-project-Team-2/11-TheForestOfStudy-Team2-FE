@@ -71,39 +71,43 @@ const StudyForm = ({ mode, studyId }) => {
       />
       {errors.background && <p className={styles.error}>{errors.background}</p>}
 
-      <div className={styles.inputBox}>
-        <p className={styles.labelText}>비밀번호</p>
-        <TextField
-          className={styles.input}
-          label="비밀번호"
-          placeholder="비밀번호를 입력해 주세요"
-          type={showPassword ? 'text' : 'password'}
-          value={form.password}
-          onChange={handleChange('password')}
-          hasError={!!errors.password}
-          autoComplete="new-password"
-          // helperText={errors.password}
-          // rightIcon={showPassword ? 'eye-off' : 'eye'}
-          // onRightIconClick={() => setShowPassword((prev) => !prev)}
-        />
-      </div>
+      {!isEdit && (
+        <>
+          <div className={styles.inputBox}>
+            <p className={styles.labelText}>비밀번호</p>
+            <TextField
+              className={styles.input}
+              label="비밀번호"
+              placeholder="비밀번호를 입력해 주세요"
+              type={showPassword ? 'text' : 'password'}
+              value={form.password}
+              onChange={handleChange('password')}
+              hasError={!!errors.password}
+              autoComplete="new-password"
+              // helperText={errors.password}
+              // rightIcon={showPassword ? 'eye-off' : 'eye'}
+              // onRightIconClick={() => setShowPassword((prev) => !prev)}
+            />
+          </div>
 
-      <div className={styles.inputBox}>
-        <p className={styles.labelText}>비밀번호 확인</p>
-        <TextField
-          className={styles.input}
-          label="비밀번호 확인"
-          placeholder="비밀번호를 다시 한 번 입력해 주세요"
-          type={showPasswordConfirm ? 'text' : 'password'}
-          value={form.passwordConfirm}
-          onChange={handleChange('passwordConfirm')}
-          hasError={!!errors.passwordConfirm}
-          autoComplete="new-password"
-          // helperText={errors.passwordConfirm}
-          // rightIcon={showPasswordConfirm ? 'eye-off' : 'eye'}
-          // onRightIconClick={() => setShowPasswordConfirm((prev) => !prev)}
-        />
-      </div>
+          <div className={styles.inputBox}>
+            <p className={styles.labelText}>비밀번호 확인</p>
+            <TextField
+              className={styles.input}
+              label="비밀번호 확인"
+              placeholder="비밀번호를 다시 한 번 입력해 주세요"
+              type={showPasswordConfirm ? 'text' : 'password'}
+              value={form.passwordConfirm}
+              onChange={handleChange('passwordConfirm')}
+              hasError={!!errors.passwordConfirm}
+              autoComplete="new-password"
+              // helperText={errors.passwordConfirm}
+              // rightIcon={showPasswordConfirm ? 'eye-off' : 'eye'}
+              // onRightIconClick={() => setShowPasswordConfirm((prev) => !prev)}
+            />
+          </div>
+        </>
+      )}
 
       <Button type="submit" size="lg" fullWidth disabled={isLoading}>
         {isEdit ? '수정하러 가기' : '만들기'}
