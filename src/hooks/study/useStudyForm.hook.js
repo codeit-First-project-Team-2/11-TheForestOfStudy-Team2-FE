@@ -6,7 +6,7 @@ import {
   getStudyDetail,
   updateStudy,
 } from '@/apis/studyService.js';
-// import { STUDY_VALIDATION } from '../../constants/validation.js';
+import { STUDY_VALIDATION } from '@/constants/index';
 
 const initialForm = {
   nickname: '',
@@ -17,7 +17,7 @@ const initialForm = {
   passwordConfirm: '',
 };
 
-const useCreateStudy = ({ mode, studyId }) => {
+const useStudyForm = ({ mode, studyId }) => {
   const navigate = useNavigate();
   const isEdit = mode === 'edit';
 
@@ -67,22 +67,22 @@ const useCreateStudy = ({ mode, studyId }) => {
   const validate = () => {
     const nextErrors = {};
 
-    // if (!STUDY_VALIDATION.nickname.validate(form.nickname)) {
-    //   nextErrors.nickname = STUDY_VALIDATION.nickname.message;
-    // }
+    if (!STUDY_VALIDATION.nickname.validate(form.nickname)) {
+      nextErrors.nickname = STUDY_VALIDATION.nickname.message;
+    }
 
-    // if (!STUDY_VALIDATION.title.validate(form.title)) {
-    //   nextErrors.title = STUDY_VALIDATION.title.message;
-    // }
+    if (!STUDY_VALIDATION.title.validate(form.title)) {
+      nextErrors.title = STUDY_VALIDATION.title.message;
+    }
 
-    // if (!STUDY_VALIDATION.introduction.validate(form.introduction)) {
-    //   nextErrors.introduction = STUDY_VALIDATION.introduction.message;
-    // }
+    if (!STUDY_VALIDATION.introduction.validate(form.introduction)) {
+      nextErrors.introduction = STUDY_VALIDATION.introduction.message;
+    }
 
     if (!isEdit) {
-      // if (!STUDY_VALIDATION.password.validate(form.password)) {
-      //   nextErrors.password = STUDY_VALIDATION.password.message;
-      // }
+      if (!STUDY_VALIDATION.password.validate(form.password)) {
+        nextErrors.password = STUDY_VALIDATION.password.message;
+      }
 
       if (form.password !== form.passwordConfirm) {
         nextErrors.passwordConfirm = '비밀번호가 일치하지 않습니다';
@@ -139,4 +139,4 @@ const useCreateStudy = ({ mode, studyId }) => {
   };
 };
 
-export default useCreateStudy;
+export default useStudyForm;
