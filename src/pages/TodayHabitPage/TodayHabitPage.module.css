@@ -183,6 +183,9 @@
 }
 
 .inputButton {
+  font-family: 'Pretendard', sans-serif;
+  box-shadow: none;
+  text-shadow: none;
   display: grid;
   grid-column: 2;
   border: 2px solid var(--color-gray-300);
