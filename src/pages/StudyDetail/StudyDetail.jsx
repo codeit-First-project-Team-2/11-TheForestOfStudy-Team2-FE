@@ -4,20 +4,15 @@ import styles from './StudyDetail.module.css';
 import { HabitsTable } from '@/components/HabitsTable/HabitsTable.jsx';
 import { EmojiAddition } from '@/components/EmojiAddition/EmojiAddition.jsx';
 import pointImg from '@/assets/studyDetail/Group.jpg';
-import { useNavigate, useParams } from 'react-router';
 import {
   deleteStudy,
   verifyStudyPassword,
   getStudyDetail,
 } from '@/apis/studyService.js';
-import { Modal } from '@/components/ui/Modal/Modal.jsx';
 import useStudyStore from '@/stores/useStudyStore.js';
-import { TextField } from '@/components/ui/TextField/TextField.jsx';
-import { Button } from '@/components/ui/Button/Button.jsx';
-import NoVisible from '@/assets/studyDetail/Novisible.jpg';
-import Visible from '@/assets/studyDetail/Visible.jpg';
 import { TOAST } from '@/constants/error.js';
 import { showToast } from '@/utils/toast.util.js';
+import { PasswordModal } from '@/components/PasswordModal/PasswordModal';
 
 export const StudyDetail = () => {
   const { studyId } = useParams();
@@ -99,58 +94,61 @@ export const StudyDetail = () => {
             </nav>
           </section>
 
-        <div className={styles.gapContainer}>
-          <section className={styles.StudyDetailContainer}>
-            <div className={styles.StudyDetailHeadContainer}>
-              <div className={styles.studyTitleContainer}>
-                <h2 className={styles.studyNicknameWrapper}>
-                  {study.nickname}
-                </h2>
-                <p>의&nbsp;</p>
-                <h2 className={styles.studyTitleWrapper}>{study.title}</h2>
-              </div>
-              <div className={styles.todayButtonContainer}>
-                <button
-                  onClick={() => handleProtectedAction('habit')}
-                  className={styles.todayButtonWrapper}
-                >
-                  오늘의 습관&nbsp;&nbsp;&nbsp;&gt;
-                </button>
-                <button
-                  onClick={() => handleProtectedAction('focus')}
-                  className={styles.todayButtonWrapper}
-                >
-                  오늘의 집중&nbsp;&nbsp;&nbsp;&gt;
-                </button>
-              </div>
-            </div>
-            <div className={styles.introPointContainer}>
-              <div className={styles.introContainer}>
-                <p className={styles.labelWrapper}>소개</p>
-                <p className={styles.studyIntroduction}>{study.introduction}</p>
-              </div>
-              <div className={styles.pointContainer}>
-                <p className={styles.labelWrapper}>현재까지 획득한 포인트</p>
-                <div className={styles.pointWrapper}>
-                  <img src={pointImg} alt="point" />
-                  {study.totalPoint}P 획득
+          <div className={styles.gapContainer}>
+            <section className={styles.StudyDetailContainer}>
+              <div className={styles.StudyDetailHeadContainer}>
+                <div className={styles.studyTitleContainer}>
+                  <h2 className={styles.studyNicknameWrapper}>
+                    {study.nickname}
+                  </h2>
+                  <p>의&nbsp;</p>
+                  <h2 className={styles.studyTitleWrapper}>{study.title}</h2>
+                </div>
+                <div className={styles.todayButtonContainer}>
+                  <button
+                    onClick={() => handleProtectedAction('habit')}
+                    className={styles.todayButtonWrapper}
+                  >
+                    오늘의 습관&nbsp;&nbsp;&nbsp;&gt;
+                  </button>
+                  <button
+                    onClick={() => handleProtectedAction('focus')}
+                    className={styles.todayButtonWrapper}
+                  >
+                    오늘의 집중&nbsp;&nbsp;&nbsp;&gt;
+                  </button>
                 </div>
               </div>
-            </div>
-          </section>
-          <section className={styles.habitsRecordContainer}>
-            <HabitsTable />
-          </section>
+              <div className={styles.introPointContainer}>
+                <div className={styles.introContainer}>
+                  <p className={styles.labelWrapper}>소개</p>
+                  <p className={styles.studyIntroduction}>
+                    {study.introduction}
+                  </p>
+                </div>
+                <div className={styles.pointContainer}>
+                  <p className={styles.labelWrapper}>현재까지 획득한 포인트</p>
+                  <div className={styles.pointWrapper}>
+                    <img src={pointImg} alt="point" />
+                    {study.totalPoint}P 획득
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section className={styles.habitsRecordContainer}>
+              <HabitsTable />
+            </section>
+          </div>
         </div>
-      </div>
 
-      <PasswordModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title={study.title}
-        onConfirm={handlePasswordConfirm}
-        isDelete={targetAction === 'delete'}
-      />
+        <PasswordModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          title={study.title}
+          onConfirm={handlePasswordConfirm}
+          isDelete={targetAction === 'delete'}
+        />
+      </div>
     </main>
   );
 };
