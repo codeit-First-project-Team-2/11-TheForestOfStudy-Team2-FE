@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/Button';
 import { TextField } from '@/components/ui/TextField';
 import { useState } from 'react';
 
-import useCreateStudy from '../../hooks/study/useStudyForm.hook.js';
+import useCreateStudy from '@/hooks/study/useStudyForm.hook.js';
 import BackgroundSelector from './BackgroundSelector.jsx';
 
 import styles from './StudyForm.module.css';

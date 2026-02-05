@@ -1,9 +1,9 @@
 import { useParams, Link } from 'react-router';
-import { FocusTimer } from '../components/focusTimer';
+import { FocusTimer } from '@/components/focusTimer/focusTimer.jsx';
 import clsx from 'clsx';
 import styles from './TodayFocus.module.css';
-import pointIcon from '../assets/focusTimerImages/point_image.svg';
-import { useTodayFocus } from '../hooks/todayFocus/useTodayFocus.hook';
+import pointIcon from '@/assets/focusTimerImages/point_image.svg';
+import { useTodayFocus } from '@/hooks/todayFocus/useTodayFocus.hook';
 
 export function TodayFocus() {
   const { studyId } = useParams();

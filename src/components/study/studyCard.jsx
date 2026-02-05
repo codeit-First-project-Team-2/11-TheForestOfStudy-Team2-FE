@@ -1,7 +1,7 @@
-import { getStudyDayCount } from '../../utils/DayCount.util.js';
-import pointIcon from '../../assets/focusTimerImages/point_image.svg';
+import { getStudyDayCount } from '@/utils/DayCount.util.js';
+import pointIcon from '@/assets/focusTimerImages/point_image.svg';
 import styles from './studyCard.module.css';
-import greenBg from '../../assets/background/green.jpg'; //테스트
+import greenBg from '@/assets/background/green.jpg'; //테스트
 
 export function StudyCard({ data }) {
   const {

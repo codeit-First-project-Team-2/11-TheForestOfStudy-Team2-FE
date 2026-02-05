@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import styles from './EmojiAddition.module.css';
 import EmojiPicker from 'emoji-picker-react';
-import smileIcon from '../../assets/studyDetail/smile.jpg';
-import { getEmojiStats, createEmoji } from '../../apis/studyService';
-import useStudyStore from '../../stores/useStudyStore';
-import { showToast } from '../../utils/toast.util';
-import { EMOJI_LIMITS } from '../../constants/validation';
-import { TOAST } from '../../constants/error';
+import smileIcon from '@/assets/studyDetail/smile.jpg';
+import { getEmojiStats, createEmoji } from '@/apis/studyService';
+import useStudyStore from '@/stores/useStudyStore';
+import { showToast } from '@/utils/toast.util';
+import { EMOJI_LIMITS } from '@/constants/validation';
+import { TOAST } from '@/constants/error';
 
 export const EmojiAddition = () => {
   const { studyId } = useParams();

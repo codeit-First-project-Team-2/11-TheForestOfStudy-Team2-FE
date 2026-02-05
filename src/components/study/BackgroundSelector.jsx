@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { ALLOWED_BACKGROUND_PATHS } from '../../constants/background.constant.js';
+import { ALLOWED_BACKGROUND_PATHS } from '@/constants/background.constant.js';
 
 import styles from './BackgroundSelector.module.css';
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { showToast } from '../../utils/toast.util.js';
-import { studiesMock } from '../../mocks';
+import { showToast } from '@/utils/toast.util.js';
+import { studiesMock } from '@/mocks';
 
 const isDev = true; // 배포시 false로 변경
 

@@ -1,12 +1,11 @@
-import styles from '../Home/Home.module.css';
-import { TextField } from '../../components/ui/TextField/TextField';
-import SearchIcon from '../../assets/ic_search.jpg';
+import styles from './Home.module.css';
+import { TextField } from '@/components/ui/TextField/TextField';
+import SearchIcon from '@/assets/ic_search.jpg';
 import { useEffect, useState } from 'react';
-import { getStudyList } from '../../apis/homeService';
-import { showToast } from '../../utils/toast.util';
-import { TOAST } from '../../constants/error';
-
-import { StudyCard } from '../../components/study/studyCard';
+import { getStudyList } from '@/apis/homeService';
+import { showToast } from '@/utils/toast.util';
+import { TOAST } from '@/constants/error';
+import { StudyCard } from '@/components/study/studyCard';
 
 const LIMIT = 6;
 
@@ -33,8 +32,8 @@ export const Home = () => {
 
   const handleOptionClick = (option) => {
     setSelected(option);
-    setPage(1); // 페이지 초기화
-    setMorePage(true); // 더보기 다시 활성화
+    setPage(1);
+    setMorePage(true);
     setIsOpen(false);
   };
 
@@ -113,7 +112,7 @@ export const Home = () => {
               placeholder="검색"
               onChange={(e) => {
                 setKeyword(e.target.value);
-                setPage(1); //검색어 변경 → 페이지 초기화
+                setPage(1);
                 setMorePage(true);
               }}
             />

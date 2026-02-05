@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import styles from './StudyDetail.module.css';
-import { HabitsTable } from '../../components/HabitsTable/HabitsTable.jsx';
-import { EmojiAddition } from '../../components/EmojiAddition/EmojiAddition.jsx';
-import pointImg from '../../assets/studyDetail/Group.jpg';
+import { HabitsTable } from '@/components/HabitsTable/HabitsTable.jsx';
+import { EmojiAddition } from '@/components/EmojiAddition/EmojiAddition.jsx';
+import pointImg from '@/assets/studyDetail/Group.jpg';
 import { useNavigate, useParams } from 'react-router';
 import {
   deleteStudy,
   verifyStudyPassword,
   getStudyDetail,
-} from '../../apis/studyService.js';
-import { Modal } from '../../components/ui/Modal/Modal.jsx';
-import useStudyStore from '../../stores/useStudyStore.js';
-import { TextField } from '../../components/ui/TextField/TextField.jsx';
-import { Button } from '../../components/ui/Button/Button.jsx';
-import NoVisible from '../../assets/studyDetail/Novisible.jpg';
-import Visible from '../../assets/studyDetail/Visible.jpg';
-import { TOAST } from '../../constants/error.js';
-import { showToast } from '../../utils/toast.util.js';
+} from '@/apis/studyService.js';
+import { Modal } from '@/components/ui/Modal/Modal.jsx';
+import useStudyStore from '@/stores/useStudyStore.js';
+import { TextField } from '@/components/ui/TextField/TextField.jsx';
+import { Button } from '@/components/ui/Button/Button.jsx';
+import NoVisible from '@/assets/studyDetail/Novisible.jpg';
+import Visible from '@/assets/studyDetail/Visible.jpg';
+import { TOAST } from '@/constants/error.js';
+import { showToast } from '@/utils/toast.util.js';
 
 export const StudyDetail = () => {
   const { studyId } = useParams();

@@ -4,7 +4,7 @@ import { PageHeader } from '@/components/ui/PageHeader/PageHeader';
 import { PageCard } from '@/components/ui/PageCard/PageCard';
 import { Button } from '@/components/ui/Button/Button';
 import { Modal } from '@/components/ui/Modal/Modal';
-import { TextField } from '../components/ui/TextField';
+import { TextField } from '@/components/ui/TextField';
 
 export const UiPreview = () => {
   const [isOpen, setIsOpen] = useState(false);

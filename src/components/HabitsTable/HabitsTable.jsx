@@ -1,7 +1,7 @@
 import styles from './HabitsTable.module.css';
 import { PawIcon } from '@/components/pawIcon.jsx';
 import { HABIT_THEME_COLORS, INACTIVE_COLOR } from '@/constants/color.js';
-import useStudyStore from '../../stores/useStudyStore.js';
+import useStudyStore from '@/stores/useStudyStore.js';
 import { DAYS, WEEK_DATES } from '@/constants/date.js';
 
 export const HabitsTable = () => {

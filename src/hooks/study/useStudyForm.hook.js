@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { showToast } from '@/utils/toast.util';
 import {
   createStudy,
   getStudyDetail,
-  patchStudy,
-} from '../../apis/studyService.js';
-
+  updateStudy,
+} from '@/apis/studyService.js';
 // import { STUDY_VALIDATION } from '../../constants/validation.js';
-import { showToast } from '@/utils/toast.util';
 
 const initialForm = {
   nickname: '',
@@ -110,7 +108,7 @@ const useCreateStudy = ({ mode, studyId }) => {
       };
 
       if (isEdit) {
-        await patchStudy({
+        await updateStudy({
           studyId,
           ...payload,
         });

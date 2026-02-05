@@ -1,10 +1,7 @@
 import { useParams, useLocation } from 'react-router-dom';
-
-import PageHeader from '@/components/ui/PageHeader';
-import PageCard from '@/components/ui/PageCard';
-
-import CreateStudyForm from '../components/study/StudyForm';
-
+import { PageHeader } from '@/components/ui/PageHeader';
+import { PageCard } from '@/components/ui/PageCard';
+import CreateStudyForm from '@/components/study/StudyForm';
 import styles from './CreateStudy.module.css';
 
 export const CreateStudyPage = () => {
@@ -18,9 +15,8 @@ export const CreateStudyPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageHeader title={isEdit ? '스터디 수정하기' : '스터디 만들기'} />
-
       <PageCard>
+        <PageHeader title={isEdit ? '스터디 수정하기' : '스터디 만들기'} />
         <CreateStudyForm mode={isEdit ? 'edit' : 'create'} studyId={studyId} />
       </PageCard>
     </div>
