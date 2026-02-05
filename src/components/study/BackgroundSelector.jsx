@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 import { ALLOWED_BACKGROUND_PATHS } from '@/constants/background.constant.js';
-import checkIcon from '@/assets/icon/ic_bg_selected.svg';
+import checkIcon from '@/assets/icons/ic_bg_selected.svg';
 
 import styles from './BackgroundSelector.module.css';
 
