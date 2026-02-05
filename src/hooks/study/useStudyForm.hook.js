@@ -111,7 +111,9 @@ const useStudyForm = ({ mode, studyId }) => {
         await updateStudy(studyId, payload);
 
         showToast.success('스터디가 수정되었습니다');
-        navigate(`/studies/${studyId}`);
+        navigate(`/studies/${studyId}`, {
+          state: { refetch: true },
+        });
       } else {
         const data = await createStudy(payload);
 

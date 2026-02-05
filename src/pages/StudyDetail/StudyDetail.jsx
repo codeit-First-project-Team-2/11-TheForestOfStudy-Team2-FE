@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams, useLocation } from 'react-router';
 import styles from './StudyDetail.module.css';
 import { HabitsTable } from '@/components/HabitsTable/HabitsTable.jsx';
 import { EmojiAddition } from '@/components/EmojiAddition/EmojiAddition.jsx';
@@ -18,6 +18,9 @@ import { ShareModal } from '@/components/ui/Modal';
 export const StudyDetail = () => {
   const { studyId } = useParams();
   const nav = useNavigate();
+  const location = useLocation();
+  const { state } = location;
+
   const { studyData, setStudyData, clearStudy } = useStudyStore();
 
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
@@ -36,7 +39,7 @@ export const StudyDetail = () => {
       try {
         if (!studyId) return;
 
-        if (studyData?.id === studyId) return;
+        if (!state?.refetch && studyData?.id === studyId) return;
 
         const detail = await getStudyDetail(studyId);
         setStudyData(detail);
@@ -45,8 +48,9 @@ export const StudyDetail = () => {
         nav('/');
       }
     };
+
     fetchStudyDetail();
-  }, [studyId, setStudyData, studyData?.id, nav]);
+  }, [studyId, state, setStudyData, studyData?.id, nav]);
 
   const handleProtectedAction = (type) => {
     setTargetAction(type);
@@ -71,10 +75,9 @@ export const StudyDetail = () => {
         };
         const path = pathMap[targetAction];
         if (!path) return;
-        if (path) {
-          nav(path);
-        }
+        nav(path);
       }
+
       setIsModalOpen(false);
     } catch (err) {
       showToast.error(err.response?.data?.message || TOAST.PASSWORD_INVALID);
