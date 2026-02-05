@@ -10,11 +10,22 @@ export const TextField = ({
   type = 'text',
   name,
   id,
-  ariaLabel,
   className,
   hasError,
+  autoComplete,
   ...rest
 }) => {
+  let defaultAutoComplete;
+  if (autoComplete !== undefined) {
+    defaultAutoComplete = autoComplete;
+  } else if (type === 'password') {
+    defaultAutoComplete = 'new-password';
+  } else if (type === 'email') {
+    defaultAutoComplete = 'email';
+  } else {
+    defaultAutoComplete = 'off';
+  }
+
   return (
     <input
       id={id}
@@ -24,14 +35,13 @@ export const TextField = ({
       onChange={onChange}
       placeholder={placeholder}
       disabled={disabled}
-      aria-label={ariaLabel}
       className={clsx(
         styles.textField,
         fullWidth && styles.fullWidth,
         hasError && styles.error,
         className,
       )}
-
+      autoComplete={defaultAutoComplete}
       {...rest}
     />
   );
