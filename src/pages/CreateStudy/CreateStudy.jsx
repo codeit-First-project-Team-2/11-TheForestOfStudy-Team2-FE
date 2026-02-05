@@ -1,10 +1,12 @@
 import { useParams, useLocation } from 'react-router-dom';
-import { PageHeader } from '@/components/ui/PageHeader';
-import { PageCard } from '@/components/ui/PageCard';
-import CreateStudyForm from '@/components/study/StudyForm';
+
+import { PageTitle } from '@/components/ui/PageTitle';
+
+import StudyForm from '@/components/study/StudyForm';
+
 import styles from './CreateStudy.module.css';
 
-export const CreateStudyPage = () => {
+const CreateStudy = () => {
   const { studyId } = useParams();
   const location = useLocation();
 
@@ -15,10 +17,15 @@ export const CreateStudyPage = () => {
 
   return (
     <div className={styles.wrapper}>
-      <PageCard>
-        <PageHeader title={isEdit ? '스터디 수정하기' : '스터디 만들기'} />
-        <CreateStudyForm mode={isEdit ? 'edit' : 'create'} studyId={studyId} />
-      </PageCard>
+      <PageTitle children={isEdit ? '스터디 수정하기' : '스터디 만들기'} />
+
+        {isEdit ? (
+          <StudyForm mode="edit" studyId={studyId} />
+        ) : (
+          <StudyForm mode="create" />
+        )}
     </div>
   );
 };
+
+export default CreateStudy;
