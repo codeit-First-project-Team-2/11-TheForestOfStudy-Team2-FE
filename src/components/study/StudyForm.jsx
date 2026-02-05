@@ -2,16 +2,16 @@ import { Button } from '@/components/ui/Button';
 import { TextField } from '@/components/ui/TextField';
 import { useState } from 'react';
 
-import useCreateStudy from '@/hooks/study/useStudyForm.hook.js';
+import useStudyForm from '@/hooks/study/useStudyForm.hook.js';
 import BackgroundSelector from './BackgroundSelector.jsx';
 
 import styles from './StudyForm.module.css';
 
-const CreateStudyForm = ({ mode, studyId }) => {
+const StudyForm = ({ mode, studyId }) => {
   const isEdit = mode === 'edit';
 
   const { form, errors, isLoading, handleChange, handleSubmit, setForm } =
-    useCreateStudy({ mode, studyId });
+    useStudyForm({ mode, studyId });
 
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
@@ -25,6 +25,7 @@ const CreateStudyForm = ({ mode, studyId }) => {
       }}
     >
       <TextField
+        className={styles.input}
         label="닉네임"
         placeholder="닉네임을 입력해 주세요"
         value={form.nickname}
@@ -34,6 +35,7 @@ const CreateStudyForm = ({ mode, studyId }) => {
       />
 
       <TextField
+        className={styles.input}
         label="스터디 이름"
         placeholder="스터디 이름을 입력해 주세요"
         value={form.title}
@@ -43,6 +45,7 @@ const CreateStudyForm = ({ mode, studyId }) => {
       />
 
       <TextField
+        className={styles.input}
         label="소개"
         placeholder="소개 멘트를 작성해 주세요"
         value={form.introduction}
@@ -64,6 +67,7 @@ const CreateStudyForm = ({ mode, studyId }) => {
       {errors.background && <p className={styles.error}>{errors.background}</p>}
 
       <TextField
+        className={styles.input}
         label="비밀번호"
         placeholder="비밀번호를 입력해 주세요"
         type={showPassword ? 'text' : 'password'}
@@ -76,6 +80,7 @@ const CreateStudyForm = ({ mode, studyId }) => {
       />
 
       <TextField
+        className={styles.input}
         label="비밀번호 확인"
         placeholder="비밀번호를 다시 한 번 입력해 주세요"
         type={showPasswordConfirm ? 'text' : 'password'}
@@ -94,4 +99,4 @@ const CreateStudyForm = ({ mode, studyId }) => {
   );
 };
 
-export default CreateStudyForm;
+export default StudyForm ;
