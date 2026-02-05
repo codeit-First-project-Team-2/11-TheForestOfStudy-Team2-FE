@@ -13,8 +13,8 @@ const StudyForm = ({ mode, studyId }) => {
   const { form, errors, isLoading, handleChange, handleSubmit, setForm } =
     useStudyForm({ mode, studyId });
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+  const [showPassword] = useState(false);
+  const [showPasswordConfirm] = useState(false);
 
   return (
     <form
@@ -32,8 +32,8 @@ const StudyForm = ({ mode, studyId }) => {
           placeholder="닉네임을 입력해 주세요"
           value={form.nickname}
           onChange={handleChange('nickname')}
-          error={!!errors.nickname}
-          helperText={errors.nickname}
+          hasError={!!errors.nickname}
+          // helperText={errors.nickname}
         />
       </div>
 
@@ -45,8 +45,8 @@ const StudyForm = ({ mode, studyId }) => {
           placeholder="스터디 이름을 입력해 주세요"
           value={form.title}
           onChange={handleChange('title')}
-          error={!!errors.title}
-          helperText={errors.title}
+          hasError={!!errors.title}
+          // helperText={errors.title}
         />
       </div>
 
@@ -80,10 +80,11 @@ const StudyForm = ({ mode, studyId }) => {
           type={showPassword ? 'text' : 'password'}
           value={form.password}
           onChange={handleChange('password')}
-          error={!!errors.password}
-          helperText={errors.password}
-          rightIcon={showPassword ? 'eye-off' : 'eye'}
-          onRightIconClick={() => setShowPassword((prev) => !prev)}
+          hasError={!!errors.password}
+          autoComplete="new-password"
+          // helperText={errors.password}
+          // rightIcon={showPassword ? 'eye-off' : 'eye'}
+          // onRightIconClick={() => setShowPassword((prev) => !prev)}
         />
       </div>
 
@@ -96,10 +97,11 @@ const StudyForm = ({ mode, studyId }) => {
           type={showPasswordConfirm ? 'text' : 'password'}
           value={form.passwordConfirm}
           onChange={handleChange('passwordConfirm')}
-          error={!!errors.passwordConfirm}
-          helperText={errors.passwordConfirm}
-          rightIcon={showPasswordConfirm ? 'eye-off' : 'eye'}
-          onRightIconClick={() => setShowPasswordConfirm((prev) => !prev)}
+          hasError={!!errors.passwordConfirm}
+          autoComplete="new-password"
+          // helperText={errors.passwordConfirm}
+          // rightIcon={showPasswordConfirm ? 'eye-off' : 'eye'}
+          // onRightIconClick={() => setShowPasswordConfirm((prev) => !prev)}
         />
       </div>
 
