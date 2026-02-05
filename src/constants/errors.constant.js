@@ -1,4 +1,4 @@
-import { STUDY_LIMITS, HABIT_LIMITS } from './validation.constant.js';
+import { STUDY_LIMITS, HABIT_LIMITS } from './validation.js';
 
 // Prisma 에러 코드 상수
 export const PRISMA_ERROR = {
