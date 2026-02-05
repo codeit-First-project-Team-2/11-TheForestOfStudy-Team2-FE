@@ -4,8 +4,6 @@ import { PageTitle } from '@/components/ui/PageTitle';
 
 import StudyForm from '@/components/study/StudyForm';
 
-import { useParams, useLocation } from 'react-router';
-
 import styles from './CreateStudy.module.css';
 
 export const CreateStudy = () => {
@@ -15,7 +13,7 @@ export const CreateStudy = () => {
   // URL 기준으로 mode 판단
   // /study/new        → create
   // /study/:id/edit   → edit
-  const isEdit = location.pathname.includes('edit');
+  const isEdit = location.pathname.includes('write');
 
   return (
     <div className={styles.wrapper}>
