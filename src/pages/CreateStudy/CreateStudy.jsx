@@ -1,7 +1,6 @@
 import { useParams, useLocation } from 'react-router-dom';
 
 import { PageTitle } from '@/components/ui/PageTitle';
-import { PageCard } from '@/components/ui/PageCard';
 
 import StudyForm from '@/components/study/StudyForm';
 
@@ -20,13 +19,11 @@ const CreateStudy = () => {
     <div className={styles.wrapper}>
       <PageTitle children={isEdit ? '스터디 수정하기' : '스터디 만들기'} />
 
-      {/* <PageCard> */}
         {isEdit ? (
           <StudyForm mode="edit" studyId={studyId} />
         ) : (
           <StudyForm mode="create" />
         )}
-      {/* </PageCard> */}
     </div>
   );
 };
