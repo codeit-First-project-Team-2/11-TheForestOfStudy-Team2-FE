@@ -44,3 +44,27 @@
   object-fit: cover;
   display: block;
 }
+
+.item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.iconWrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.iconWrapper img {
+  width: 40px;
+  height: 40px;
+  opacity: 0.9;
+}
