@@ -1,4 +1,3 @@
-// import { Header } from '../../components/ui/Header/Header.jsx'
 import { useParams, Link } from 'react-router';
 import { FocusTimer } from '../components/focusTimer';
 import clsx from 'clsx';
@@ -10,7 +9,6 @@ export function TodayFocus() {
   const { studyId } = useParams();
   const { studyData, handleSettle } = useTodayFocus(studyId);
 
-  //서버 응답 전 로딩화면
   if (!studyData)
     return (
       <div>
@@ -20,7 +18,6 @@ export function TodayFocus() {
 
   return (
     <div>
-      {/* <Header /> */}
       <div className={styles.container}>
         <section className={styles.timerNavContainer}>
           <div className={styles.timerNavWrapper}>

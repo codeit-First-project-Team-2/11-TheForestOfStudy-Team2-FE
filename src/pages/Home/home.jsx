@@ -92,9 +92,7 @@ export const Home = () => {
               ? studies.map((study) => (
                   <StudyCard key={study.id} data={study} />
                 ))
-              : !isLoading && (
-                  <p className={styles.noResult}>조회한 스터디가 없습니다.</p>
-                )}
+              : !isLoading && <p>조회한 스터디가 없습니다.</p>}
           </div>
         </div>
       </section>
@@ -163,9 +161,7 @@ export const Home = () => {
               ? studies.map((study) => (
                   <StudyCard key={study.id} data={study} />
                 ))
-              : !isLoading && (
-                  <p className={styles.noResult}>검색 결과가 없습니다.</p>
-                )}
+              : !isLoading && <p>검색 결과가 없습니다.</p>}
           </div>
 
           {morePage && (

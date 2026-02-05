@@ -114,35 +114,26 @@ const TodayHabitEditModal = ({
 };
 
 export const TodayHabitPage = () => {
-  // ✅ 실제 habits
+  
   const [habits, setHabits] = useState(INITIAL_HABITS);
-
-  // ✅ 모달 open/close
   const [isEditOpen, setIsEditOpen] = useState(false);
-
-  // ✅ 모달 내 임시 편집 상태
   const [draftHabits, setDraftHabits] = useState([]);
-
-  // ✅ 새 습관 입력값
   const [newHabitTitle, setNewHabitTitle] = useState('');
 
   const isMaxReached = draftHabits.length >= MAX_HABITS;
 
   const openEdit = () => {
-    // ✅ 모달 열 때만 실제 habits를 복사해서 draft로 만든다
     setDraftHabits([...habits]);
     setNewHabitTitle('');
     setIsEditOpen(true);
   };
 
   const closeEdit = () => {
-    // ✅ 취소: draft 버리고 닫기
     setIsEditOpen(false);
     setNewHabitTitle('');
   };
 
   const confirmEdit = () => {
-    // ✅ 완료: 여기서만 실제 habits 반영
     setHabits(draftHabits);
     setIsEditOpen(false);
     setNewHabitTitle('');

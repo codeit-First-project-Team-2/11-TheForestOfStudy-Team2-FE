@@ -7,7 +7,7 @@ export const useTimerAction = () => {
   const [isOvertime, setIsOvertime] = useState(false);
 
   useEffect(() => {
-    if (status !== 'running') return; // 'runnig'일 때만 동작
+    if (status !== 'running') return;
 
     const interval = setInterval(() => {
       setSeconds((prev) => {

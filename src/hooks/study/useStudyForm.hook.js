@@ -27,7 +27,6 @@ const useCreateStudy = ({ mode, studyId }) => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  // edit 모드 → 기존 스터디 정보 불러오기
   useEffect(() => {
     if (!isEdit || !studyId) return;
 
@@ -53,7 +52,6 @@ const useCreateStudy = ({ mode, studyId }) => {
     fetchStudy();
   }, [isEdit, studyId, navigate]);
 
-  // 🔹 input handler
   const handleChange = (key) => (e) => {
     const value = e.target.value;
 
@@ -139,7 +137,7 @@ const useCreateStudy = ({ mode, studyId }) => {
     isLoading,
     handleChange,
     handleSubmit,
-    setForm, // 배경 선택용
+    setForm,
   };
 };
 

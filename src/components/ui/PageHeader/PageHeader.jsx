@@ -21,7 +21,6 @@ export const PageHeader = ({
           <div className={styles.title}>{title}</div>
 
           <div className={styles.status}>
-            {/* 시간 또는 포인트 */}
             <div className={styles.currentTime}>
               <span className={styles.timeLabel}>현재 시간</span>
               <span className={styles.timeValue}>{currentTime}</span>

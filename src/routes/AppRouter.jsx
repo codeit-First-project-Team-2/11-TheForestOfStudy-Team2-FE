@@ -8,8 +8,6 @@ import { StudyDetail } from '@/pages/StudyDetail/StudyDetail';
 import { TodayHabitPage } from '@/pages/TodayHabitPage/TodayHabitPage';
 // import { CreateStudyPage } from '@/pages/CreateStudy.jsx';
 
-// 주석처리된 Routes들을 꺼내서 쓰면 됩니다.
-// 페이지 import도 해주세요~!
 export const AppRouter = () => {
   return (
     <Routes>

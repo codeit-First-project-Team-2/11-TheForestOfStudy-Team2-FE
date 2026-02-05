@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router'; // URL에서 studyId 가져오기
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router';
 import styles from './EmojiAddition.module.css';
 import EmojiPicker from 'emoji-picker-react';
 import smileIcon from '../../assets/studyDetail/smile.jpg';
@@ -10,7 +10,7 @@ import { EMOJI_LIMITS } from '../../constants/validation';
 import { TOAST } from '../../constants/error';
 
 export const EmojiAddition = () => {
-  const { studyId } = useParams(); // props 대신 여기서 직접 추출!
+  const { studyId } = useParams();
   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
   const [emojiButtonOpen, setEmojiButtonOpen] = useState(false);
 
@@ -46,16 +46,16 @@ export const EmojiAddition = () => {
         count,
       }))
     : [];
-  // 1. 처음 3개만 메인에 노출
+
   const visibleEmojis = displayEmojis.slice(
     0,
     EMOJI_LIMITS.VISIBLE.MAX_VISIBLE_EMOJIS,
   );
-  // 2. 나머지 이모지들
+
   const hiddenEmojis = displayEmojis.slice(
     EMOJI_LIMITS.VISIBLE.MAX_VISIBLE_EMOJIS,
   );
-  // 3. 숨겨진 이모지 개수
+
   const hiddenCount = hiddenEmojis.length;
 
   return (
@@ -67,7 +67,7 @@ export const EmojiAddition = () => {
           className={styles.emojiReactionBadge}
         >
           <span>{item.emoji}</span>
-          <span className={styles.emojiCount}>{item.count}</span>
+          <span>{item.count}</span>
         </button>
       ))}
 
@@ -89,7 +89,7 @@ export const EmojiAddition = () => {
                   className={styles.emojiReactionBadge}
                 >
                   <span>{item.emoji}</span>
-                  <span className={styles.emojiCount}>{item.count}</span>
+                  <span>{item.count}</span>
                 </button>
               ))}
             </div>

@@ -109,16 +109,12 @@
   justify-content: center;
   gap: 25px;
 }
-.introContainer {
-}
-.pointContainer {
-}
+
 .labelWrapper {
   color: #818181;
   margin-bottom: 10px;
 }
-.studyIntroduction {
-}
+
 .pointWrapper {
   display: flex;
   gap: 5px;

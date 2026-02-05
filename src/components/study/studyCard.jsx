@@ -25,7 +25,6 @@ export function StudyCard({ data }) {
     ],
   }; //테스트
 
-  //단색인 경우 닉네임 색 변경
   const getCardColor = (path) => {
     if (!path) return null;
 
@@ -37,7 +36,6 @@ export function StudyCard({ data }) {
     return null;
   };
 
-  //단색일때와 사진 배경일 때 글자색 변경
   const cardColorClass = getCardColor(background);
   const isPastelColor = cardColorClass !== null;
   const themeColorClass = isPastelColor ? styles.lightMode : styles.darkMode;
