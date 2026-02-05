@@ -71,10 +71,14 @@ export const StudyDetail = () => {
         };
         const path = pathMap[targetAction];
         if (!path) return;
+        if (path) {
+          nav(path);
+        }
       }
       setIsModalOpen(false);
     } catch (err) {
       showToast.error(err.response?.data?.message || TOAST.PASSWORD_INVALID);
+      console.error('비밀번호 검증 에러 발생:', err);
     }
   };
 

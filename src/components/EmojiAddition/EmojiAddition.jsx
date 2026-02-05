@@ -42,12 +42,21 @@ export const EmojiAddition = () => {
     }
   };
 
-  const displayEmojis = studyData?.emojiStats
-    ? Object.entries(studyData.emojiStats).map(([emoji, count]) => ({
-        emoji,
-        count,
+  
+  const displayEmojis = Array.isArray(studyData?.emojiStats)
+    ? studyData.emojiStats.map((item) => ({
+        // 배열일 경우 (지금 상황)
+        emoji: item.type,
+        count:
+          typeof item._count === 'object' ? item._count.type || 0 : item._count,
       }))
-    : [];
+    : studyData?.emojiStats
+      ? Object.entries(studyData.emojiStats).map(([emoji, count]) => ({
+          // 객체일 경우
+          emoji,
+          count: typeof count === 'object' ? count._count || 0 : count,
+        }))
+      : [];
 
   const visibleEmojis = displayEmojis.slice(
     0,

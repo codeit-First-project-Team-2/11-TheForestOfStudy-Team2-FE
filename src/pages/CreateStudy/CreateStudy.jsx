@@ -1,8 +1,10 @@
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router';
 
 import { PageTitle } from '@/components/ui/PageTitle';
 
 import StudyForm from '@/components/study/StudyForm';
+
+import { useParams, useLocation } from 'react-router';
 
 import styles from './CreateStudy.module.css';
 
