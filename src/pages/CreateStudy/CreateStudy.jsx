@@ -16,7 +16,11 @@ export const CreateStudy = () => {
   const isEdit = location.pathname.includes('write');
 
   return (
-    <div className={styles.wrapper}>
+    <div
+      className={`${styles.wrapper} ${
+        isEdit ? styles.wrapperEdit : styles.wrapperCreate
+      }`}
+    >
       <PageTitle children={isEdit ? '스터디 수정하기' : '스터디 만들기'} />
 
       {isEdit ? (
