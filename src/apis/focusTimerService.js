@@ -1,15 +1,12 @@
-import axios from 'axios';
+import client from './client';
 
 export const verifyPasswordApi = async (studyId, inputPassword) => {
   try {
-    const response = await axios.post(
-      `/api/studies/${studyId}/password/verify`,
-      {
-        password: inputPassword,
-      },
-    );
+    const response = await client.post(`/studies/${studyId}/password/verify`, {
+      password: inputPassword,
+    });
 
-    return response.data;
+    return response;
   } catch (error) {
     const errorMessage =
       error.response?.data?.message || '비밀번호 확인 중 오류가 발생했습니다.';
@@ -20,11 +17,11 @@ export const verifyPasswordApi = async (studyId, inputPassword) => {
 
 export const settlePointsApi = async (studyId, actualMinutes) => {
   try {
-    const response = await axios.post(`/api/studies/${studyId}/focus`, {
+    const response = await client.post(`/studies/${studyId}/focus`, {
       actualMinutes,
     });
 
-    return response.data;
+    return response
   } catch (error) {
     const errorMessage =
       error.response.data.message || '포인트 정산 중 오류가 발생했습니다.';

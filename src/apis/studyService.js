@@ -9,11 +9,11 @@ export const getStudyDetail = (studyId) => {
 };
 
 export const getStudyHabits = async (studyId) => {
-  await client.get(`/studies/${studyId}/habits`);
+  return await client.get(`/studies/${studyId}/habits`);
 };
 
 export const getTodayHabitStatus = async (studyId) => {
-  await client.get(`/studies/${studyId}/habits/today`);
+  return await client.get(`/studies/${studyId}/habits/today`);
 };
 
 export const getEmojiStats = (studyId) => {
@@ -45,7 +45,7 @@ export const createStudy = async ({
 };
 
 export const createHabit = async (studyId, habitData) => {
-  await client.post(`/studies/${studyId}/habits`, habitData);
+  return await client.post(`/studies/${studyId}/habits`, habitData);
 };
 
 export const createEmoji = (studyId, type) => {
@@ -53,7 +53,7 @@ export const createEmoji = (studyId, type) => {
 };
 
 export const recordFocusTime = async (studyId, focusData) => {
-  await client.post(`/studies/${studyId}/focus`, focusData);
+  return await client.post(`/studies/${studyId}/focus`, focusData);
 };
 
 export const updateStudy = (studyId, updateData) => {

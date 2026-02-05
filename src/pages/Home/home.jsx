@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { getStudyList } from '../../apis/homeService';
-import { verifyStudyPassword } from '../../apis/studyService';
-import { showToast } from '../../utils/toast.util';
-import { TOAST } from '../../constants/toastError';
+import { verifyStudyPassword } from '@/apis/studyService';
+import { showToast } from '@/utils/toast.util';
+import { TOAST } from '@/constants/error';
 import {
   addRecentStudies,
   syncRecentStudies,
-} from '../../utils/localStorage.util';
+} from '@/utils/localStorage.util';
 import { RecentStudy } from '../../components/RecentStudy/RecentStudy';
 import { AllStudy } from '../../components/AllStudy/AllStudy';
 import { PasswordModal } from '@/components/PasswordModal/PasswordModal';

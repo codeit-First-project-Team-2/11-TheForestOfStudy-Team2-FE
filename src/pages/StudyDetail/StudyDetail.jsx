@@ -10,7 +10,7 @@ import {
   getStudyDetail,
 } from '@/apis/studyService.js';
 import useStudyStore from '@/stores/useStudyStore.js';
-import { TOAST } from '@/constants/toastError.js';
+import { TOAST } from '@/constants/error.js';
 import { showToast } from '@/utils/toast.util.js';
 import { PasswordModal } from '@/components/PasswordModal/PasswordModal';
 import { ShareModal } from '@/components/ui/Modal';
