@@ -13,7 +13,8 @@
 .cardWapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 20px;
 }
 .noResult {
   width: 100%;
