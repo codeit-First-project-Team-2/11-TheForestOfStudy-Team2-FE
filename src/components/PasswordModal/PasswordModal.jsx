@@ -6,7 +6,7 @@ import Visible from '@/assets/studyDetail/Visible.jpg';
 import NoVisible from '@/assets/studyDetail/NoVisible.jpg';
 import styles from './PasswordModal.module.css';
 
-export const PasswordModal = ({ isOpen, onClose, title, onConfirm, isDelete = false }) => {
+export const PasswordModal = ({ isOpen, onClose, nickname , title, onConfirm, isDelete = false }) => {
   const [password, setPassword] = useState('');
   const [isShowPassword, setIsShowPassword] = useState(false);
 
@@ -21,7 +21,7 @@ export const PasswordModal = ({ isOpen, onClose, title, onConfirm, isDelete = fa
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={handleClose} title={title} size="sm">
+    <Modal isOpen={isOpen} nickname={nickname} onClose={handleClose} title={title} size="sm">
       {isDelete && (
         <div className={styles.alertContainer}>
           <div>⚠️스터디를 삭제하면 복구할 수 없습니다.</div>
