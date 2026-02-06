@@ -41,15 +41,10 @@ export const useFocusTimer = (studyId, onSettle) => {
   const handleStop = async () => {
     pauseTimer();
 
-    // 정산 성공시 테스트
-    // if (onSettle) {
-    //   onSettle(145, 100);
-    // }
+    const focusedSeconds = INITIAL_SECONDS - seconds;
+    const actualMinutes = Math.floor(focusedSeconds / 60);
 
     try {
-      const focusedSeconds = INITIAL_SECONDS - seconds;
-      const actualMinutes = Math.floor(focusedSeconds / 60);
-
       const data = await settlePointsApi(studyId, actualMinutes);
 
       if (onSettle) {

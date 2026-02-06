@@ -21,7 +21,7 @@ export const settlePointsApi = async (studyId, actualMinutes) => {
       actualMinutes,
     });
 
-    return response
+    return response.data;
   } catch (error) {
     const errorMessage =
       error.response.data.message || '포인트 정산 중 오류가 발생했습니다.';
