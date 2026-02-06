@@ -154,6 +154,7 @@ export const StudyDetail = () => {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           title={study.title}
+          nickname={study.nickname}
           onConfirm={handlePasswordConfirm}
           isDelete={targetAction === 'delete'}
         />
