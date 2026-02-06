@@ -35,19 +35,15 @@
 }
 
 .header {
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .title {
-  font-size: var(--font-size-lg);
+  font-size: 20px;
   font-weight: var(--font-weight-extra-bold);
   color: var(--color-text);
   text-align: center;
-  margin: 0;
-  padding: var(--padding-sm);
+  margin-top: 20px;
 }
 
 .content {
@@ -103,7 +99,12 @@
 .closeButton::before {
   transform: translate(-50%, -50%) rotate(45deg);
 }
-
+.nickAndTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 .closeButton::after {
   transform: translate(-50%, -50%) rotate(-45deg);
 }

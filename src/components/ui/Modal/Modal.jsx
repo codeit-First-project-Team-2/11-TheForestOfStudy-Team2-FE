@@ -4,7 +4,14 @@ import styles from './Modal.module.css';
 
 const VALID_SIZES = ['sm', 'md', 'lg'];
 
-export const Modal = ({ title, children, isOpen, onClose, size = 'md' }) => {
+export const Modal = ({
+  title,
+  nickname,
+  children,
+  isOpen,
+  onClose,
+  size = 'md',
+}) => {
   const safeSize = VALID_SIZES.includes(size) ? size : 'md';
 
   useEffect(() => {
@@ -55,11 +62,20 @@ export const Modal = ({ title, children, isOpen, onClose, size = 'md' }) => {
           />
         </div>
 
-        {title ? (
-          <div className={styles.header}>
-            <h2 className={styles.title}>{title}</h2>
-          </div>
-        ) : null}
+        <div className={styles.nickAndTitle}>
+          {nickname ? (
+            <div className={styles.header}>
+              <h2 className={styles.title}>{nickname}</h2>
+              <p className={styles.title}>의&nbsp;</p>
+            </div>
+          ) : null}
+
+          {title ? (
+            <div className={styles.header}>
+              <h2 className={styles.title}>{title}</h2>
+            </div>
+          ) : null}
+        </div>
 
         <div className={styles.content}>{children}</div>
       </div>
