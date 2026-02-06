@@ -26,55 +26,56 @@ npm run dev
 * **회의록**: https://cake-locust-27b.notion.site/2-2ee5da27db9e8083bc59c6cc61e14b95
 
 <div align="center">
-  <table width="100%">
+  <table width="100%" style="table-layout: fixed;">
     <tbody>
       <tr>
-        <td align="center">
+        <td align="center" valign="middle">
           <a href="https://github.com/yyejin00">
-            <img src="https://avatars.githubusercontent.com/u/79955539?v=4" width="100px" alt="프로필 이미지" />
+            <img src="https://avatars.githubusercontent.com/u/79955539?v=4" width="100" />
             <br />
-            <sub><b>안예진</b></sub>
+            <b>안예진</b>
           </a>
         </td>
-        <td align="center">
+        <td align="center" valign="middle">
           <a href="https://github.com/alstjddl0513-sys">
-            <img src="https://avatars.githubusercontent.com/u/244665250?v=4" width="100px" alt="프로필 이미지" />
+            <img src="https://avatars.githubusercontent.com/u/244665250?v=4" width="100" />
             <br />
-            <sub><b>김민성</b></sub>
+            <b>김민성</b>
           </a>
         </td>
-        <td align="center">
+        <td align="center" valign="middle">
           <a href="https://github.com/odc0202">
-            <img src="https://avatars.githubusercontent.com/u/244856097?v=4" width="100px" alt="프로필 이미지" />
+            <img src="https://avatars.githubusercontent.com/u/244856097?v=4" width="100" />
             <br />
-            <sub><b>오동철</b></sub>
+            <b>오동철</b>
           </a>
         </td>
-        <td align="center">
+        <td align="center" valign="middle">
           <a href="https://github.com/lareina7486">
-            <img src="https://avatars.githubusercontent.com/u/33364524?v=4" width="100px" alt="프로필 이미지" />
+            <img src="https://avatars.githubusercontent.com/u/33364524?v=4" width="100" />
             <br />
-            <sub><b>강에스더</b></sub>
+            <b>강에스더</b>
           </a>
         </td>
-        <td align="center">
+        <td align="center" valign="middle">
           <a href="https://github.com/kimgreen-xoxo">
-            <img src="https://avatars.githubusercontent.com/u/243271260?v=4" width="100px" alt="프로필 이미지" />
+            <img src="https://avatars.githubusercontent.com/u/243271260?v=4" width="100" />
             <br />
-            <sub><b>고은혜</b></sub>
+            <b>고은혜</b>
           </a>
         </td>
       </tr>
       <tr>
-        <td align="center"><sub>팀장 · 스터디 상세</sub></td>
-        <td align="center"><sub>프론트 총괄 · 스터디 집중</sub></td>
-        <td align="center"><sub>스터디 홈</sub></td>
-        <td align="center"><sub>백엔드 총괄 · 스터디 생성/수정</sub></td>
-        <td align="center"><sub>공통 UI · 오늘의 습관</sub></td>
+        <td align="center">팀장 · 스터디 상세</td>
+        <td align="center">프론트 총괄 · 스터디 집중</td>
+        <td align="center">스터디 홈</td>
+        <td align="center">백엔드 총괄 · 스터디 생성/수정</td>
+        <td align="center">공통 UI · 오늘의 습관</td>
       </tr>
     </tbody>
   </table>
 </div>
+
 
 <br>
 
@@ -203,78 +204,80 @@ src/
 
 ## **팀원별 구현 기능 상세**
 
-### **안예진**
+### 🙆🏻‍♀️ 안예진
 
-- **오늘의 집중 페이지**
-  - 집중 조회 API 구현
-  - 집중 페이지 Nav, 획득 포인트 조회 및 상태 관리
-- **배포 및 스타일링**
-  - Netlify, Render를 이용하여 FE, BE 작업물 배포
-  - 집중 페이지 스타일링 및 반응형 구현
-  - 스터디 만들기 페이지 반응형 구현
-  - 이모지 스타일링
+- **서버 배포**
+  - Render를 통한 DB 생성, 서버 배포
+  - 스터디 만들기 페이지
 
-### **김민성**
+### 🙆🏻‍♂️ 김민성
 
-- **오늘의 집중 페이지**
+- **오늘의 집중 페이지 작성**
   - 타이머 시간 설정, 시작/일시정지/종료 기능 및 포인트 계산
   - 타이머 작동중, 타이머 초과 및 스탑 클릭 시 토스트 알림
-- **비밀번호 인증 모달 컴포넌트**
-  - 비밀번호 인증 기능 구현
-- **스터디 공유하기**
-  - 공유하기 토스트 알림 ui 개선
+- **스터디 공유하기 모달 작성**
+- **공용 토스트 알림 작성**
+- **홈페이지 부분 서포트**
+- **FE 초기세팅 및 디버깅, 배포**
 
-### **오동철**
+### 🙆🏻‍♂️ 오동철
 
-- **전체 에러 핸들러**
-  - 에러 핸들러 미들웨어 구현
-- **GNB**
-  - 공통 헤더 컴포넌트 구현
-- **홈페이지**
-  - StudyCard, RecentStudy, StudyContents 컴포넌트 구현
-- **스터디 상세 페이지**
-  - LinkButton, 이모지, 포인트 컴포넌트 구현
+- **스터디 홈**
 
-### **강에스더**
+### 🙆🏻‍♀️ 강에스더
+- **백엔드 환경 세팅**
+  - Express, Prisma 기반 서버 구조 설계 및 초기 세팅
+  - PostgreSQL 연동 및 Prisma Schema 설계
+  - 공통 에러 처리 및 응답 구조 정리
+  - 시드 데이터 구성 및 초기 데이터 세팅
 
-- **홈페이지**
-  - 최근 조회한 스터디, 스터디 전체 목록 조회 기능 구현
-  - 스터디 생성 API 및 스터디 만들기 페이지 구현
-  - 홈페이지 검색, 정렬, 페이지네이션 구현
-- **스터디 상세 페이지**
-  - 스터디 상세 조회, 수정, 공유, 삭제 기능 구현
-  - 스터디 수정하기 페이지 구현
-  - 응원 이모지 추가 기능 구현
+- **스터디 생성 / 수정 기능**
+  - 스터디 생성·수정 페이지 프론트엔드 구현
+  - 입력값 검증 및 서버 요청 로직 구현
+  - 백엔드 API 설계 및 CRUD 기능 구현
 
-### **고은혜**
+- **서버 및 DB 배포**
+  - Render를 통한 PostgreSQL DB 생성
+  - 프론트(Netlify) – 백엔드(Render) 연동 및 CORS 설정
 
+### 🙆🏻‍♀️ 고은혜
+
+- **공용 UI 작업**
 - **오늘의 습관 페이지**
-  - 습관 페이지 CRUD 구현
-  - 습관 체크/체크해제 및 주간 조회 API 구현
-  - 습관 목록 수정 모달창 구현
-- **전체 스타일링**
-  - 공통 헤더 반응형 구현
-  - 전체 레이아웃 디자인 개선
+ 
 ---
 
 ## **프로젝트 회고**
 
 ### 🧑🏻‍💻 안예진
-
-프로젝트가 끝나가면서 느낀거지만 팀원들이 작성한 코드 하나하나 정말 진심으로 정성이 엄청 많이 들어갔다고 느꼈다...
-
+```
+작성중
+```
 ### 🧑🏻‍💻 김민성
-
-다들 열심히 맡은 역할을 잘해주어서 잘 마무리 된 것 같지만 공통적으로든 개인적으로든 크고 작은 문제점들을 겪고 해결해 나가는 과정에서 많은 것들을 배웠던 것 같다...
-
+```
+코드의 통일성과 가독성을 높이기 위한 팀 규칙을 미리 잘 세우고 이슈를 통해 고민을 공유하고 이를 해결하는 방식으로 협업을 하였으면
+보다 더 효율적이고 시간도 많이 단축되었을 것 같다는 생각이 들었다.
+또한 코드를 짜면서 처음에는 기능을 구현하기 위한 부분만 생각했는데 협업을 진행하면서 강사님이 코드의 가독성,
+무게가 가벼워야하고 , 재사용성이 높아야된다는 그런 말들이 이해가 가면서 앞으로는 기능구현 하나만이 아닌 여러 측면을 생각하며
+코드를 짜는 습관을 가져야겠다는 생각을 해보았다.
+```
 ### 🧑🏻‍💻 오동철
-
-팀원들의 다양한 접근법을 배우며 새로운 시각을 얻었고, 협업이 함께 배우고 성장하는 과정임을 깨달았다...
-
+```
+이번 프로젝트를 시작할 때만 해도 솔직히 막막함이 컸다.
+무엇부터 해야 할지도, 내가 이걸 끝까지 해낼 수 있을지도 확신이 없었다.
+특히 초반에는 전체 구조를 이해하는 데 시간이 많이 걸렸고,
+작은 기능 하나를 구현하는 데도 생각보다 많은 고민이 필요했다.
+단순히 코드를 치는 것 이상으로 팀원들분들 보며 문제를 대하는 태도를 배우게 되었다.
+이번 프로젝트에서 가장 크게 느낀 점은 혼자하는개발과 팀개발은 다르다는 것이었다
+아쉬운 점도 분명히 있다 하지만 과정에서 얻은 경험과 깨달음이 더 큰자산이라고 생각한다.
+```
 ### 👩🏻‍💻 강에스더
-
-협업 도중 여러 충돌을 겪으면서 서로 간의 규칙을 정하고 의사소통을 통해 조율해나가는 과정의 중요성을 느낄 수 있었다...
-
+```
+이번 프로젝트는 백엔드 환경 세팅부터 프론트엔드 기능 구현까지 전 과정을 경험하며 풀스택 개발에 대한 이해와 경험을 쌓을 수 있는 시간이었다.
+또한 팀원들과 함께 협업하며 프로젝트를 함께 해결해 나가는 과정 속에서,
+개발은 개인의 역량에서 끝나는 것이 아닌 기록과 설득과 공유의 영역임을 알게되었다.
+```
 ### 👩🏻‍💻 고은혜
-
-팀 개발 프로젝트를 하면서 협업의 중요성을 깨달았다...
+```
+작성중...
+```
