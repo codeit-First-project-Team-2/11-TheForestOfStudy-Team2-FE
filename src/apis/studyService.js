@@ -1,4 +1,4 @@
-import client from './client';
+import client from './client.js';
 
 export const verifyStudyPassword = (studyId, password) => {
   return client.post(`/studies/${studyId}/password/verify`, { password });
@@ -28,16 +28,13 @@ export const createStudy = async ({
   password,
 }) => {
   try {
-    const data = await client.post('/studies', {
+    return await client.post('/studies', {
       nickname,
       title,
       introduction,
       background,
       password,
     });
-
-    console.log(data);
-    return data;
   } catch (error) {
     console.log(`[createStudy] - 에러발생: ${error.message}`);
     throw error;
