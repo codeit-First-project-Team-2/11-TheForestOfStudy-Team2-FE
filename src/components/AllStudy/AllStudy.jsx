@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TextField } from '../ui/TextField/TextField';
 import SearchIcon from '../../assets/ic_search.jpg';
 import { StudyCard } from '../study/studyCard';
 import styles from '../AllStudy/AllStudy.module.css';
-
 
 const SORT_OPTIONS = [
   { value: '-createdAt', label: '최근 순' },

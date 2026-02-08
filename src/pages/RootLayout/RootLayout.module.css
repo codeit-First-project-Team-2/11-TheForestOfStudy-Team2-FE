@@ -1,11 +1,11 @@
 
 .pageLayout {
-  background-color: var(--color-background);
+  background-color: #f6f4ef;
 }
 
 .pageContent {
   display: flex;
   justify-content: center;
   margin: 40px auto 174px;
-  background-color: var(--color-background);
+  background-color: #f6f4ef;
 }
